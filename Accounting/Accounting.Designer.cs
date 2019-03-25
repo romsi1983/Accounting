@@ -33,11 +33,11 @@
             // 
             // Organizations
             // 
-            this.Organizations.Location = new System.Drawing.Point(64, 35);
+            this.Organizations.Location = new System.Drawing.Point(12, 12);
             this.Organizations.Name = "Organizations";
-            this.Organizations.Size = new System.Drawing.Size(75, 23);
+            this.Organizations.Size = new System.Drawing.Size(166, 47);
             this.Organizations.TabIndex = 0;
-            this.Organizations.Text = "Organizations";
+            this.Organizations.Text = "Организации";
             this.Organizations.UseVisualStyleBackColor = true;
             this.Organizations.Click += new System.EventHandler(this.Organizations_Click);
             // 
@@ -45,10 +45,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(825, 461);
             this.Controls.Add(this.Organizations);
             this.Name = "Accounting";
-            this.Text = "Accounting";
+            this.Text = "Учет контейнеров";
             this.Load += new System.EventHandler(this.Accounting_Load);
             this.ResumeLayout(false);
 

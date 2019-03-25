@@ -64,6 +64,12 @@
     <Compile Include="Models\OrganizationContainer.cs" />
     <Compile Include="Models\Platform.cs" />
     <Compile Include="Models\Registry.cs" />
+    <Compile Include="NewOrg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewOrg.Designer.cs">
+      <DependentUpon>NewOrg.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrgForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     <Compile Include="SQLiteHelper.cs" />
     <EmbeddedResource Include="Accounting.resx">
       <DependentUpon>Accounting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewOrg.resx">
+      <DependentUpon>NewOrg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrgForm.resx">
       <DependentUpon>OrgForm.cs</DependentUpon>

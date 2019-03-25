@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Accounting.Models;
 
@@ -25,14 +19,33 @@ namespace Accounting
             OrgGridView.AllowUserToDeleteRows = false;
             OrgGridView.ReadOnly = true;
 
-            var sql = new SqLiteHelper();
-            var allOrg = sql.FindinTable<Organization>();
-            
             DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
             OrgGridView.Columns.Add(chk);
+            // ReSharper disable once LocalizableElement
             chk.HeaderText = "Активный";
             chk.Name = "chk";
+            RenewDataTable();
+        }
 
+        private void OrgGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void NewCompany_Click(object sender, EventArgs e)
+        {
+            NewOrg form = new NewOrg();
+            form.ShowDialog();
+            this.Show();
+            RenewDataTable();
+        }
+
+
+        private void RenewDataTable()
+        {
+            OrgGridView.Rows.Clear();
+            var sql = new SqLiteHelper();
+            var allOrg = sql.FindinTable<Organization>();
             foreach (var org in allOrg)
             {
                 DataGridViewRow row = new DataGridViewRow();
@@ -45,10 +58,6 @@ namespace Accounting
                 row.Cells[5].Value = org.Active;
                 OrgGridView.Rows.Add(row);
             }
-        }
-
-        private void OrgGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
     }

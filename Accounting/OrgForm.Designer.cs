@@ -41,6 +41,7 @@
             this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NewCompany = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OrgGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,9 +54,9 @@
             this.City,
             this.Address,
             this.Phone});
-            this.OrgGridView.Location = new System.Drawing.Point(1, 31);
+            this.OrgGridView.Location = new System.Drawing.Point(12, 95);
             this.OrgGridView.Name = "OrgGridView";
-            this.OrgGridView.Size = new System.Drawing.Size(755, 418);
+            this.OrgGridView.Size = new System.Drawing.Size(793, 353);
             this.OrgGridView.TabIndex = 0;
             this.OrgGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrgGridView_CellContentClick);
             // 
@@ -88,11 +89,22 @@
             this.Phone.Name = "Phone";
             this.Phone.Width = 120;
             // 
+            // NewCompany
+            // 
+            this.NewCompany.Location = new System.Drawing.Point(12, 12);
+            this.NewCompany.Name = "NewCompany";
+            this.NewCompany.Size = new System.Drawing.Size(151, 68);
+            this.NewCompany.TabIndex = 1;
+            this.NewCompany.Text = "Новая организация";
+            this.NewCompany.UseVisualStyleBackColor = true;
+            this.NewCompany.Click += new System.EventHandler(this.NewCompany_Click);
+            // 
             // OrgForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(937, 598);
+            this.ClientSize = new System.Drawing.Size(831, 457);
+            this.Controls.Add(this.NewCompany);
             this.Controls.Add(this.OrgGridView);
             this.Name = "OrgForm";
             this.Text = "OrgForm";
@@ -110,5 +122,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn City;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
+        private System.Windows.Forms.Button NewCompany;
     }
 }
