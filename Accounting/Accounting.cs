@@ -25,7 +25,7 @@ namespace Accounting
         {
             OrgForm form = new OrgForm();
             this.Hide();
-            form.ShowDialog();
+            form.ShowDialog(this);
             this.Show();
         }
     }

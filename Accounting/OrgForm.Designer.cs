@@ -37,12 +37,10 @@
         {
             this.OrgGridView = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrgName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.OrgGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,12 +49,10 @@
             this.OrgGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OrgGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.Name,
+            this.OrgName,
             this.City,
             this.Address,
-            this.Phone,
-            this.Active,
-            this.Comment});
+            this.Phone});
             this.OrgGridView.Location = new System.Drawing.Point(1, 31);
             this.OrgGridView.Name = "OrgGridView";
             this.OrgGridView.Size = new System.Drawing.Size(755, 418);
@@ -65,13 +61,15 @@
             // 
             // Id
             // 
-            this.Id.HeaderText = "Id";
+            this.Id.HeaderText = "#";
             this.Id.Name = "Id";
+            this.Id.Width = 30;
             // 
-            // Name
+            // OrgName
             // 
-            this.Name.HeaderText = "Наименование";
-            this.Name.Name = "Name";
+            this.OrgName.HeaderText = "Наименование";
+            this.OrgName.Name = "OrgName";
+            this.OrgName.Width = 200;
             // 
             // City
             // 
@@ -82,21 +80,13 @@
             // 
             this.Address.HeaderText = "Адрес";
             this.Address.Name = "Address";
+            this.Address.Width = 200;
             // 
             // Phone
             // 
             this.Phone.HeaderText = "Телефон";
             this.Phone.Name = "Phone";
-            // 
-            // Active
-            // 
-            this.Active.HeaderText = "Активный";
-            this.Active.Name = "Active";
-            // 
-            // Comment
-            // 
-            this.Comment.HeaderText = "Коментарий";
-            this.Comment.Name = "Comment";
+            this.Phone.Width = 120;
             // 
             // OrgForm
             // 
@@ -104,7 +94,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 598);
             this.Controls.Add(this.OrgGridView);
-            //this.Name = "OrgForm";
+            this.Name = "OrgForm";
             this.Text = "OrgForm";
             this.Load += new System.EventHandler(this.OrgForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.OrgGridView)).EndInit();
@@ -116,11 +106,9 @@
 
         private System.Windows.Forms.DataGridView OrgGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrgName;
         private System.Windows.Forms.DataGridViewTextBoxColumn City;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Active;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
     }
 }
