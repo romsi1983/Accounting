@@ -74,7 +74,8 @@ namespace Accounting
 
         public int UpdateDb<T>(T value) where T : new()
         {
-            var exist = FindinTable(value).Any();
+            var valueId = Convert.ToInt32(value.GetType().GetProperty("Id")?.GetValue(value, null));
+            var exist = FindinTable<T>(valueId).Any();
 
             if (!exist)
             {
@@ -174,6 +175,13 @@ namespace Accounting
 
             return values;
         }
+
+        public List<T> FindinTable<T>(int id) where T : new()
+        {
+            var dataBase = GetDataBaseName<T>();
+            var command = $"SELECT * FROM {dataBase} WHERE Id = '{id}'";
+            return GetTableValues<T>(command);
+        }
         public List<T> FindinTable<T>(T value) where T : new()
         {
             //var values = new List<T>();
@@ -193,6 +201,7 @@ namespace Accounting
 
             return GetTableValues<T>(command);
         }
+
         private int ExecuteWriteCommand(string sqlCommand)
         {
             var tr = SqlLite.BeginTransaction();

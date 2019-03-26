@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Accounting.Forms;
+using Accounting.Models;
 
 namespace Accounting
 {
@@ -31,7 +32,7 @@ namespace Accounting
 
         private void Containers_Click(object sender, EventArgs e)
         {
-            var form = new Containers();
+            var form = new Generic<ContainerType>();
             form.ShowDialog();
         }
     }
