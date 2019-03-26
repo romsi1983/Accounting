@@ -57,8 +57,14 @@
     <Compile Include="Accounting.Designer.cs">
       <DependentUpon>Accounting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Containers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Containers.Designer.cs">
+      <DependentUpon>Containers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Car.cs" />
-    <Compile Include="Models\Container.cs" />
+    <Compile Include="Models\ContainerType.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\OrganizationContainer.cs" />
@@ -81,6 +87,9 @@
     <Compile Include="SQLiteHelper.cs" />
     <EmbeddedResource Include="Accounting.resx">
       <DependentUpon>Accounting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Containers.resx">
+      <DependentUpon>Containers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewOrg.resx">
       <DependentUpon>NewOrg.cs</DependentUpon>

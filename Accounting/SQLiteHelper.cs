@@ -72,12 +72,18 @@ namespace Accounting
             return new List<List<string>> { inProps, inValues };
         }
 
-        public int UpdateDb<T>(T value)
+        public int UpdateDb<T>(T value) where T : new()
         {
+            var exist = FindinTable(value).Any();
+
+            if (!exist)
+            {
+                return WriteToDb(value);
+            }
+
             var dataBase = GetDataBaseName<T>();
             var propsAndValues = GetPropsAndValues(value, false);
             string set = string.Empty;
-
             for (var i = 1; i < propsAndValues[0].Count; i++)
             {
                 set = set + $"{propsAndValues[0][i]} = '{propsAndValues[1][i]}'";
@@ -204,7 +210,7 @@ namespace Accounting
                 case "Car":
                     dataBase = "Cars";
                     break;
-                case "Container":
+                case "ContainerType":
                     dataBase = "Containers";
                     break;
                 case "Driver":

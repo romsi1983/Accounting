@@ -28,5 +28,11 @@ namespace Accounting
         {
 
         }
+
+        private void Containers_Click(object sender, EventArgs e)
+        {
+            var form = new Containers();
+            form.ShowDialog();
+        }
     }
 }

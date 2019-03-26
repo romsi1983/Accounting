@@ -70,6 +70,7 @@
             this.Containers.TabIndex = 1;
             this.Containers.Text = "Контейнеры";
             this.Containers.UseVisualStyleBackColor = true;
+            this.Containers.Click += new System.EventHandler(this.Containers_Click);
             // 
             // tableLayoutPanel2
             // 
