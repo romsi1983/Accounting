@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-
 
 namespace Accounting
 {
@@ -31,7 +28,7 @@ namespace Accounting
             //SqlLite.Open();
 
         }
-        public List<List<string>> GetPropsAndValues<T>(T value, bool write)
+        private List<List<string>> GetPropsAndValues<T>(T value, bool write)
         {
             var inProps = new List<string>();
             var inValues = new List<string>();
@@ -73,6 +70,30 @@ namespace Accounting
             }
             
             return new List<List<string>> { inProps, inValues };
+        }
+
+        public int UpdateDb<T>(T value)
+        {
+            var dataBase = GetDataBaseName<T>();
+            var propsAndValues = GetPropsAndValues(value, false);
+            string set = string.Empty;
+
+            for (var i = 1; i < propsAndValues[0].Count; i++)
+            {
+                set = set + $"{propsAndValues[0][i]} = '{propsAndValues[1][i]}'";
+                if (i != propsAndValues[0].Count - 1)
+                {
+                    set = set + ", ";
+                }
+            }
+
+            string sqlCommand = $"UPDATE {dataBase} " +
+                                $"SET {set} " +
+                                $"WHERE id = {propsAndValues[1][0]}";
+
+
+
+            return ExecuteWriteCommand(sqlCommand);
         }
         public int WriteToDb<T>(T value)
         {
@@ -205,15 +226,7 @@ namespace Accounting
 
             return dataBase;
         }
-        public void PrepareDabaBase()
-        {
-            var path = AppDomain.CurrentDomain.BaseDirectory + "Main.db";
-            if (!File.Exists(path))
-            {
-                CreateDb(path);
-            }
-        }
-        public void CreateDb(string dbPath)
+        private void CreateDb(string dbPath)
         {
             SQLiteConnection.CreateFile(dbPath);
             //SQLiteConnection sqlite;

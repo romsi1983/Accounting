@@ -1,4 +1,4 @@
-﻿namespace Accounting
+﻿namespace Accounting.Forms
 {
     partial class NewOrg
     {

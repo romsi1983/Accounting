@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Accounting.Models;
 
-namespace Accounting
+namespace Accounting.Forms
 {
     public partial class OrgForm : Form
     {
@@ -13,8 +13,8 @@ namespace Accounting
 
         private void OrgForm_Load(object sender, EventArgs e)
         {
-            this.Location = Owner.Location;
-            this.Size = Owner.Size;
+            Location = Owner.Location;
+            Size = Owner.Size;
             OrgGridView.AllowUserToAddRows = false;
             OrgGridView.AllowUserToDeleteRows = false;
             OrgGridView.ReadOnly = true;
@@ -29,14 +29,31 @@ namespace Accounting
 
         private void OrgGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            var row = OrgGridView.CurrentRow;
+            if (row != null)
+            {
+                var org = new Organization
+                {
+                    Id = (long) row.Cells[0].Value,
+                    Name = (string) row.Cells[1].Value,
+                    City = (string) row.Cells[2].Value,
+                    Address = (string) row.Cells[3].Value,
+                    Phone = (string) row.Cells[4].Value,
+                    Active = (bool) row.Cells[5].Value
+                };
 
+                var form = new NewOrg(org);
+                form.ShowDialog();
+            }
+
+            RenewDataTable();
         }
 
         private void NewCompany_Click(object sender, EventArgs e)
         {
             NewOrg form = new NewOrg();
             form.ShowDialog();
-            this.Show();
+            Show();
             RenewDataTable();
         }
 

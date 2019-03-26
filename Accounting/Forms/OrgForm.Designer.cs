@@ -1,4 +1,4 @@
-﻿namespace Accounting
+﻿namespace Accounting.Forms
 {
     partial class OrgForm
     {
@@ -42,11 +42,14 @@
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NewCompany = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.OrgGridView)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // OrgGridView
             // 
+            this.OrgGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.OrgGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OrgGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -54,23 +57,23 @@
             this.City,
             this.Address,
             this.Phone});
-            this.OrgGridView.Location = new System.Drawing.Point(12, 95);
+            this.OrgGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OrgGridView.Location = new System.Drawing.Point(4, 104);
+            this.OrgGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OrgGridView.Name = "OrgGridView";
-            this.OrgGridView.Size = new System.Drawing.Size(793, 353);
+            this.OrgGridView.Size = new System.Drawing.Size(1100, 454);
             this.OrgGridView.TabIndex = 0;
-            this.OrgGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrgGridView_CellContentClick);
+            this.OrgGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrgGridView_CellContentClick);
             // 
             // Id
             // 
             this.Id.HeaderText = "#";
             this.Id.Name = "Id";
-            this.Id.Width = 30;
             // 
             // OrgName
             // 
             this.OrgName.HeaderText = "Наименование";
             this.OrgName.Name = "OrgName";
-            this.OrgName.Width = 200;
             // 
             // City
             // 
@@ -81,35 +84,51 @@
             // 
             this.Address.HeaderText = "Адрес";
             this.Address.Name = "Address";
-            this.Address.Width = 200;
             // 
             // Phone
             // 
             this.Phone.HeaderText = "Телефон";
             this.Phone.Name = "Phone";
-            this.Phone.Width = 120;
             // 
             // NewCompany
             // 
-            this.NewCompany.Location = new System.Drawing.Point(12, 12);
+            this.NewCompany.Location = new System.Drawing.Point(4, 4);
+            this.NewCompany.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NewCompany.Name = "NewCompany";
-            this.NewCompany.Size = new System.Drawing.Size(151, 68);
+            this.NewCompany.Size = new System.Drawing.Size(201, 84);
             this.NewCompany.TabIndex = 1;
             this.NewCompany.Text = "Новая организация";
             this.NewCompany.UseVisualStyleBackColor = true;
             this.NewCompany.Click += new System.EventHandler(this.NewCompany_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.NewCompany, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.OrgGridView, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1108, 562);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
             // OrgForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 457);
-            this.Controls.Add(this.NewCompany);
-            this.Controls.Add(this.OrgGridView);
+            this.ClientSize = new System.Drawing.Size(1108, 562);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "OrgForm";
             this.Text = "OrgForm";
             this.Load += new System.EventHandler(this.OrgForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.OrgGridView)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -123,5 +142,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
         private System.Windows.Forms.Button NewCompany;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

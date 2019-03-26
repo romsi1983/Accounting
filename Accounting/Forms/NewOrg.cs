@@ -1,24 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Accounting.Models;
 
-namespace Accounting
+namespace Accounting.Forms
 {
     public partial class NewOrg : Form
     {
-        public NewOrg()
+        private readonly Organization _org;
+        private readonly bool _edit;
+        public NewOrg(Organization org = null)
         {
+            _org = org;
+            _edit = org != null;
             InitializeComponent();
         }
 
         private void NewOrg_Load(object sender, EventArgs e)
         {
+            if (_edit)
+            {
+                Active.Checked = _org.Active;
+                Address.Text = _org.Address;
+                City.Text = _org.City;
+                OrgName.Text = _org.Name;
+                Phone.Text = _org.Phone;
+                Comment.Text = _org.Comment;
+            }
 
         }
 
@@ -31,18 +38,23 @@ namespace Accounting
         {
             var org = new Organization
             {
-                Active = this.Active.Checked,
-                Address = this.Address.Text,
-                City = this.City.Text,
-                Name = this.OrgName.Text,
-                Phone = this.Phone.Text,
-                Comment = this.Comment.Text
+                Active = Active.Checked,
+                Address = Address.Text,
+                City = City.Text,
+                Name = OrgName.Text,
+                Phone = Phone.Text,
+                Comment = Comment.Text
             };
 
-            var sql = new SqLiteHelper();
-            var result = sql.WriteToDb(org);
+            if (_edit) org.Id = _org.Id;
 
-            this.Close();
+            var sql = new SqLiteHelper();
+            int result = _edit ? sql.UpdateDb(org) : sql.WriteToDb(org);
+            if (result != 1)
+            {
+                throw new Exception("Ошибка сохранения");
+            }
+            Close();
         }
     }
 }
