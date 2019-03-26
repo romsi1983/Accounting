@@ -23,5 +23,10 @@ namespace Accounting
             form.ShowDialog(this);
             Show();
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
