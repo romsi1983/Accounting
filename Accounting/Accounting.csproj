@@ -64,16 +64,16 @@
     <Compile Include="Models\OrganizationContainer.cs" />
     <Compile Include="Models\Platform.cs" />
     <Compile Include="Models\Registry.cs" />
-    <Compile Include="NewOrg.cs">
+    <Compile Include="Forms\NewOrg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewOrg.Designer.cs">
+    <Compile Include="Forms\NewOrg.Designer.cs">
       <DependentUpon>NewOrg.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrgForm.cs">
+    <Compile Include="Forms\OrgForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OrgForm.Designer.cs">
+    <Compile Include="Forms\OrgForm.Designer.cs">
       <DependentUpon>OrgForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -82,10 +82,10 @@
     <EmbeddedResource Include="Accounting.resx">
       <DependentUpon>Accounting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewOrg.resx">
+    <EmbeddedResource Include="Forms\NewOrg.resx">
       <DependentUpon>NewOrg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrgForm.resx">
+    <EmbeddedResource Include="Forms\OrgForm.resx">
       <DependentUpon>OrgForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
