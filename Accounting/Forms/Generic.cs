@@ -13,9 +13,10 @@ namespace Accounting.Forms
             var formName = "неизвестный тип данных";
             switch (typeof(T).Name)
             {
-                case "Cars":
+                case "Car":
                     formName = "Автомобили";
                     columnHeader = "Автомобиль";
+                    commonData.Columns.Add("CarNumber", "Номер машины");
                     break;
                 case "ContainerType":
                     formName = @"Типы контейнеров";
@@ -59,7 +60,20 @@ namespace Accounting.Forms
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(commonData);
                 row.Cells[0].Value = value.GetType().GetProperty("Id")?.GetValue(value,null);
-                row.Cells[1].Value = value.GetType().GetProperty("Name")?.GetValue(value, null);
+                switch (typeof(T).Name)
+                {
+                    case "Platform":
+                        row.Cells[1].Value = value.GetType().GetProperty("Address")?.GetValue(value, null);
+                        break;
+                    case "Car":
+                        row.Cells[1].Value = value.GetType().GetProperty("Name")?.GetValue(value, null);
+                        row.Cells[2].Value = value.GetType().GetProperty("Number")?.GetValue(value, null);
+                        break;
+                    default:
+                        row.Cells[1].Value = value.GetType().GetProperty("Name")?.GetValue(value, null);
+                        break;
+                }
+                
                 commonData.Rows.Add(row);
             }
         }
@@ -83,7 +97,19 @@ namespace Accounting.Forms
                 if (String.IsNullOrEmpty(valueName)) continue;
                 var value = new T();
                 value.GetType().GetProperty("Id")?.SetValue(value,valueId,null);
-                value.GetType().GetProperty("Name")?.SetValue(value, valueName, null);
+                switch (typeof(T).Name)
+                {
+                    case "Platform":
+                        value.GetType().GetProperty("Address")?.SetValue(value, valueName, null);
+                        break;
+                    case "Car":
+                        value.GetType().GetProperty("Name")?.SetValue(value, valueName, null);
+                        value.GetType().GetProperty("Number")?.SetValue(value, (string)row.Cells[2].Value, null);
+                        break;
+                    default:
+                        value.GetType().GetProperty("Name")?.SetValue(value, valueName, null);
+                        break;
+                }
 
                 sql.UpdateDb(value);
             }

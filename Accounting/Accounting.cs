@@ -35,5 +35,23 @@ namespace Accounting
             var form = new Generic<ContainerType>();
             form.ShowDialog();
         }
+
+        private void platforms_Click(object sender, EventArgs e)
+        {
+            var form = new Generic<Platform>();
+            form.ShowDialog();
+        }
+
+        private void drivers_Click(object sender, EventArgs e)
+        {
+            var form = new Generic<Driver>();
+            form.ShowDialog();
+        }
+
+        private void Cars_Click(object sender, EventArgs e)
+        {
+            var form = new Generic<Car>();
+            form.ShowDialog();
+        }
     }
 }
