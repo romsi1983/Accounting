@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using Accounting.Models;
 
@@ -32,16 +33,9 @@ namespace Accounting.Forms
             var row = OrgGridView.CurrentRow;
             if (row != null)
             {
-                var org = new Organization
-                {
-                    Id = (long) row.Cells[0].Value,
-                    Name = (string) row.Cells[1].Value,
-                    City = (string) row.Cells[2].Value,
-                    Address = (string) row.Cells[3].Value,
-                    Phone = (string) row.Cells[4].Value,
-                    Active = (bool) row.Cells[5].Value
-                };
-
+                var sql = new SqLiteHelper();
+                var id = (long) row.Cells[0].Value;
+                var org = sql.FindinTable<Organization>((int)id).FirstOrDefault();
                 var form = new NewOrg(org);
                 form.ShowDialog();
             }

@@ -14,7 +14,8 @@ namespace Accounting
 
         private void Accounting_Load(object sender, EventArgs e)
         {
-
+            var sql = new SqLiteHelper();
+            sql.PrepareDb();
         }
 
         private void Organizations_Click(object sender, EventArgs e)

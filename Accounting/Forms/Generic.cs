@@ -21,6 +21,7 @@ namespace Accounting.Forms
                 case "ContainerType":
                     formName = @"Типы контейнеров";
                     columnHeader = "Тип контейнера";
+                    commonData.Columns.Add("Volume", "Объем");
                     break;
                 case "Driver":
                     formName = @"Водители";
@@ -69,6 +70,10 @@ namespace Accounting.Forms
                         row.Cells[1].Value = value.GetType().GetProperty("Name")?.GetValue(value, null);
                         row.Cells[2].Value = value.GetType().GetProperty("Number")?.GetValue(value, null);
                         break;
+                    case "ContainerType":
+                        row.Cells[1].Value = value.GetType().GetProperty("Name")?.GetValue(value, null);
+                        row.Cells[2].Value = value.GetType().GetProperty("Volume")?.GetValue(value, null);
+                        break;
                     default:
                         row.Cells[1].Value = value.GetType().GetProperty("Name")?.GetValue(value, null);
                         break;
@@ -101,6 +106,10 @@ namespace Accounting.Forms
                 {
                     case "Platform":
                         value.GetType().GetProperty("Address")?.SetValue(value, valueName, null);
+                        break;
+                    case "ContainerType":
+                        value.GetType().GetProperty("Name")?.SetValue(value, valueName, null);
+                        value.GetType().GetProperty("Volume")?.SetValue(value, (float)Convert.ToDecimal(row.Cells[2].Value), null);
                         break;
                     case "Car":
                         value.GetType().GetProperty("Name")?.SetValue(value, valueName, null);

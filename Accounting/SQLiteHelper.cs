@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -8,26 +9,20 @@ namespace Accounting
 {
     public class SqLiteHelper : IDisposable
     {
-        public static SQLiteConnection SqlLite;
+        // ReSharper disable once InconsistentNaming
+        private static SQLiteConnection SqlLite;
+
         public SqLiteHelper()
         {
             var dbPath = AppDomain.CurrentDomain.BaseDirectory + "Main.db";
-            if (!File.Exists(dbPath))
-            {
-                CreateDb(dbPath);
-            }
-            else
+
+            if (File.Exists(dbPath))
             {
                 SqlLite = new SQLiteConnection($"Data Source={dbPath}");
                 SqlLite.Open();
             }
-
-
-
-            //SqlLite = new SQLiteConnection(path);
-            //SqlLite.Open();
-
         }
+
         private List<List<string>> GetPropsAndValues<T>(T value, bool write)
         {
             var inProps = new List<string>();
@@ -48,6 +43,10 @@ namespace Accounting
                         break;
                     case "Boolean":
                         propValue = (bool)propValue ? "1" : "0";
+                        break;
+                    case "Single":
+                        propValue = ((float) propValue).ToString(CultureInfo.InvariantCulture);
+                        if (propValue.Equals("0")) continue;
                         break;
                 }
 
@@ -71,7 +70,12 @@ namespace Accounting
             
             return new List<List<string>> { inProps, inValues };
         }
-
+        public void PrepareDb()
+        {
+            var dbPath = AppDomain.CurrentDomain.BaseDirectory + "Main.db";
+            CreateDb(dbPath);
+            UpdateDb();
+        }
         public int UpdateDb<T>(T value) where T : new()
         {
             var valueId = Convert.ToInt32(value.GetType().GetProperty("Id")?.GetValue(value, null));
@@ -96,7 +100,7 @@ namespace Accounting
 
             string sqlCommand = $"UPDATE {dataBase} " +
                                 $"SET {set} " +
-                                $"WHERE id = {propsAndValues[1][0]}";
+                                $"WHERE id = {valueId}";
 
 
 
@@ -166,6 +170,12 @@ namespace Accounting
                             tempValue = (long)tempValue != 0;
                         }
 
+                        // ReSharper disable once PossibleNullReferenceException
+                        if (tp.GetProperty(propertyName).PropertyType.Name.Equals("Single"))
+                        {
+                            tempValue = (float)Convert.ToDecimal(tempValue);
+                        }
+
                         tp.GetProperty(propertyName)?.SetValue(tempObj, tempValue, null);
                     }
                 }
@@ -175,7 +185,6 @@ namespace Accounting
 
             return values;
         }
-
         public List<T> FindinTable<T>(int id) where T : new()
         {
             var dataBase = GetDataBaseName<T>();
@@ -201,7 +210,6 @@ namespace Accounting
 
             return GetTableValues<T>(command);
         }
-
         private int ExecuteWriteCommand(string sqlCommand)
         {
             var tr = SqlLite.BeginTransaction();
@@ -243,45 +251,91 @@ namespace Accounting
         }
         private void CreateDb(string dbPath)
         {
-            SQLiteConnection.CreateFile(dbPath);
-            //SQLiteConnection sqlite;
+            if (!File.Exists(dbPath))
+            {
+                SQLiteConnection.CreateFile(dbPath);
+            }
 
             SqlLite = new SQLiteConnection($"Data Source={dbPath}");
-
-            //using (sqlite = new SQLiteConnection($"Data Source={dbPath}"))
-            //{
-                //sqlite.SetPassword("AMSupport");
             SqlLite.Open();
 
             List<string> sqlCommands = new List<string>
             {
-                @"CREATE TABLE Organizations
+                @"CREATE TABLE IF NOT EXISTS Organizations
                     (Id INTEGER PRIMARY KEY,
                      Name VARCHAR(255) NOT NULL,
                      City VARCHAR(255) NOT NULL,
                      Address VARCHAR(255),
                      Phone VARCHAR(255),
                      Active TINYINTEGER NOT NULL DEFAULT 1,
-                     Comment Memo BLOB(7000))",
-                @"CREATE TABLE Containers (Id INTEGER NOT NULL PRIMARY KEY,Name VARCHAR(255) NOT NULL)",
-                @"CREATE TABLE Platforms (Id INTEGER NOT NULL PRIMARY KEY,Address VARCHAR(255) NOT NULL)",
-                @"CREATE TABLE OrganizationContainers (Id INTEGER NOT NULL PRIMARY KEY, Organization INTEGER NOT NULL, Container INTEGER NOT NULL, Platform INTEGER NOT NULL, Schedule VARCHAR(255))",
-                @"CREATE TABLE Drivers (Id INTEGER NOT NULL PRIMARY KEY, Name VARCHAR(255) NOT NULL)",
-                @"CREATE TABLE Cars (Id INTEGER NOT NULL PRIMARY KEY,Name VARCHAR(255) NOT NULL,Number VARCHAR(255) NOT NULL)",
-                @"CREATE TABLE Registry 
+                     Comment VARCHAR(255))",
+                @"CREATE TABLE IF NOT EXISTS Containers (Id INTEGER NOT NULL PRIMARY KEY,Name VARCHAR(255) NOT NULL,
+                    Volume FLOAT NOT NULL)",
+                @"CREATE TABLE IF NOT EXISTS Platforms (Id INTEGER NOT NULL PRIMARY KEY,Address VARCHAR(255) NOT NULL)",
+                @"CREATE TABLE IF NOT EXISTS OrganizationContainers (Id INTEGER NOT NULL PRIMARY KEY, 
+                    Organization INTEGER NOT NULL, Container INTEGER NOT NULL, Platform INTEGER NOT NULL, 
+                    Schedule VARCHAR(255))",
+                @"CREATE TABLE IF NOT EXISTS Drivers (Id INTEGER NOT NULL PRIMARY KEY, Name VARCHAR(255) NOT NULL)",
+                @"CREATE TABLE IF NOT EXISTS Cars (Id INTEGER NOT NULL PRIMARY KEY,Name VARCHAR(255) NOT NULL,
+                    Number VARCHAR(255) NOT NULL)",
+                @"CREATE TABLE IF NOT EXISTS Registry 
                     (Id INTEGER NOT NULL PRIMARY KEY,
                      Organization INTEGER NOT NULL,
                      OrganizationСontainer INTEGER NOT NULL,
                      Driver INTEGER NOT NULL,
                      Car INTEGER NOT NULL,
-                     Date DATETIME NOT NULL)"
+                     Date DATETIME NOT NULL)",
+                @"CREATE TABLE IF NOT EXISTS Сontract (Id INTEGER NOT NULL PRIMARY KEY,Number VARCHAR(255) NOT NULL,
+                    FromDate DATETIME NOT NULL,ToDate DATETIME NOT NULL,TargetVolume FLOAT NOT NULL,
+                    ProcessedVolume FLOAT NOT NULL)"
             };
 
             foreach (var sqlCommand in sqlCommands)
             {
                 ExecuteWriteCommand(sqlCommand);
             }
-            //}
+        }
+
+        private void UpdateDb()
+        {   
+            var currentVersion = (long) ExecuteTextCommand("PRAGMA user_version")[0];
+
+            if (currentVersion < 1)
+            {
+                ExecuteWriteCommand(@"ALTER TABLE Containers ADD Volume FLOAT");
+                ExecuteWriteCommand(@"CREATE TABLE IF NOT EXISTS OrganizationsNew
+                    (Id INTEGER PRIMARY KEY,
+                     Name VARCHAR(255) NOT NULL,
+                     City VARCHAR(255) NOT NULL,
+                     Address VARCHAR(255),
+                     Phone VARCHAR(255),
+                     Active TINYINTEGER NOT NULL DEFAULT 1,
+                     Comment VARCHAR(255))");
+                ExecuteWriteCommand(@"INSERT INTO OrganizationsNew (Id,Name,City,Address,Phone,Active)
+                    SELECT Id,Name,City,Address,Phone,Active FROM Organizations");
+                ExecuteWriteCommand(@"DROP TABLE Organizations");
+                ExecuteWriteCommand(@"ALTER TABLE OrganizationsNew RENAME TO Organizations");
+                
+                ExecuteWriteCommand("PRAGMA user_version=1");
+            }
+        }
+
+        private object[] ExecuteTextCommand(string commandText)
+        {
+            var cmd = SqlLite.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = commandText;
+            var reader = cmd.ExecuteReader();
+            object[] values = { };
+            if (reader.HasRows)
+            {
+                values = new object[reader.FieldCount];
+                while (reader.Read())
+                {
+                    reader.GetValues(values);
+                }
+            }
+            return values;
         }
         protected virtual void Dispose(bool disposing)
         {
