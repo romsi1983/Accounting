@@ -11,7 +11,6 @@ namespace Accounting
     {
         // ReSharper disable once InconsistentNaming
         private static SQLiteConnection SqlLite;
-
         public SqLiteHelper()
         {
             var dbPath = AppDomain.CurrentDomain.BaseDirectory + "Main.db";
@@ -22,7 +21,6 @@ namespace Accounting
                 SqlLite.Open();
             }
         }
-
         private List<List<string>> GetPropsAndValues<T>(T value, bool write)
         {
             var inProps = new List<string>();
@@ -254,6 +252,10 @@ namespace Accounting
             if (!File.Exists(dbPath))
             {
                 SQLiteConnection.CreateFile(dbPath);
+                SqlLite = new SQLiteConnection($"Data Source={dbPath}");
+                SqlLite.Open();
+                ExecuteWriteCommand("PRAGMA user_version=2");
+                SqlLite.Close();
             }
 
             SqlLite = new SQLiteConnection($"Data Source={dbPath}");
@@ -263,12 +265,12 @@ namespace Accounting
             {
                 @"CREATE TABLE IF NOT EXISTS Organizations
                     (Id INTEGER PRIMARY KEY,
-                     Name VARCHAR(255) NOT NULL,
-                     City VARCHAR(255) NOT NULL,
-                     Address VARCHAR(255),
-                     Phone VARCHAR(255),
-                     Active TINYINTEGER NOT NULL DEFAULT 1,
-                     Comment VARCHAR(255))",
+                    Name VARCHAR(255) NOT NULL,
+                    City VARCHAR(255) NOT NULL,
+                    Address VARCHAR(255),
+                    Phone VARCHAR(255),
+                    Active TINYINTEGER NOT NULL DEFAULT 1,
+                    Comment VARCHAR(255))",
                 @"CREATE TABLE IF NOT EXISTS Containers (Id INTEGER NOT NULL PRIMARY KEY,Name VARCHAR(255) NOT NULL,
                     Volume FLOAT NOT NULL)",
                 @"CREATE TABLE IF NOT EXISTS Platforms (Id INTEGER NOT NULL PRIMARY KEY,Address VARCHAR(255) NOT NULL)",
@@ -280,14 +282,18 @@ namespace Accounting
                     Number VARCHAR(255) NOT NULL)",
                 @"CREATE TABLE IF NOT EXISTS Registry 
                     (Id INTEGER NOT NULL PRIMARY KEY,
-                     Organization INTEGER NOT NULL,
-                     OrganizationСontainer INTEGER NOT NULL,
-                     Driver INTEGER NOT NULL,
-                     Car INTEGER NOT NULL,
-                     Date DATETIME NOT NULL)",
-                @"CREATE TABLE IF NOT EXISTS Сontract (Id INTEGER NOT NULL PRIMARY KEY,Number VARCHAR(255) NOT NULL,
-                    FromDate DATETIME NOT NULL,ToDate DATETIME NOT NULL,TargetVolume FLOAT NOT NULL,
-                    ProcessedVolume FLOAT NOT NULL)"
+                    Organization INTEGER NOT NULL,
+                    OrganizationСontainer INTEGER NOT NULL,
+                    Driver INTEGER NOT NULL,
+                    Car INTEGER NOT NULL,
+                    Date DATETIME NOT NULL)",
+                @"CREATE TABLE IF NOT EXISTS Contracts(Id INTEGER NOT NULL PRIMARY KEY, 
+                    ContractNumber VARCHAR(255) NOT NULL, 
+                    Organization INTEGER NOT NULL,
+                    FromDate DATETIME NOT NULL, 
+                    ToDate DATETIME NOT NULL, 
+                    TargetVolume FLOAT NOT NULL, 
+                    ProcessedVolume FLOAT)"
             };
 
             foreach (var sqlCommand in sqlCommands)
@@ -295,7 +301,6 @@ namespace Accounting
                 ExecuteWriteCommand(sqlCommand);
             }
         }
-
         private void UpdateDb()
         {   
             var currentVersion = (long) ExecuteTextCommand("PRAGMA user_version")[0];
@@ -318,8 +323,13 @@ namespace Accounting
                 
                 ExecuteWriteCommand("PRAGMA user_version=1");
             }
-        }
 
+            if (currentVersion < 2)
+            {
+                ExecuteWriteCommand(@"DROP TABLE Сontract");
+                ExecuteWriteCommand("PRAGMA user_version=2");
+            }
+        }
         private object[] ExecuteTextCommand(string commandText)
         {
             var cmd = SqlLite.CreateCommand();

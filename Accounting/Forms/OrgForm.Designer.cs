@@ -62,9 +62,12 @@
             this.OrgGridView.Dock = System.Windows.Forms.DockStyle.Top;
             this.OrgGridView.Location = new System.Drawing.Point(4, 4);
             this.OrgGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.OrgGridView.MultiSelect = false;
             this.OrgGridView.Name = "OrgGridView";
+            this.OrgGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.OrgGridView.Size = new System.Drawing.Size(1100, 454);
             this.OrgGridView.TabIndex = 0;
+            this.OrgGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrgGridView_CellContentClick_1);
             this.OrgGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrgGridView_CellContentClick);
             // 
             // Id

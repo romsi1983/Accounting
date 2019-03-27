@@ -76,5 +76,10 @@ namespace Accounting.Forms
         {
 
         }
+
+        private void OrgGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
