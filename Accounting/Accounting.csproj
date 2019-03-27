@@ -57,12 +57,6 @@
     <Compile Include="Accounting.Designer.cs">
       <DependentUpon>Accounting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Containers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Containers.Designer.cs">
-      <DependentUpon>Containers.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Generic.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,9 +87,6 @@
     <Compile Include="SQLiteHelper.cs" />
     <EmbeddedResource Include="Accounting.resx">
       <DependentUpon>Accounting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Containers.resx">
-      <DependentUpon>Containers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Generic.resx">
       <DependentUpon>Generic.cs</DependentUpon>

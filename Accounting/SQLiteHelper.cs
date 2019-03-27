@@ -322,13 +322,22 @@ namespace Accounting
                 ExecuteWriteCommand(@"ALTER TABLE OrganizationsNew RENAME TO Organizations");
                 
                 ExecuteWriteCommand("PRAGMA user_version=1");
+                currentVersion++;
             }
 
             if (currentVersion < 2)
             {
-                ExecuteWriteCommand(@"DROP TABLE Сontract");
+                ExecuteWriteCommand(@"DROP TABLE IF EXISTS Сontract");
                 ExecuteWriteCommand("PRAGMA user_version=2");
+                currentVersion++;
             }
+
+            if (currentVersion < 3)
+            {
+                ExecuteWriteCommand(@"ALTER TABLE Containers ADD Multiple TINYINTEGER NOT NULL DEFAULT 1");
+                ExecuteWriteCommand("PRAGMA user_version=3");
+            }
+
         }
         private object[] ExecuteTextCommand(string commandText)
         {

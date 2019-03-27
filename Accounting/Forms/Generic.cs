@@ -22,6 +22,9 @@ namespace Accounting.Forms
                     formName = @"Типы контейнеров";
                     columnHeader = "Тип контейнера";
                     commonData.Columns.Add("Volume", "Объем");
+                    DataGridViewCheckBoxColumn multiple = new DataGridViewCheckBoxColumn();
+                    commonData.Columns.Add(multiple);
+                    multiple.HeaderText = @"Несколько";
                     break;
                 case "Driver":
                     formName = @"Водители";
@@ -73,6 +76,7 @@ namespace Accounting.Forms
                     case "ContainerType":
                         row.Cells[1].Value = value.GetType().GetProperty("Name")?.GetValue(value, null);
                         row.Cells[2].Value = value.GetType().GetProperty("Volume")?.GetValue(value, null);
+                        row.Cells[3].Value = value.GetType().GetProperty("Multiple")?.GetValue(value, null);
                         break;
                     default:
                         row.Cells[1].Value = value.GetType().GetProperty("Name")?.GetValue(value, null);
@@ -109,7 +113,13 @@ namespace Accounting.Forms
                         break;
                     case "ContainerType":
                         value.GetType().GetProperty("Name")?.SetValue(value, valueName, null);
-                        value.GetType().GetProperty("Volume")?.SetValue(value, (float)Convert.ToDecimal(row.Cells[2].Value), null);
+                        var floatValue = row.Cells[2].Value;
+                        if (floatValue.GetType().Name.Equals("String"))
+                        {   
+                            floatValue = floatValue.ToString().Contains(".") ? floatValue.ToString().Replace(".", ",") : floatValue.ToString().Replace(",", ".");
+                        }
+                        value.GetType().GetProperty("Volume")?.SetValue(value, Convert.ToSingle(floatValue), null);
+                        value.GetType().GetProperty("Multiple")?.SetValue(value, (bool)row.Cells[3].Value, null);
                         break;
                     case "Car":
                         value.GetType().GetProperty("Name")?.SetValue(value, valueName, null);
