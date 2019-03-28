@@ -20,7 +20,7 @@ namespace Accounting
 
         private void Organizations_Click(object sender, EventArgs e)
         {
-            OrgForm form = new OrgForm();
+            OrganizationsAll form = new OrganizationsAll();
             Hide();
             form.ShowDialog(this);
             Show();

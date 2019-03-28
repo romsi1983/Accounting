@@ -5,9 +5,9 @@ using Accounting.Models;
 
 namespace Accounting.Forms
 {
-    public partial class OrgForm : Form
+    public partial class OrganizationsAll : Form
     {
-        public OrgForm()
+        public OrganizationsAll()
         {
             InitializeComponent();
         }
@@ -36,7 +36,7 @@ namespace Accounting.Forms
                 var sql = new SqLiteHelper();
                 var id = (long) row.Cells[0].Value;
                 var org = sql.FindinTable<Organization>((int)id).FirstOrDefault();
-                var form = new NewOrg(org);
+                var form = new OrganizationSingle(org);
                 form.ShowDialog();
             }
 
@@ -45,7 +45,7 @@ namespace Accounting.Forms
 
         private void NewCompany_Click(object sender, EventArgs e)
         {
-            NewOrg form = new NewOrg();
+            OrganizationSingle form = new OrganizationSingle();
             form.ShowDialog();
             Show();
             RenewDataTable();

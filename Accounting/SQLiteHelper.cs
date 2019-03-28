@@ -211,11 +211,24 @@ namespace Accounting
         private int ExecuteWriteCommand(string sqlCommand)
         {
             var tr = SqlLite.BeginTransaction();
-            var cmd = SqlLite.CreateCommand();
-            cmd.CommandText = sqlCommand;
-            int result = cmd.ExecuteNonQuery();
-            tr.Commit();
-            return result;
+            try
+            {
+                
+                var cmd = SqlLite.CreateCommand();
+                cmd.CommandText = sqlCommand;
+                int result = cmd.ExecuteNonQuery();
+                //tr.Commit();
+                return result;
+            }
+            catch (SQLiteException sqle)
+            {
+                return sqle.ErrorCode;
+            }
+            finally
+            {
+                tr.Commit();
+            }
+
         }
         private string GetDataBaseName<T>()
         {
@@ -265,21 +278,21 @@ namespace Accounting
             {
                 @"CREATE TABLE IF NOT EXISTS Organizations
                     (Id INTEGER PRIMARY KEY,
-                    Name VARCHAR(255) NOT NULL,
+                    Name VARCHAR(255) NOT NULL UNIQUE,
                     City VARCHAR(255) NOT NULL,
                     Address VARCHAR(255),
                     Phone VARCHAR(255),
                     Active TINYINTEGER NOT NULL DEFAULT 1,
                     Comment VARCHAR(255))",
-                @"CREATE TABLE IF NOT EXISTS Containers (Id INTEGER NOT NULL PRIMARY KEY,Name VARCHAR(255) NOT NULL,
+                @"CREATE TABLE IF NOT EXISTS Containers (Id INTEGER NOT NULL PRIMARY KEY,Name VARCHAR(255) NOT NULL UNIQUE,
                     Volume FLOAT NOT NULL)",
-                @"CREATE TABLE IF NOT EXISTS Platforms (Id INTEGER NOT NULL PRIMARY KEY,Address VARCHAR(255) NOT NULL)",
+                @"CREATE TABLE IF NOT EXISTS Platforms (Id INTEGER NOT NULL PRIMARY KEY,Address VARCHAR(255) NOT NULL UNIQUE)",
                 @"CREATE TABLE IF NOT EXISTS OrganizationContainers (Id INTEGER NOT NULL PRIMARY KEY, 
                     Organization INTEGER NOT NULL, Container INTEGER NOT NULL, Platform INTEGER NOT NULL, 
                     Schedule VARCHAR(255))",
                 @"CREATE TABLE IF NOT EXISTS Drivers (Id INTEGER NOT NULL PRIMARY KEY, Name VARCHAR(255) NOT NULL)",
                 @"CREATE TABLE IF NOT EXISTS Cars (Id INTEGER NOT NULL PRIMARY KEY,Name VARCHAR(255) NOT NULL,
-                    Number VARCHAR(255) NOT NULL)",
+                    Number VARCHAR(255) NOT NULL UNIQUE)",
                 @"CREATE TABLE IF NOT EXISTS Registry 
                     (Id INTEGER NOT NULL PRIMARY KEY,
                     Organization INTEGER NOT NULL,
@@ -288,7 +301,7 @@ namespace Accounting
                     Car INTEGER NOT NULL,
                     Date DATETIME NOT NULL)",
                 @"CREATE TABLE IF NOT EXISTS Contracts(Id INTEGER NOT NULL PRIMARY KEY, 
-                    ContractNumber VARCHAR(255) NOT NULL, 
+                    ContractNumber VARCHAR(255) NOT NULL UNIQUE, 
                     Organization INTEGER NOT NULL,
                     FromDate DATETIME NOT NULL, 
                     ToDate DATETIME NOT NULL, 

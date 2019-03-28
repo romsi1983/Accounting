@@ -1,6 +1,6 @@
 ﻿namespace Accounting.Forms
 {
-    partial class OrgForm
+    partial class OrganizationsAll
     {
         /// <summary>
         /// Required designer variable.

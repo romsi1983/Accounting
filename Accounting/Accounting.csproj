@@ -57,11 +57,29 @@
     <Compile Include="Accounting.Designer.cs">
       <DependentUpon>Accounting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddNewContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewContainer.Designer.cs">
+      <DependentUpon>AddNewContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OrganizationContracts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OrganizationContracts.Designer.cs">
+      <DependentUpon>OrganizationContracts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Generic.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Generic.Designer.cs">
       <DependentUpon>Generic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OrganizationContainers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OrganizationContainers.Designer.cs">
+      <DependentUpon>OrganizationContainers.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\ContainerType.cs" />
@@ -70,17 +88,17 @@
     <Compile Include="Models\OrganizationContainer.cs" />
     <Compile Include="Models\Platform.cs" />
     <Compile Include="Models\Registry.cs" />
-    <Compile Include="Forms\NewOrg.cs">
+    <Compile Include="Forms\OrganizationSingle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewOrg.Designer.cs">
-      <DependentUpon>NewOrg.cs</DependentUpon>
+    <Compile Include="Forms\OrganizationSingle.Designer.cs">
+      <DependentUpon>OrganizationSingle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\OrgForm.cs">
+    <Compile Include="Forms\OrganizationsAll.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OrgForm.Designer.cs">
-      <DependentUpon>OrgForm.cs</DependentUpon>
+    <Compile Include="Forms\OrganizationsAll.Designer.cs">
+      <DependentUpon>OrganizationsAll.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,14 +106,20 @@
     <EmbeddedResource Include="Accounting.resx">
       <DependentUpon>Accounting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewContainer.resx">
+      <DependentUpon>AddNewContainer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Generic.resx">
       <DependentUpon>Generic.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewOrg.resx">
-      <DependentUpon>NewOrg.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\OrganizationContainers.resx">
+      <DependentUpon>OrganizationContainers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OrgForm.resx">
-      <DependentUpon>OrgForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\OrganizationSingle.resx">
+      <DependentUpon>OrganizationSingle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OrganizationsAll.resx">
+      <DependentUpon>OrganizationsAll.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

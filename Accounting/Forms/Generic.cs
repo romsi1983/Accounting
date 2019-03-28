@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Data.SQLite;
+using System.Linq;
 using System.Windows.Forms;
+using Accounting.Models;
+using static System.Windows.Forms.MessageBoxButtons;
+using static System.Windows.Forms.MessageBoxIcon;
 
 namespace Accounting.Forms
 {
@@ -95,6 +100,12 @@ namespace Accounting.Forms
 
         private void Generic_FormClosing(object sender, FormClosingEventArgs e)
         {
+
+
+        }
+
+        private void saveData_Click(object sender, EventArgs e)
+        {
             var sql = new SqLiteHelper();
             for (var i = 0; i < commonData.RowCount; i++)
             {
@@ -105,7 +116,8 @@ namespace Accounting.Forms
 
                 if (String.IsNullOrEmpty(valueName)) continue;
                 var value = new T();
-                value.GetType().GetProperty("Id")?.SetValue(value,valueId,null);
+                value.GetType().GetProperty("Id")?.SetValue(value, valueId, null);
+                
                 switch (typeof(T).Name)
                 {
                     case "Platform":
@@ -115,7 +127,7 @@ namespace Accounting.Forms
                         value.GetType().GetProperty("Name")?.SetValue(value, valueName, null);
                         var floatValue = row.Cells[2].Value;
                         if (floatValue.GetType().Name.Equals("String"))
-                        {   
+                        {
                             floatValue = floatValue.ToString().Contains(".") ? floatValue.ToString().Replace(".", ",") : floatValue.ToString().Replace(",", ".");
                         }
                         value.GetType().GetProperty("Volume")?.SetValue(value, Convert.ToSingle(floatValue), null);
@@ -130,9 +142,13 @@ namespace Accounting.Forms
                         break;
                 }
 
-                sql.UpdateDb(value);
+                var result = sql.UpdateDb(value);
+                if (result == 19)
+                {
+                    MessageBox.Show(@"Информация не уникальна", @"Ошибка", OK, Warning);
+                    return;
+                }
             }
-
         }
     }
 }
