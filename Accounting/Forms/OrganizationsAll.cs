@@ -30,25 +30,32 @@ namespace Accounting.Forms
 
         private void OrgGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            var form = new OrganizationSingle(SelectedOrganization());
+            var result = form.ShowDialog();
+            if (result == DialogResult.Yes) RenewDataTable();
+        }
+
+        private Organization SelectedOrganization()
+        {
             var row = OrgGridView.CurrentRow;
             if (row != null)
             {
                 var sql = new SqLiteHelper();
                 var id = (long) row.Cells[0].Value;
-                var org = sql.FindinTable<Organization>((int)id).FirstOrDefault();
-                var form = new OrganizationSingle(org);
-                form.ShowDialog();
+                var org = sql.FindinTable<Organization>((int) id).FirstOrDefault();
+                return org;
             }
 
-            RenewDataTable();
+            return null;
         }
+
 
         private void NewCompany_Click(object sender, EventArgs e)
         {
             OrganizationSingle form = new OrganizationSingle();
-            form.ShowDialog();
+            var result = form.ShowDialog();
             Show();
-            RenewDataTable();
+            if (result == DialogResult.Yes) RenewDataTable();
         }
 
 
@@ -72,14 +79,11 @@ namespace Accounting.Forms
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+
+        private void orgContainers_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void OrgGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
+            var form = new OrganizationContainers(SelectedOrganization());
+            form.ShowDialog();
         }
     }
 }

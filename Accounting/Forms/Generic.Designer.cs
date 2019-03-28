@@ -45,12 +45,11 @@
             this.tableLayoutPanel1.Controls.Add(this.saveData, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 219F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(540, 259);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 178F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(405, 210);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // commonData
@@ -62,11 +61,10 @@
             this.Id,
             this.Data});
             this.commonData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.commonData.Location = new System.Drawing.Point(4, 44);
-            this.commonData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.commonData.Location = new System.Drawing.Point(3, 35);
             this.commonData.Name = "commonData";
             this.commonData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.commonData.Size = new System.Drawing.Size(532, 211);
+            this.commonData.Size = new System.Drawing.Size(399, 172);
             this.commonData.TabIndex = 0;
             this.commonData.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.commonData_RowsAdded);
             // 
@@ -83,22 +81,22 @@
             // 
             // saveData
             // 
-            this.saveData.Location = new System.Drawing.Point(3, 3);
+            this.saveData.Location = new System.Drawing.Point(2, 2);
+            this.saveData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.saveData.Name = "saveData";
-            this.saveData.Size = new System.Drawing.Size(158, 34);
+            this.saveData.Size = new System.Drawing.Size(147, 28);
             this.saveData.TabIndex = 1;
-            this.saveData.Text = "Сохранить";
+            this.saveData.Text = "Сохранить и закрыть";
             this.saveData.UseVisualStyleBackColor = true;
             this.saveData.Click += new System.EventHandler(this.saveData_Click);
             // 
             // Generic
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 259);
+            this.ClientSize = new System.Drawing.Size(405, 210);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Generic";
             this.Text = "Generic";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Generic_FormClosing);

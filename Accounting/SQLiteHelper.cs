@@ -135,6 +135,14 @@ namespace Accounting
 
             return ExecuteWriteCommand(sqlCommand);
         }
+
+        public int DeleteFromTable<T>(long id)
+        {
+            var dataBase = GetDataBaseName<T>();
+            string sqlCommand = $"DELETE FROM {dataBase} " +
+                                $"WHERE Id = '{id}'";
+            return ExecuteWriteCommand(sqlCommand);
+        }
         public List<T> FindinTable<T>() where T : new()
         {
             var dataBase = GetDataBaseName<T>();
@@ -187,6 +195,12 @@ namespace Accounting
         {
             var dataBase = GetDataBaseName<T>();
             var command = $"SELECT * FROM {dataBase} WHERE Id = '{id}'";
+            return GetTableValues<T>(command);
+        }
+        public List<T> FindinTable<T>(string columnName, string value) where T : new()
+        {
+            var dataBase = GetDataBaseName<T>();
+            var command = $"SELECT * FROM {dataBase} WHERE {columnName} = '{value}'";
             return GetTableValues<T>(command);
         }
         public List<T> FindinTable<T>(T value) where T : new()
@@ -320,7 +334,7 @@ namespace Accounting
             }
         }
         private void UpdateDb()
-        {
+        {   
             var currentVersion = (long) ExecuteTextCommand("PRAGMA user_version")[0];
 
             if (currentVersion < 1)
@@ -362,7 +376,7 @@ namespace Accounting
                 //Organizations
                 ExecuteWriteCommand(@"CREATE TABLE IF NOT EXISTS OrganizationsNew
                     (Id INTEGER PRIMARY KEY,
-                     Name VARCHAR(255) NOT NULL,
+                     Name VARCHAR(255) NOT NULL UNIQUE,
                      City VARCHAR(255) NOT NULL,
                      Address VARCHAR(255),
                      Phone VARCHAR(255),

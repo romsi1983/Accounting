@@ -148,6 +148,7 @@ namespace Accounting.Forms
                     return;
                 }
             }
+            Close();
         }
     }
 }

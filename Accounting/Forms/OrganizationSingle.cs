@@ -12,8 +12,19 @@ namespace Accounting.Forms
         public OrganizationSingle(Organization org = null)
         {
             Org = org;
-            Edit = org != null;
+            if (org != null)
+            {
+                Edit = true;
+                //Text = $@"Редактирование оргнаизации {org.Name}";
+            }
+
             InitializeComponent();
+        }
+
+        public sealed override string Text
+        {
+            get => base.Text;
+            set => base.Text = value;
         }
 
         private void NewOrg_Load(object sender, EventArgs e)
@@ -26,6 +37,7 @@ namespace Accounting.Forms
                 OrgName.Text = Org.Name;
                 Phone.Text = Org.Phone;
                 Comment.Text = Org.Comment;
+                Text = $@"Редактирование организации '{Org.Name}'";
             }
             else
             {
@@ -61,7 +73,7 @@ namespace Accounting.Forms
             if (sql.FindinTable(tempOrg).Any())
             {
                 // ReSharper disable once LocalizableElement
-                MessageBox.Show($"Organization with name '{org.Name}' already exists");
+                MessageBox.Show($"Организация '{org.Name}' уже существует");
                 return;
             }
             int result = Edit ? sql.UpdateDb(org) : sql.WriteToDb(org);
@@ -69,6 +81,8 @@ namespace Accounting.Forms
             {
                 throw new Exception("Ошибка сохранения");
             }
+
+            DialogResult = DialogResult.Yes;
             Close();
         }
 
@@ -76,6 +90,11 @@ namespace Accounting.Forms
         {
             var form = new OrganizationContainers(Org);
             form.ShowDialog();
+        }
+
+        private void contracts_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using Accounting.Models;
@@ -10,6 +11,7 @@ namespace Accounting.Forms
     {
         protected Organization Org;
         protected List<Platform> AllPlatforms;
+        protected List<ContainerType> AllContainers;
         public AddNewContainer(Organization org)
         {
             Org = org;
@@ -23,6 +25,10 @@ namespace Accounting.Forms
             string[] temp = AllPlatforms.Select(ap => ap.Address).ToArray();
             // ReSharper disable once CoVariantArrayConversion
             selectPlatform.Items.AddRange(temp);
+            AllContainers = sql.FindinTable<ContainerType>();
+            // ReSharper disable once CoVariantArrayConversion
+            selectContainerType.Items.AddRange(AllContainers.Select(ac => ac.Name).ToArray());
+
         }
 
         private void selectPlatform_DropDown(object sender, EventArgs e)
@@ -31,6 +37,57 @@ namespace Accounting.Forms
             var tempAllPlatforms = AllPlatforms.Where(ap => ap.Address.ToLowerInvariant().Contains(selectPlatform.Text.ToLowerInvariant())).ToList();
             // ReSharper disable once CoVariantArrayConversion
             selectPlatform.Items.AddRange(tempAllPlatforms.Select(ap => ap.Address).ToArray());
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            var sql = new SqLiteHelper();
+            var selectedPlatform = selectPlatform.Text;
+            var selectedContainer = selectContainerType.Text;
+            var pf = sql.FindinTable<Platform>("Address", selectedPlatform).FirstOrDefault();
+
+            if (pf == null)
+            {
+                MessageBox.Show(@"Платформа не выбрана");
+                return;
+            }
+            var ct = sql.FindinTable<ContainerType>("Name", selectedContainer).FirstOrDefault();
+
+            if (ct == null)
+            {
+                MessageBox.Show(@"Контейнер не выбран");
+                return;
+            }
+
+            string schedule = string.Empty;
+            if (monday.Checked) schedule = "1;";
+            if (tuesday.Checked) schedule = schedule + "2;";
+            if (wednesday.Checked) schedule = schedule + "3;";
+            if (thersday.Checked) schedule = schedule + "4;";
+            if (friday.Checked) schedule = schedule + "5;";
+            if (satuday.Checked) schedule = schedule + "6;";
+            if (sunday.Checked) schedule = schedule + "7;";
+            if (!String.IsNullOrEmpty(schedule))
+            {
+                schedule = schedule.TrimEnd(';');
+            }
+
+            
+
+            Debug.Assert(ct != null, nameof(ct) + " != null");
+            Debug.Assert(pf != null, nameof(pf) + " != null");
+            var orgCont = new OrganizationContainer
+            {
+                Organization = Org.Id,
+                Container = ct.Id,
+                Platform = pf.Id,
+                Schedule = schedule
+            };
+
+            sql.WriteToDb(orgCont);
+
+            DialogResult = DialogResult.Yes;
+            Close();
         }
     }
 }
