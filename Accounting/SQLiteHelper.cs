@@ -171,9 +171,9 @@ namespace Accounting
                         // ReSharper disable once PossibleNullReferenceException
                         if (tp.GetProperty(propertyName).PropertyType.Name.Equals("Single"))
                         {
-                            tempValue = (float)Convert.ToDecimal(tempValue);
+                            tempValue = Convert.ToSingle(tempValue);
+                            
                         }
-
                         tp.GetProperty(propertyName)?.SetValue(tempObj, tempValue, null);
                     }
                 }
@@ -213,11 +213,9 @@ namespace Accounting
             var tr = SqlLite.BeginTransaction();
             try
             {
-                
                 var cmd = SqlLite.CreateCommand();
                 cmd.CommandText = sqlCommand;
                 int result = cmd.ExecuteNonQuery();
-                //tr.Commit();
                 return result;
             }
             catch (SQLiteException sqle)
@@ -269,6 +267,13 @@ namespace Accounting
                 SqlLite.Open();
                 ExecuteWriteCommand("PRAGMA user_version=2");
                 SqlLite.Close();
+                SqlLite = null;
+            }
+
+            if (SqlLite == null)
+            {
+                SqlLite = new SQLiteConnection($"Data Source={dbPath}");
+                SqlLite.Open();
             }
 
             SqlLite = new SQLiteConnection($"Data Source={dbPath}");
@@ -285,7 +290,7 @@ namespace Accounting
                     Active TINYINTEGER NOT NULL DEFAULT 1,
                     Comment VARCHAR(255))",
                 @"CREATE TABLE IF NOT EXISTS Containers (Id INTEGER NOT NULL PRIMARY KEY,Name VARCHAR(255) NOT NULL UNIQUE,
-                    Volume FLOAT NOT NULL)",
+                    Volume FLOAT NOT NULL, Multiple TINYINTEGER NOT NULL DEFAULT 1)",
                 @"CREATE TABLE IF NOT EXISTS Platforms (Id INTEGER NOT NULL PRIMARY KEY,Address VARCHAR(255) NOT NULL UNIQUE)",
                 @"CREATE TABLE IF NOT EXISTS OrganizationContainers (Id INTEGER NOT NULL PRIMARY KEY, 
                     Organization INTEGER NOT NULL, Container INTEGER NOT NULL, Platform INTEGER NOT NULL, 
@@ -315,7 +320,7 @@ namespace Accounting
             }
         }
         private void UpdateDb()
-        {   
+        {
             var currentVersion = (long) ExecuteTextCommand("PRAGMA user_version")[0];
 
             if (currentVersion < 1)
@@ -349,8 +354,59 @@ namespace Accounting
             {
                 ExecuteWriteCommand(@"ALTER TABLE Containers ADD Multiple TINYINTEGER NOT NULL DEFAULT 1");
                 ExecuteWriteCommand("PRAGMA user_version=3");
+                currentVersion++;
             }
 
+            if (currentVersion < 4)
+            {
+                //Organizations
+                ExecuteWriteCommand(@"CREATE TABLE IF NOT EXISTS OrganizationsNew
+                    (Id INTEGER PRIMARY KEY,
+                     Name VARCHAR(255) NOT NULL,
+                     City VARCHAR(255) NOT NULL,
+                     Address VARCHAR(255),
+                     Phone VARCHAR(255),
+                     Active TINYINTEGER NOT NULL DEFAULT 1,
+                     Comment VARCHAR(255))");
+                ExecuteWriteCommand(@"INSERT INTO OrganizationsNew (Id,Name,City,Address,Phone,Active)
+                    SELECT DISTINCT Id,Name,City,Address,Phone,Active FROM Organizations");
+                ExecuteWriteCommand(@"DROP TABLE Organizations");
+                ExecuteWriteCommand(@"ALTER TABLE OrganizationsNew RENAME TO Organizations");
+                //Containers
+                ExecuteWriteCommand(
+                    @"CREATE TABLE IF NOT EXISTS ContainersNew(Id INTEGER NOT NULL PRIMARY KEY, Name VARCHAR(255) NOT NULL UNIQUE,
+                    Volume FLOAT NOT NULL,Multiple TINYINTEGER NOT NULL DEFAULT 1)");
+                ExecuteWriteCommand(@"INSERT INTO ContainersNew (Id,Name,Volume,Multiple)
+                    SELECT Id,Name,Volume,Multiple FROM Containers");
+                ExecuteWriteCommand(@"DROP TABLE Containers");
+                ExecuteWriteCommand(@"ALTER TABLE ContainersNew RENAME TO Containers");
+                //Platforms
+                ExecuteWriteCommand(@"CREATE TABLE IF NOT EXISTS PlatformsNew (Id INTEGER NOT NULL PRIMARY KEY,Address VARCHAR(255) NOT NULL UNIQUE)");
+                ExecuteWriteCommand(@"INSERT INTO PlatformsNew (Id,Address) SELECT Id,Address FROM Platforms");
+                ExecuteWriteCommand(@"DROP TABLE Platforms");
+                ExecuteWriteCommand(@"ALTER TABLE PlatformsNew RENAME TO Platforms");
+                //Drivers
+                ExecuteWriteCommand(@"CREATE TABLE IF NOT EXISTS DriversNew (Id INTEGER NOT NULL PRIMARY KEY, Name VARCHAR(255) NOT NULL UNIQUE)");
+                ExecuteWriteCommand(@"INSERT INTO DriversNew (Id,Name) SELECT Id, Name FROM Drivers");
+                ExecuteWriteCommand(@"DROP TABLE Drivers");
+                ExecuteWriteCommand(@"ALTER TABLE DriversNew RENAME TO Drivers");
+                //Cars
+                ExecuteWriteCommand(@"CREATE TABLE IF NOT EXISTS CarsNew (Id INTEGER NOT NULL PRIMARY KEY,Name VARCHAR(255) NOT NULL,
+                    Number VARCHAR(255) NOT NULL UNIQUE)");
+                ExecuteWriteCommand(@"INSERT INTO CarsNew (Id,Name,Number) SELECT Id, Name, Number FROM Cars");
+                ExecuteWriteCommand(@"DROP TABLE Cars");
+                ExecuteWriteCommand(@"ALTER TABLE CarsNew RENAME TO Cars");
+                //Contracts
+                ExecuteWriteCommand(@"DROP TABLE IF EXISTS Contracts");
+                ExecuteWriteCommand(@"CREATE TABLE IF NOT EXISTS Contracts(Id INTEGER NOT NULL PRIMARY KEY, 
+                    ContractNumber VARCHAR(255) NOT NULL UNIQUE, 
+                    Organization INTEGER NOT NULL,
+                    FromDate DATETIME NOT NULL, 
+                    ToDate DATETIME NOT NULL, 
+                    TargetVolume FLOAT NOT NULL, 
+                    ProcessedVolume FLOAT)");
+                ExecuteWriteCommand("PRAGMA user_version=4");
+            }
         }
         private object[] ExecuteTextCommand(string commandText)
         {

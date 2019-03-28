@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Data.SQLite;
-using System.Linq;
 using System.Windows.Forms;
-using Accounting.Models;
 using static System.Windows.Forms.MessageBoxButtons;
 using static System.Windows.Forms.MessageBoxIcon;
 
@@ -131,7 +128,9 @@ namespace Accounting.Forms
                             floatValue = floatValue.ToString().Contains(".") ? floatValue.ToString().Replace(".", ",") : floatValue.ToString().Replace(",", ".");
                         }
                         value.GetType().GetProperty("Volume")?.SetValue(value, Convert.ToSingle(floatValue), null);
-                        value.GetType().GetProperty("Multiple")?.SetValue(value, (bool)row.Cells[3].Value, null);
+                        var multibool = false;
+                        if (row.Cells[3].Value != null) multibool = (bool)row.Cells[3].Value;
+                        value.GetType().GetProperty("Multiple")?.SetValue(value, multibool, null);
                         break;
                     case "Car":
                         value.GetType().GetProperty("Name")?.SetValue(value, valueName, null);
