@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Timers;
 using System.Windows.Forms;
 using Accounting.Forms;
 using Accounting.Models;
+using Accounting.SQLite;
 
 namespace Accounting
 {
@@ -10,11 +12,26 @@ namespace Accounting
         public Accounting()
         {
             InitializeComponent();
+
+            double interval = 150000.0;
+            // ReSharper disable once UseObjectOrCollectionInitializer
+            var aTimer = new System.Timers.Timer(interval)
+            {
+                AutoReset = false,
+                Enabled = true
+            };
+            aTimer.Elapsed += OnTimedEvent;
+        }
+
+        private static void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            var sql = new PrepareAccounting();
+            sql.PrepareDb();
         }
 
         private void Accounting_Load(object sender, EventArgs e)
         {
-            var sql = new SqLiteHelper();
+            var sql = new PrepareAccounting();
             sql.PrepareDb();
 
         }
@@ -27,10 +44,6 @@ namespace Accounting
             Show();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void Containers_Click(object sender, EventArgs e)
         {
@@ -55,5 +68,6 @@ namespace Accounting
             var form = new Generic<Car>();
             form.ShowDialog();
         }
+ 
     }
 }

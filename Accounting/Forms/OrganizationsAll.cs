@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using Accounting.Models;
+using Accounting.SQLite;
 
 namespace Accounting.Forms
 {
@@ -40,7 +41,7 @@ namespace Accounting.Forms
             var row = OrgGridView.CurrentRow;
             if (row != null)
             {
-                var sql = new SqLiteHelper();
+                var sql = new Model();
                 var id = (long) row.Cells[0].Value;
                 var org = sql.FindinTable<Organization>((int) id).FirstOrDefault();
                 return org;
@@ -62,7 +63,7 @@ namespace Accounting.Forms
         private void RenewDataTable()
         {
             OrgGridView.Rows.Clear();
-            var sql = new SqLiteHelper();
+            var sql = new Model();
             var allOrg = sql.FindinTable<Organization>();
             foreach (var org in allOrg)
             {

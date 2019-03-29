@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Accounting.Models;
+using Accounting.SQLite;
 
 namespace Accounting.Forms
 {
@@ -34,7 +35,7 @@ namespace Accounting.Forms
         private void UpdateTable()
         {
             orgContData.Rows.Clear();
-            var sql = new SqLiteHelper();
+            var sql = new Model();
             var allContainers = sql.FindinTable<OrganizationContainer>("Organization",Org.Id.ToString());
             var allPlatforms = new List<Platform>();
             var allConTypes = sql.FindinTable<ContainerType>();
@@ -94,7 +95,7 @@ namespace Accounting.Forms
 
         private void deleteContainer_Click(object sender, EventArgs e)
         {
-            var sql = new SqLiteHelper();
+            var sql = new Model();
             var correntRow = orgContData.CurrentRow;
             if (correntRow != null)
             {

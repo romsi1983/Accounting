@@ -60,7 +60,7 @@
             // 
             this.selectPlatform.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectPlatform.Location = new System.Drawing.Point(2, 27);
-            this.selectPlatform.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectPlatform.Margin = new System.Windows.Forms.Padding(2);
             this.selectPlatform.Name = "selectPlatform";
             this.selectPlatform.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.selectPlatform.Size = new System.Drawing.Size(306, 21);
@@ -72,7 +72,7 @@
             this.selectContainerType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectContainerType.FormattingEnabled = true;
             this.selectContainerType.Location = new System.Drawing.Point(2, 77);
-            this.selectContainerType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectContainerType.Margin = new System.Windows.Forms.Padding(2);
             this.selectContainerType.Name = "selectContainerType";
             this.selectContainerType.Size = new System.Drawing.Size(306, 21);
             this.selectContainerType.TabIndex = 1;
@@ -104,7 +104,7 @@
             this.tableLayoutPanel1.Controls.Add(this.sunday, 7, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 31);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -187,7 +187,7 @@
             this.monday.AutoSize = true;
             this.monday.Dock = System.Windows.Forms.DockStyle.Fill;
             this.monday.Location = new System.Drawing.Point(2, 26);
-            this.monday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.monday.Margin = new System.Windows.Forms.Padding(2);
             this.monday.Name = "monday";
             this.monday.Size = new System.Drawing.Size(37, 21);
             this.monday.TabIndex = 7;
@@ -198,7 +198,7 @@
             this.tuesday.AutoSize = true;
             this.tuesday.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tuesday.Location = new System.Drawing.Point(43, 26);
-            this.tuesday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tuesday.Margin = new System.Windows.Forms.Padding(2);
             this.tuesday.Name = "tuesday";
             this.tuesday.Size = new System.Drawing.Size(41, 21);
             this.tuesday.TabIndex = 8;
@@ -209,7 +209,7 @@
             this.wednesday.AutoSize = true;
             this.wednesday.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wednesday.Location = new System.Drawing.Point(88, 26);
-            this.wednesday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wednesday.Margin = new System.Windows.Forms.Padding(2);
             this.wednesday.Name = "wednesday";
             this.wednesday.Size = new System.Drawing.Size(39, 21);
             this.wednesday.TabIndex = 9;
@@ -220,7 +220,7 @@
             this.thersday.AutoSize = true;
             this.thersday.Dock = System.Windows.Forms.DockStyle.Fill;
             this.thersday.Location = new System.Drawing.Point(131, 26);
-            this.thersday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.thersday.Margin = new System.Windows.Forms.Padding(2);
             this.thersday.Name = "thersday";
             this.thersday.Size = new System.Drawing.Size(39, 21);
             this.thersday.TabIndex = 10;
@@ -231,7 +231,7 @@
             this.friday.AutoSize = true;
             this.friday.Dock = System.Windows.Forms.DockStyle.Fill;
             this.friday.Location = new System.Drawing.Point(174, 26);
-            this.friday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.friday.Margin = new System.Windows.Forms.Padding(2);
             this.friday.Name = "friday";
             this.friday.Size = new System.Drawing.Size(39, 21);
             this.friday.TabIndex = 11;
@@ -242,7 +242,7 @@
             this.satuday.AutoSize = true;
             this.satuday.Dock = System.Windows.Forms.DockStyle.Fill;
             this.satuday.Location = new System.Drawing.Point(217, 26);
-            this.satuday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.satuday.Margin = new System.Windows.Forms.Padding(2);
             this.satuday.Name = "satuday";
             this.satuday.Size = new System.Drawing.Size(39, 21);
             this.satuday.TabIndex = 12;
@@ -253,7 +253,7 @@
             this.sunday.AutoSize = true;
             this.sunday.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sunday.Location = new System.Drawing.Point(260, 26);
-            this.sunday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sunday.Margin = new System.Windows.Forms.Padding(2);
             this.sunday.Name = "sunday";
             this.sunday.Size = new System.Drawing.Size(44, 21);
             this.sunday.TabIndex = 13;
@@ -269,7 +269,7 @@
             this.tableLayoutPanel2.Controls.Add(this.containerTypeLabel, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -304,13 +304,13 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 308F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 310F));
             this.tableLayoutPanel3.Controls.Add(this.scheduleLabel, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.saveButton, 0, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 103);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.9375F));
@@ -347,7 +347,7 @@
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddNewContainer";
             this.Text = "Добавить контейнер";
             this.Load += new System.EventHandler(this.AddNewContainer_Load);

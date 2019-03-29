@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows.Forms;
 using Accounting.Models;
+using Accounting.SQLite;
 
 namespace Accounting.Forms
 {
@@ -55,7 +56,7 @@ namespace Accounting.Forms
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            var sql = new SqLiteHelper();
+            var sql = new Model();
             Single.TryParse(targetVolume.Text, out float target);
             Single.TryParse(processedVolume.Text, out float processed);
             var newCont = new Contract

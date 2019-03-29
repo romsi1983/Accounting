@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using Accounting.Models;
+using Accounting.SQLite;
 
 namespace Accounting.Forms
 {
@@ -65,7 +66,7 @@ namespace Accounting.Forms
 
             if (Edit) org.Id = Org.Id;
 
-            var sql = new SqLiteHelper();
+            var sql = new Model();
 
             if (!Edit&&sql.FindinTable<Organization>("Name",org.Name).Any())
             {

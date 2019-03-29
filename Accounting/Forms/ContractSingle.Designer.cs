@@ -47,35 +47,39 @@
             // 
             this.numberLable.AutoSize = true;
             this.numberLable.Dock = System.Windows.Forms.DockStyle.Right;
-            this.numberLable.Location = new System.Drawing.Point(66, 0);
+            this.numberLable.Location = new System.Drawing.Point(44, 0);
+            this.numberLable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.numberLable.Name = "numberLable";
-            this.numberLable.Size = new System.Drawing.Size(119, 39);
+            this.numberLable.Size = new System.Drawing.Size(94, 32);
             this.numberLable.TabIndex = 0;
             this.numberLable.Text = "Номер договора:";
             // 
             // contractNumber
             // 
             this.contractNumber.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contractNumber.Location = new System.Drawing.Point(191, 3);
+            this.contractNumber.Location = new System.Drawing.Point(142, 2);
+            this.contractNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.contractNumber.Name = "contractNumber";
-            this.contractNumber.Size = new System.Drawing.Size(237, 22);
+            this.contractNumber.Size = new System.Drawing.Size(179, 20);
             this.contractNumber.TabIndex = 1;
             // 
             // dateFrom
             // 
             this.dateFrom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateFrom.Location = new System.Drawing.Point(191, 42);
+            this.dateFrom.Location = new System.Drawing.Point(142, 34);
+            this.dateFrom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateFrom.Name = "dateFrom";
-            this.dateFrom.Size = new System.Drawing.Size(237, 22);
+            this.dateFrom.Size = new System.Drawing.Size(179, 20);
             this.dateFrom.TabIndex = 2;
             // 
             // datesFromTo
             // 
             this.datesFromTo.AutoSize = true;
             this.datesFromTo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.datesFromTo.Location = new System.Drawing.Point(34, 39);
+            this.datesFromTo.Location = new System.Drawing.Point(19, 32);
+            this.datesFromTo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.datesFromTo.Name = "datesFromTo";
-            this.datesFromTo.Size = new System.Drawing.Size(151, 39);
+            this.datesFromTo.Size = new System.Drawing.Size(119, 32);
             this.datesFromTo.TabIndex = 3;
             this.datesFromTo.Text = "Действие договора с:";
             // 
@@ -83,55 +87,61 @@
             // 
             this.dateToLabel.AutoSize = true;
             this.dateToLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dateToLabel.Location = new System.Drawing.Point(157, 78);
+            this.dateToLabel.Location = new System.Drawing.Point(116, 64);
+            this.dateToLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dateToLabel.Name = "dateToLabel";
-            this.dateToLabel.Size = new System.Drawing.Size(28, 39);
+            this.dateToLabel.Size = new System.Drawing.Size(22, 32);
             this.dateToLabel.TabIndex = 4;
             this.dateToLabel.Text = "по:";
             // 
             // dateTo
             // 
             this.dateTo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTo.Location = new System.Drawing.Point(191, 81);
+            this.dateTo.Location = new System.Drawing.Point(142, 66);
+            this.dateTo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTo.Name = "dateTo";
-            this.dateTo.Size = new System.Drawing.Size(237, 22);
+            this.dateTo.Size = new System.Drawing.Size(179, 20);
             this.dateTo.TabIndex = 5;
             // 
             // volumeLabel
             // 
             this.volumeLabel.AutoSize = true;
             this.volumeLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.volumeLabel.Location = new System.Drawing.Point(131, 117);
+            this.volumeLabel.Location = new System.Drawing.Point(95, 96);
+            this.volumeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.volumeLabel.Name = "volumeLabel";
-            this.volumeLabel.Size = new System.Drawing.Size(54, 39);
+            this.volumeLabel.Size = new System.Drawing.Size(43, 32);
             this.volumeLabel.TabIndex = 6;
             this.volumeLabel.Text = "объем:";
             // 
             // targetVolume
             // 
             this.targetVolume.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.targetVolume.Location = new System.Drawing.Point(191, 120);
+            this.targetVolume.Location = new System.Drawing.Point(142, 98);
+            this.targetVolume.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.targetVolume.Name = "targetVolume";
-            this.targetVolume.Size = new System.Drawing.Size(237, 22);
+            this.targetVolume.Size = new System.Drawing.Size(179, 20);
             this.targetVolume.TabIndex = 7;
             // 
             // actualVolume
             // 
             this.actualVolume.AutoSize = true;
             this.actualVolume.Dock = System.Windows.Forms.DockStyle.Right;
-            this.actualVolume.Location = new System.Drawing.Point(46, 156);
+            this.actualVolume.Location = new System.Drawing.Point(28, 128);
+            this.actualVolume.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.actualVolume.Name = "actualVolume";
-            this.actualVolume.Size = new System.Drawing.Size(139, 39);
+            this.actualVolume.Size = new System.Drawing.Size(110, 32);
             this.actualVolume.TabIndex = 8;
             this.actualVolume.Text = "вывезенный объем:";
             // 
             // processedVolume
             // 
             this.processedVolume.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.processedVolume.Location = new System.Drawing.Point(191, 159);
+            this.processedVolume.Location = new System.Drawing.Point(142, 130);
+            this.processedVolume.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.processedVolume.Name = "processedVolume";
             this.processedVolume.ReadOnly = true;
-            this.processedVolume.Size = new System.Drawing.Size(237, 22);
+            this.processedVolume.Size = new System.Drawing.Size(179, 20);
             this.processedVolume.TabIndex = 9;
             // 
             // tableLayoutPanel1
@@ -152,6 +162,7 @@
             this.tableLayoutPanel1.Controls.Add(this.saveButton, 1, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -160,15 +171,16 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(431, 237);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(323, 193);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // saveButton
             // 
             this.saveButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.saveButton.Location = new System.Drawing.Point(191, 198);
+            this.saveButton.Location = new System.Drawing.Point(142, 162);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(237, 36);
+            this.saveButton.Size = new System.Drawing.Size(179, 29);
             this.saveButton.TabIndex = 10;
             this.saveButton.Text = "Сохранить и закрыть";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -176,10 +188,11 @@
             // 
             // ContractSingle
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 237);
+            this.ClientSize = new System.Drawing.Size(323, 193);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ContractSingle";
             this.Text = "Новый договор";
             this.Load += new System.EventHandler(this.ContractSingle_Load);

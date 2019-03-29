@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using Accounting.Models;
+using Accounting.SQLite;
 
 namespace Accounting.Forms
 {
@@ -24,7 +25,7 @@ namespace Accounting.Forms
         private void UpdateTable()
         {
             companyContracts.Rows.Clear();
-            var sql = new SqLiteHelper();
+            var sql = new Model();
             var allContracts = sql.FindinTable<Contract>("Organization", Org.Id.ToString());
 
             foreach (var value in allContracts)
@@ -49,7 +50,7 @@ namespace Accounting.Forms
             var row = companyContracts.CurrentRow;
             if (row != null)
             {
-                var sql = new SqLiteHelper();
+                var sql = new Model();
                 var id = (long)row.Cells[0].Value;
                 var contract = sql.FindinTable<Contract>((int)id).FirstOrDefault();
                 return contract;

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using Accounting.Models;
+using Accounting.SQLite;
 
 namespace Accounting.Forms
 {
@@ -20,7 +21,7 @@ namespace Accounting.Forms
 
         private void AddNewContainer_Load(object sender, EventArgs e)
         {
-            var sql = new SqLiteHelper();
+            var sql = new Model();
             AllPlatforms = sql.FindinTable<Platform>();
             string[] temp = AllPlatforms.Select(ap => ap.Address).ToArray();
             // ReSharper disable once CoVariantArrayConversion
@@ -41,7 +42,7 @@ namespace Accounting.Forms
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            var sql = new SqLiteHelper();
+            var sql = new Model();
             var selectedPlatform = selectPlatform.Text;
             var selectedContainer = selectContainerType.Text;
             var pf = sql.FindinTable<Platform>("Address", selectedPlatform).FirstOrDefault();

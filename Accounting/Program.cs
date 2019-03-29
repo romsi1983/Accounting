@@ -12,11 +12,6 @@ namespace Accounting
         [STAThread]
         static void Main()
         {
-            //var sql = new SqLiteHelper();
-
-            //var test4 = sql.FindinTable<Organization>();
-
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Accounting());

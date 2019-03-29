@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Accounting.SQLite;
 using static System.Windows.Forms.MessageBoxButtons;
 using static System.Windows.Forms.MessageBoxIcon;
 
@@ -58,7 +59,7 @@ namespace Accounting.Forms
         private void Generic_Load(object sender, EventArgs e)
         {
             commonData.Rows.Clear();
-            var sql = new SqLiteHelper();
+            var sql = new Model();
             var allValues = sql.FindinTable<T>();
 
             foreach (var value in allValues)
@@ -103,7 +104,7 @@ namespace Accounting.Forms
 
         private void saveData_Click(object sender, EventArgs e)
         {
-            var sql = new SqLiteHelper();
+            var sql = new Model();
             for (var i = 0; i < commonData.RowCount; i++)
             {
                 var row = commonData.Rows[i];
@@ -123,7 +124,7 @@ namespace Accounting.Forms
                     case "ContainerType":
                         value.GetType().GetProperty("Name")?.SetValue(value, valueName, null);
                         var floatValue = row.Cells[2].Value;
-                        var parseResult = Single.TryParse((string) row.Cells[2].Value, out var testValue);
+                        var parseResult = Single.TryParse(row.Cells[2].Value.ToString(), out var testValue);
                         if (!parseResult)
                         {
                             string floatValueString = floatValue.ToString().Contains(".") ? floatValue.ToString().Replace(".", ",") : floatValue.ToString().Replace(",", ".");
