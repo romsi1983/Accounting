@@ -8,15 +8,27 @@ namespace Accounting.SQLite
 {
     class PrepareAccounting : SqLiteHelper
     {
-        public void PrepareDb()
+        public void PrepareDb(bool onStart)
         {
             var dbPath = AppDomain.CurrentDomain.BaseDirectory + "Main.db";
-            CreateDb(dbPath);
+            if (onStart) CreateDb(dbPath);
+            else InitSqlLite(dbPath);
+            
             UpdateDb();
             SetRelevace();
             PutFlagActive();
             FillInTodaysContainers();
         }
+
+        private void InitSqlLite(string dbPath)
+        {
+            if (SqlLite == null)
+            {
+                SqlLite = new SQLiteConnection($"Data Source={dbPath}");
+                SqlLite.Open();
+            }
+        }
+
         private void FillInTodaysContainers()
         {
             //Check if Data was already processed
@@ -195,7 +207,7 @@ namespace Accounting.SQLite
                 SQLiteConnection.CreateFile(dbPath);
                 SqlLite = new SQLiteConnection($"Data Source={dbPath}");
                 SqlLite.Open();
-                ExecuteWriteCommand("PRAGMA user_version=2");
+                ExecuteWriteCommand("PRAGMA user_version=4");
                 SqlLite.Close();
                 SqlLite = null;
             }

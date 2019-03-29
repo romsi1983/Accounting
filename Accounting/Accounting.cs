@@ -26,13 +26,13 @@ namespace Accounting
         private static void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             var sql = new PrepareAccounting();
-            sql.PrepareDb();
+            sql.PrepareDb(false);
         }
 
         private void Accounting_Load(object sender, EventArgs e)
         {
             var sql = new PrepareAccounting();
-            sql.PrepareDb();
+            sql.PrepareDb(true);
 
         }
 
