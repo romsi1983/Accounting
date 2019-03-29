@@ -123,11 +123,18 @@ namespace Accounting.Forms
                     case "ContainerType":
                         value.GetType().GetProperty("Name")?.SetValue(value, valueName, null);
                         var floatValue = row.Cells[2].Value;
-                        if (floatValue.GetType().Name.Equals("String"))
+                        var parseResult = Single.TryParse((string) row.Cells[2].Value, out var testValue);
+                        if (!parseResult)
                         {
-                            floatValue = floatValue.ToString().Contains(".") ? floatValue.ToString().Replace(".", ",") : floatValue.ToString().Replace(",", ".");
+                            string floatValueString = floatValue.ToString().Contains(".") ? floatValue.ToString().Replace(".", ",") : floatValue.ToString().Replace(",", ".");
+                            parseResult = Single.TryParse(floatValueString, out testValue);
+                            if (!parseResult)
+                            {
+                                MessageBox.Show(@"не удалось конвертировать дробь");
+                                return;
+                            }
                         }
-                        value.GetType().GetProperty("Volume")?.SetValue(value, Convert.ToSingle(floatValue), null);
+                        value.GetType().GetProperty("Volume")?.SetValue(value, testValue, null);
                         var multibool = false;
                         if (row.Cells[3].Value != null) multibool = (bool)row.Cells[3].Value;
                         value.GetType().GetProperty("Multiple")?.SetValue(value, multibool, null);

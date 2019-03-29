@@ -63,11 +63,17 @@
     <Compile Include="Forms\AddNewContainer.Designer.cs">
       <DependentUpon>AddNewContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\OrganizationContracts.cs">
+    <Compile Include="Forms\ContractSingle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OrganizationContracts.Designer.cs">
-      <DependentUpon>OrganizationContracts.cs</DependentUpon>
+    <Compile Include="Forms\ContractSingle.Designer.cs">
+      <DependentUpon>ContractSingle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ContractsAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ContractsAll.Designer.cs">
+      <DependentUpon>ContractsAll.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Generic.cs">
       <SubType>Form</SubType>
@@ -83,6 +89,7 @@
     </Compile>
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\ContainerType.cs" />
+    <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\OrganizationContainer.cs" />
@@ -109,11 +116,17 @@
     <EmbeddedResource Include="Forms\AddNewContainer.resx">
       <DependentUpon>AddNewContainer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ContractsAll.resx">
+      <DependentUpon>ContractsAll.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Generic.resx">
       <DependentUpon>Generic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OrganizationContainers.resx">
       <DependentUpon>OrganizationContainers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ContractSingle.resx">
+      <DependentUpon>ContractSingle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OrganizationSingle.resx">
       <DependentUpon>OrganizationSingle.cs</DependentUpon>

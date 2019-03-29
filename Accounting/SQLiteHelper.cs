@@ -46,6 +46,11 @@ namespace Accounting
                         propValue = ((float) propValue).ToString(CultureInfo.InvariantCulture);
                         if (propValue.Equals("0")) continue;
                         break;
+                    case "DateTime":
+                        var dateTime = DateTime.Parse(propValue.ToString());
+                        propValue = dateTime.ToString("yyyy-MM-dd");
+                        //propValue = ((DateTime)propValue).ToString(CultureInfo.InvariantCulture);
+                        break;
                 }
 
                 if (!String.IsNullOrEmpty((string) propValue))
@@ -73,7 +78,12 @@ namespace Accounting
             var dbPath = AppDomain.CurrentDomain.BaseDirectory + "Main.db";
             CreateDb(dbPath);
             UpdateDb();
+            SetRelevace();
+            FillInTodaysContainers();
         }
+
+
+
         public int UpdateDb<T>(T value) where T : new()
         {
             var valueId = Convert.ToInt32(value.GetType().GetProperty("Id")?.GetValue(value, null));
@@ -101,6 +111,16 @@ namespace Accounting
                                 $"WHERE id = {valueId}";
 
 
+
+            return ExecuteWriteCommand(sqlCommand);
+        }
+        public int UpdateRecord<T>(long id,string columnName, string columnValue)
+        {
+            var dataBase = GetDataBaseName<T>();
+
+            string sqlCommand = $"UPDATE {dataBase} " +
+                                $"SET {columnName} = '{columnValue}' " +
+                                $"WHERE id = {id}";
 
             return ExecuteWriteCommand(sqlCommand);
         }
@@ -135,7 +155,6 @@ namespace Accounting
 
             return ExecuteWriteCommand(sqlCommand);
         }
-
         public int DeleteFromTable<T>(long id)
         {
             var dataBase = GetDataBaseName<T>();
@@ -268,6 +287,9 @@ namespace Accounting
                 case "Registry":
                     dataBase = "Registry";
                     break;
+                case "Contract":
+                    dataBase = "Contracts";
+                    break;
             }
 
             return dataBase;
@@ -325,7 +347,13 @@ namespace Accounting
                     FromDate DATETIME NOT NULL, 
                     ToDate DATETIME NOT NULL, 
                     TargetVolume FLOAT NOT NULL, 
-                    ProcessedVolume FLOAT)"
+                    ProcessedVolume FLOAT)",
+                @"CREATE TABLE IF NOT EXISTS Relevance(Id INTEGER NOT NULL PRIMARY KEY,
+                    Today DATETIME NOT NULL,
+                    Processed TINYINTEGER NOT NULL DEFAULT 0)",
+                @"CREATE TABLE IF NOT EXISTS NotProcessedContainers (Id INTEGER NOT NULL PRIMARY KEY, 
+                    Organization INTEGER NOT NULL, Container INTEGER NOT NULL, Platform INTEGER NOT NULL, 
+                    Schedule VARCHAR(255))"
             };
 
             foreach (var sqlCommand in sqlCommands)
@@ -421,6 +449,39 @@ namespace Accounting
                     ProcessedVolume FLOAT)");
                 ExecuteWriteCommand("PRAGMA user_version=4");
             }
+        }
+        private void SetRelevace()
+        {
+            var today = DateTime.Today;
+            var todayString = today.ToString("yyyy-MM-dd");
+            var releveance = ExecuteTextCommand("SELECT Today FROM Relevance").FirstOrDefault();
+            if (releveance==null)
+            {
+                ExecuteWriteCommand(@"INSERT INTO Relevance (Today,Processed) " +
+                                    $"VALUES ('{todayString}','0')");
+            }
+            else
+            {
+                if ((DateTime)releveance < today)
+                    ExecuteWriteCommand(@"UPDATE Relevance " +
+                                        $"SET Today = '{todayString}',Processed='0' " +
+                                        @"WHERE Id = '1'");
+            }
+        }
+        private void FillInTodaysContainers()
+        {
+            var processed = ExecuteTextCommand("SELECT Processed FROM Relevance").FirstOrDefault();
+            if (processed != null && (long) processed != 0) return;
+
+            var dayOfTheWeek = DateTime.Today.DayOfWeek.GetHashCode();
+            var sqlCommand = $"SELECT OrganizationContainers.Id " +
+                             $"FROM OrganizationContainers " +
+                             $"INNER JOIN Organizations " +
+                             $"ON Organizations.Id = OrganizationContainers.Organization " +
+                             $"WHERE Organizations.Active = 1 " +
+                             $"AND OrganizationContainers.Schedule LIKE '%{dayOfTheWeek}%'";
+
+            var todaysContainers = ExecuteTextCommand(sqlCommand);
         }
         private object[] ExecuteTextCommand(string commandText)
         {

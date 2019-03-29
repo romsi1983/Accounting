@@ -16,6 +16,7 @@ namespace Accounting
         {
             var sql = new SqLiteHelper();
             sql.PrepareDb();
+
         }
 
         private void Organizations_Click(object sender, EventArgs e)

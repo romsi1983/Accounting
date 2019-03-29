@@ -66,11 +66,8 @@ namespace Accounting.Forms
             if (Edit) org.Id = Org.Id;
 
             var sql = new SqLiteHelper();
-            var tempOrg = new Organization
-            {
-                Name = org.Name
-            };
-            if (sql.FindinTable(tempOrg).Any())
+
+            if (!Edit&&sql.FindinTable<Organization>("Name",org.Name).Any())
             {
                 // ReSharper disable once LocalizableElement
                 MessageBox.Show($"Организация '{org.Name}' уже существует");
@@ -94,7 +91,8 @@ namespace Accounting.Forms
 
         private void contracts_Click(object sender, EventArgs e)
         {
-
+            var form = new ContractsAll(Org);
+            form.ShowDialog();
         }
     }
 }

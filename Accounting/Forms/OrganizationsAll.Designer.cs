@@ -43,9 +43,9 @@
             this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NewCompany = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.OrgConracts = new System.Windows.Forms.Button();
             this.orgContainers = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.OrgGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -62,11 +62,12 @@
             this.Address,
             this.Phone});
             this.OrgGridView.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OrgGridView.Location = new System.Drawing.Point(3, 3);
+            this.OrgGridView.Location = new System.Drawing.Point(4, 4);
+            this.OrgGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OrgGridView.MultiSelect = false;
             this.OrgGridView.Name = "OrgGridView";
             this.OrgGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.OrgGridView.Size = new System.Drawing.Size(825, 369);
+            this.OrgGridView.Size = new System.Drawing.Size(1100, 454);
             this.OrgGridView.TabIndex = 0;
             this.OrgGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrgGridView_CellContentClick);
             // 
@@ -97,9 +98,10 @@
             // 
             // NewCompany
             // 
-            this.NewCompany.Location = new System.Drawing.Point(3, 3);
+            this.NewCompany.Location = new System.Drawing.Point(4, 4);
+            this.NewCompany.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NewCompany.Name = "NewCompany";
-            this.NewCompany.Size = new System.Drawing.Size(134, 68);
+            this.NewCompany.Size = new System.Drawing.Size(179, 84);
             this.NewCompany.TabIndex = 1;
             this.NewCompany.Text = "Новая организация";
             this.NewCompany.UseVisualStyleBackColor = true;
@@ -110,19 +112,41 @@
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 543F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 197F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 724F));
             this.tableLayoutPanel1.Controls.Add(this.NewCompany, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.OrgConracts, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.orgContainers, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(831, 74);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1108, 92);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // OrgConracts
+            // 
+            this.OrgConracts.Location = new System.Drawing.Point(191, 4);
+            this.OrgConracts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OrgConracts.Name = "OrgConracts";
+            this.OrgConracts.Size = new System.Drawing.Size(189, 81);
+            this.OrgConracts.TabIndex = 2;
+            this.OrgConracts.Text = "Договора";
+            this.OrgConracts.UseVisualStyleBackColor = true;
+            this.OrgConracts.Click += new System.EventHandler(this.OrgConracts_Click);
+            // 
+            // orgContainers
+            // 
+            this.orgContainers.Location = new System.Drawing.Point(388, 4);
+            this.orgContainers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.orgContainers.Name = "orgContainers";
+            this.orgContainers.Size = new System.Drawing.Size(189, 81);
+            this.orgContainers.TabIndex = 3;
+            this.orgContainers.Text = "Контейнера";
+            this.orgContainers.UseVisualStyleBackColor = true;
+            this.orgContainers.Click += new System.EventHandler(this.orgContainers_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -131,40 +155,22 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.OrgGridView, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 74);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 92);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(831, 375);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1108, 462);
             this.tableLayoutPanel2.TabIndex = 3;
-            // 
-            // OrgConracts
-            // 
-            this.OrgConracts.Location = new System.Drawing.Point(143, 3);
-            this.OrgConracts.Name = "OrgConracts";
-            this.OrgConracts.Size = new System.Drawing.Size(142, 66);
-            this.OrgConracts.TabIndex = 2;
-            this.OrgConracts.Text = "Договора";
-            this.OrgConracts.UseVisualStyleBackColor = true;
-            // 
-            // orgContainers
-            // 
-            this.orgContainers.Location = new System.Drawing.Point(291, 3);
-            this.orgContainers.Name = "orgContainers";
-            this.orgContainers.Size = new System.Drawing.Size(142, 66);
-            this.orgContainers.TabIndex = 3;
-            this.orgContainers.Text = "Контейнера";
-            this.orgContainers.UseVisualStyleBackColor = true;
-            this.orgContainers.Click += new System.EventHandler(this.orgContainers_Click);
             // 
             // OrganizationsAll
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 457);
+            this.ClientSize = new System.Drawing.Size(1108, 562);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "OrganizationsAll";
             this.Text = "Организации";
             this.Load += new System.EventHandler(this.OrgForm_Load);

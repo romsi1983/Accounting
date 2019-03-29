@@ -85,5 +85,12 @@ namespace Accounting.Forms
             var form = new OrganizationContainers(SelectedOrganization());
             form.ShowDialog();
         }
+
+        private void OrgConracts_Click(object sender, EventArgs e)
+        {
+            var form = new ContractsAll(SelectedOrganization());
+            form.Show();
+            RenewDataTable();
+        }
     }
 }
