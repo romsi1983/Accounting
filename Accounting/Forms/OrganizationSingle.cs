@@ -93,7 +93,13 @@ namespace Accounting.Forms
         private void contracts_Click(object sender, EventArgs e)
         {
             var form = new ContractsAll(Org);
-            form.ShowDialog();
+            var result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var sql = new Model();
+                Active.Checked = sql.CheckActive(Org.Id);
+                DialogResult = DialogResult.Yes;
+            }
         }
     }
 }

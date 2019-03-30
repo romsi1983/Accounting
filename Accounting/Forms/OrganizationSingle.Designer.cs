@@ -139,6 +139,7 @@
             // Active
             // 
             this.Active.AutoSize = true;
+            this.Active.Enabled = false;
             this.Active.Location = new System.Drawing.Point(612, 13);
             this.Active.Name = "Active";
             this.Active.Size = new System.Drawing.Size(15, 14);
@@ -158,7 +159,7 @@
             // contracts
             // 
             this.contracts.Location = new System.Drawing.Point(231, 173);
-            this.contracts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contracts.Margin = new System.Windows.Forms.Padding(2);
             this.contracts.Name = "contracts";
             this.contracts.Size = new System.Drawing.Size(178, 36);
             this.contracts.TabIndex = 13;
@@ -169,7 +170,7 @@
             // containers
             // 
             this.containers.Location = new System.Drawing.Point(448, 173);
-            this.containers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.containers.Margin = new System.Windows.Forms.Padding(2);
             this.containers.Name = "containers";
             this.containers.Size = new System.Drawing.Size(178, 36);
             this.containers.TabIndex = 14;

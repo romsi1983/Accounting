@@ -62,17 +62,22 @@ namespace Accounting.Forms
         {
             var form = new ContractSingle(Org);
             var result = form.ShowDialog();
-            if (result == DialogResult.Yes) UpdateTable();
+            if (result == DialogResult.Yes || result == DialogResult.No)
+            {
+                UpdateTable();
+                DialogResult = DialogResult.OK;
+            }
+            //DialogResult = result;
         }
 
         private void companyContracts_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             var form = new ContractSingle(SelectedContract());
             var result = form.ShowDialog();
-            if (result == DialogResult.Yes)
+            if (result == DialogResult.Yes || result == DialogResult.No)
             {
                 UpdateTable();
-                Changed = true;
+                DialogResult = DialogResult.OK;
             }
         }
     }

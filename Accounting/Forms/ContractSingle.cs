@@ -56,9 +56,15 @@ namespace Accounting.Forms
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            if (dateFrom.Value > dateTo.Value)
+            {
+                MessageBox.Show(@"Дата от не может быть позднее Даты по");
+                return;
+            }
             var sql = new Model();
             Single.TryParse(targetVolume.Text, out float target);
             Single.TryParse(processedVolume.Text, out float processed);
+            var orgId = Edit ? Contract.Organization : Org.Id;
             var newCont = new Contract
             {
                 Id = Edit ? Contract.Id : 0,
@@ -67,27 +73,25 @@ namespace Accounting.Forms
                 ToDate = dateTo.Value,
                 TargetVolume = target,
                 ProcessedVolume = processed,
-                Organization = Edit ? Contract.Organization : Org.Id
+                Organization = orgId
             };
 
-            int result;
-
-            if (!Edit)
-            {
-                result = sql.WriteToDb(newCont);
-                
-            }
-            else result= sql.UpdateDb(newCont);
+            var result = !Edit ? sql.WriteToDb(newCont) : sql.UpdateDb(newCont);
 
             if (result == 1)
             {
-                if (dateFrom.Value < DateTime.Today && DateTime.Today< dateTo.Value)
+                if (dateFrom.Value <= DateTime.Today && DateTime.Today<= dateTo.Value && processed < target)
                 {
-                    sql.UpdateRecord<Organization>(newCont.Organization, "Active", "1");
+                    sql.UpdateRecord<Organization>(orgId, "Active", "1");
+                    DialogResult = DialogResult.Yes;
+                }
+                else
+                {
+                    if (!sql.CheckActive(orgId)) sql.UpdateRecord<Organization>(orgId, "Active", "0");
+                    DialogResult = DialogResult.No;
                 }
             }
-
-            DialogResult = DialogResult.Yes;
+            
             Close();
         }
     }

@@ -68,6 +68,11 @@ namespace Accounting
             var form = new Generic<Car>();
             form.ShowDialog();
         }
- 
+
+        private void newButton_Click(object sender, EventArgs e)
+        {
+            var form = new NewRegistry();
+            var result = form.ShowDialog();
+        }
     }
 }

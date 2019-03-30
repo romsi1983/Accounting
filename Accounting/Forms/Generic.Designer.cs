@@ -30,9 +30,9 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.commonData = new System.Windows.Forms.DataGridView();
+            this.saveData = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saveData = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.commonData)).BeginInit();
             this.SuspendLayout();
@@ -68,27 +68,28 @@
             this.commonData.TabIndex = 0;
             this.commonData.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.commonData_RowsAdded);
             // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // Data
-            // 
-            this.Data.HeaderText = "Data";
-            this.Data.Name = "Data";
-            // 
             // saveData
             // 
             this.saveData.Location = new System.Drawing.Point(2, 2);
-            this.saveData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.saveData.Margin = new System.Windows.Forms.Padding(2);
             this.saveData.Name = "saveData";
             this.saveData.Size = new System.Drawing.Size(147, 28);
             this.saveData.TabIndex = 1;
             this.saveData.Text = "Сохранить и закрыть";
             this.saveData.UseVisualStyleBackColor = true;
             this.saveData.Click += new System.EventHandler(this.saveData_Click);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Data
+            // 
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
             // 
             // Generic
             // 
@@ -111,8 +112,8 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView commonData;
+        private System.Windows.Forms.Button saveData;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
-        private System.Windows.Forms.Button saveData;
     }
 }

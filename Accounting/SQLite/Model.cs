@@ -64,6 +64,20 @@ namespace Accounting.SQLite
 
             return new List<List<string>> { inProps, inValues };
         }
+
+        public bool CheckActive(long orgId)
+        {
+            var today = DateTime.Today;
+            var todayString = today.ToString("yyyy-MM-dd");
+            var sqlCommand = @"SELECT Organization FROM Contracts " +
+                             $"WHERE '{todayString}' >= FromDate " +
+                             $"AND '{todayString}' <= ToDate " +
+                             @"AND ProcessedVolume < TargetVolume " +
+                             $"AND Organization = '{orgId}'";
+
+            return ExecuteTextCommand(sqlCommand).Any();
+        }
+
         public int UpdateDb<T>(T value) where T : new()
         {
             var valueId = Convert.ToInt32(value.GetType().GetProperty("Id")?.GetValue(value, null));
@@ -103,6 +117,16 @@ namespace Accounting.SQLite
                                 $"WHERE id = {id}";
 
             return ExecuteWriteCommand(sqlCommand);
+        }
+
+        public string GetRecord<T>(long id, string columnName)
+        {
+            var dataBase = GetDataBaseName<T>();
+            var sqlCommand = $"SELECT {columnName} " +
+                             $"FROM {dataBase} " +
+                             $"WHERE Id = {id}";
+            
+            return ExecuteTextCommand(sqlCommand).FirstOrDefault()?.ToString();
         }
         public int WriteToDb<T>(T value)
         {

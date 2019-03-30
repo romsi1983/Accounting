@@ -81,6 +81,12 @@
     <Compile Include="Forms\Generic.Designer.cs">
       <DependentUpon>Generic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NewRegistry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewRegistry.Designer.cs">
+      <DependentUpon>NewRegistry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\OrganizationContainers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Generic.resx">
       <DependentUpon>Generic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewRegistry.resx">
+      <DependentUpon>NewRegistry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OrganizationContainers.resx">
       <DependentUpon>OrganizationContainers.cs</DependentUpon>

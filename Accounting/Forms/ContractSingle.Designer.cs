@@ -58,7 +58,7 @@
             // 
             this.contractNumber.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contractNumber.Location = new System.Drawing.Point(142, 2);
-            this.contractNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contractNumber.Margin = new System.Windows.Forms.Padding(2);
             this.contractNumber.Name = "contractNumber";
             this.contractNumber.Size = new System.Drawing.Size(179, 20);
             this.contractNumber.TabIndex = 1;
@@ -67,7 +67,7 @@
             // 
             this.dateFrom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateFrom.Location = new System.Drawing.Point(142, 34);
-            this.dateFrom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateFrom.Margin = new System.Windows.Forms.Padding(2);
             this.dateFrom.Name = "dateFrom";
             this.dateFrom.Size = new System.Drawing.Size(179, 20);
             this.dateFrom.TabIndex = 2;
@@ -98,7 +98,7 @@
             // 
             this.dateTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateTo.Location = new System.Drawing.Point(142, 66);
-            this.dateTo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTo.Margin = new System.Windows.Forms.Padding(2);
             this.dateTo.Name = "dateTo";
             this.dateTo.Size = new System.Drawing.Size(179, 20);
             this.dateTo.TabIndex = 5;
@@ -118,7 +118,7 @@
             // 
             this.targetVolume.Dock = System.Windows.Forms.DockStyle.Fill;
             this.targetVolume.Location = new System.Drawing.Point(142, 98);
-            this.targetVolume.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.targetVolume.Margin = new System.Windows.Forms.Padding(2);
             this.targetVolume.Name = "targetVolume";
             this.targetVolume.Size = new System.Drawing.Size(179, 20);
             this.targetVolume.TabIndex = 7;
@@ -138,7 +138,7 @@
             // 
             this.processedVolume.Dock = System.Windows.Forms.DockStyle.Fill;
             this.processedVolume.Location = new System.Drawing.Point(142, 130);
-            this.processedVolume.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.processedVolume.Margin = new System.Windows.Forms.Padding(2);
             this.processedVolume.Name = "processedVolume";
             this.processedVolume.ReadOnly = true;
             this.processedVolume.Size = new System.Drawing.Size(179, 20);
@@ -162,7 +162,7 @@
             this.tableLayoutPanel1.Controls.Add(this.saveButton, 1, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -178,7 +178,7 @@
             // 
             this.saveButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.saveButton.Location = new System.Drawing.Point(142, 162);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(179, 29);
             this.saveButton.TabIndex = 10;
@@ -192,7 +192,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(323, 193);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ContractSingle";
             this.Text = "Новый договор";
             this.Load += new System.EventHandler(this.ContractSingle_Load);

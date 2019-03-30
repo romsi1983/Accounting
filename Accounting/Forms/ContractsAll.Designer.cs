@@ -49,19 +49,21 @@
             this.tableLayoutPanel1.Controls.Add(this.companyContracts, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.60284F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.39716F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(673, 310);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(505, 252);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // newContract
             // 
             this.newContract.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newContract.Location = new System.Drawing.Point(3, 3);
+            this.newContract.Location = new System.Drawing.Point(2, 2);
+            this.newContract.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.newContract.Name = "newContract";
-            this.newContract.Size = new System.Drawing.Size(667, 42);
+            this.newContract.Size = new System.Drawing.Size(501, 35);
             this.newContract.TabIndex = 0;
             this.newContract.Text = "Новый договор";
             this.newContract.UseVisualStyleBackColor = true;
@@ -80,12 +82,13 @@
             this.TargetVolume,
             this.ProcessedVolume});
             this.companyContracts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.companyContracts.Location = new System.Drawing.Point(3, 51);
+            this.companyContracts.Location = new System.Drawing.Point(2, 41);
+            this.companyContracts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.companyContracts.Name = "companyContracts";
             this.companyContracts.ReadOnly = true;
             this.companyContracts.RowTemplate.Height = 24;
             this.companyContracts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.companyContracts.Size = new System.Drawing.Size(667, 256);
+            this.companyContracts.Size = new System.Drawing.Size(501, 209);
             this.companyContracts.TabIndex = 1;
             this.companyContracts.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.companyContracts_RowHeaderMouseDoubleClick);
             // 
@@ -94,6 +97,7 @@
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
+            this.Id.Visible = false;
             // 
             // ContractNumber
             // 
@@ -127,10 +131,11 @@
             // 
             // ContractsAll
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 310);
+            this.ClientSize = new System.Drawing.Size(505, 252);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ContractsAll";
             this.Text = "Договора";
             this.Load += new System.EventHandler(this.ContractsAll_Load);

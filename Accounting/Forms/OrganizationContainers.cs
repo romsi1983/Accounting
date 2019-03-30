@@ -52,36 +52,40 @@ namespace Accounting.Forms
                 row.Cells[0].Value = value.Id;
                 row.Cells[1].Value = allConTypes.Find(ac => ac.Id == value.Container).Name;
                 row.Cells[2].Value = allPlatforms.Find(ap => ap.Id == value.Platform).Address;
-                var scheduleValues = value.Schedule.Split(';');
                 var schedulValue = String.Empty;
-                foreach (var tempValue in scheduleValues)
+                if (!String.IsNullOrEmpty(value.Schedule))
                 {
-                    switch (tempValue)
+                    var scheduleValues = value.Schedule.Split(';');
+                    foreach (var tempValue in scheduleValues)
                     {
-                        case "1":
-                            schedulValue = schedulValue + "ПН, ";
-                            break;
-                        case "2":
-                            schedulValue = schedulValue + "ВТ, ";
-                            break;
-                        case "3":
-                            schedulValue = schedulValue + "СР, ";
-                            break;
-                        case "4":
-                            schedulValue = schedulValue + "ЧТ, ";
-                            break;
-                        case "5":
-                            schedulValue = schedulValue + "ПТ, ";
-                            break;
-                        case "6":
-                            schedulValue = schedulValue + "СБ, ";
-                            break;
-                        case "7":
-                            schedulValue = schedulValue + "ВС, ";
-                            break;
+                        switch (tempValue)
+                        {
+                            case "1":
+                                schedulValue = schedulValue + "ПН, ";
+                                break;
+                            case "2":
+                                schedulValue = schedulValue + "ВТ, ";
+                                break;
+                            case "3":
+                                schedulValue = schedulValue + "СР, ";
+                                break;
+                            case "4":
+                                schedulValue = schedulValue + "ЧТ, ";
+                                break;
+                            case "5":
+                                schedulValue = schedulValue + "ПТ, ";
+                                break;
+                            case "6":
+                                schedulValue = schedulValue + "СБ, ";
+                                break;
+                            case "7":
+                                schedulValue = schedulValue + "ВС, ";
+                                break;
 
+                        }
                     }
                 }
+ 
 
                 if (!String.IsNullOrEmpty(schedulValue))
                 {

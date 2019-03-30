@@ -11,13 +11,19 @@ namespace Accounting.SQLite
         public void PrepareDb(bool onStart)
         {
             var dbPath = AppDomain.CurrentDomain.BaseDirectory + "Main.db";
-            if (onStart) CreateDb(dbPath);
+            if (onStart)
+            {
+                CreateDb(dbPath);
+                UpdateDb();
+            }
             else InitSqlLite(dbPath);
             
-            UpdateDb();
             SetRelevace();
-            PutFlagActive();
-            FillInTodaysContainers();
+            if (!Processed())
+            {
+                PutFlagActive();
+                FillInTodaysContainers();
+            }
         }
 
         private void InitSqlLite(string dbPath)
@@ -27,6 +33,13 @@ namespace Accounting.SQLite
                 SqlLite = new SQLiteConnection($"Data Source={dbPath}");
                 SqlLite.Open();
             }
+        }
+
+        private bool Processed()
+        {
+            var processed = ExecuteTextCommand("SELECT Processed FROM Relevance").FirstOrDefault();
+            if (processed != null && (long)processed != 0) return true;
+            return false;
         }
 
         private void FillInTodaysContainers()
@@ -88,10 +101,6 @@ namespace Accounting.SQLite
                     ExecuteWriteCommand(change);
                 }
             }
-            
-
-
-
         }
         private void UpdateDb()
         {
@@ -181,6 +190,21 @@ namespace Accounting.SQLite
                     ProcessedVolume FLOAT)");
                 ExecuteWriteCommand("PRAGMA user_version=4");
             }
+
+            if (currentVersion < 5)
+            {
+                ExecuteWriteCommand(@"DROP TABLE IF EXISTS Registry");
+                ExecuteWriteCommand(@"CREATE TABLE IF NOT EXISTS Registry
+                    (Id INTEGER PRIMARY KEY,
+                     Organization INTEGER NOT NULL,
+                     Contract INTEGER NOT NULL,
+                     Container INTEGER NOT NULL,
+                     Platform INTEGER NOT NULL,
+                     Driver INTEGER NOT NULL,
+                     Car INTEGER NOT NULL,
+                     Entered DATETIME NOT NULL)");
+                ExecuteWriteCommand("PRAGMA user_version=5");
+            }
         }
         private void SetRelevace()
         {
@@ -240,13 +264,15 @@ namespace Accounting.SQLite
                 @"CREATE TABLE IF NOT EXISTS Drivers (Id INTEGER NOT NULL PRIMARY KEY, Name VARCHAR(255) NOT NULL)",
                 @"CREATE TABLE IF NOT EXISTS Cars (Id INTEGER NOT NULL PRIMARY KEY,Name VARCHAR(255) NOT NULL,
                     Number VARCHAR(255) NOT NULL UNIQUE)",
-                @"CREATE TABLE IF NOT EXISTS Registry 
+                @"CREATE TABLE IF NOT EXISTS Registry
                     (Id INTEGER NOT NULL PRIMARY KEY,
                     Organization INTEGER NOT NULL,
-                    OrganizationСontainer INTEGER NOT NULL,
+                    Contract INTEGER NOT NULL,
+                    Container INTEGER NOT NULL,
+                    Platform INTEGER NOT NULL,
                     Driver INTEGER NOT NULL,
                     Car INTEGER NOT NULL,
-                    Date DATETIME NOT NULL)",
+                    Entered DATETIME NOT NULL)",
                 @"CREATE TABLE IF NOT EXISTS Contracts(Id INTEGER NOT NULL PRIMARY KEY, 
                     ContractNumber VARCHAR(255) NOT NULL UNIQUE, 
                     Organization INTEGER NOT NULL,

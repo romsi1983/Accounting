@@ -90,8 +90,8 @@ namespace Accounting.Forms
         private void OrgConracts_Click(object sender, EventArgs e)
         {
             var form = new ContractsAll(SelectedOrganization());
-            form.Show();
-            RenewDataTable();
+            var result = form.ShowDialog();
+            if (result == DialogResult.OK) RenewDataTable();
         }
     }
 }
