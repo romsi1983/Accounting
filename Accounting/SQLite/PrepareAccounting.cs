@@ -52,8 +52,32 @@ namespace Accounting.SQLite
             //Increment all unprocessed
             ExecuteWriteCommand(@"UPDATE ContainersQueue SET Dayspast = Dayspast + 1");
             //Insert New
-
-            var dayOfTheWeek = DateTime.Today.DayOfWeek.GetHashCode();
+            var dayOfTheWeek = string.Empty;
+            switch (DateTime.Today.DayOfWeek)
+            {
+                case DayOfWeek.Sunday:
+                    dayOfTheWeek = "7";
+                    break;
+                case DayOfWeek.Monday:
+                    dayOfTheWeek = "1";
+                    break;
+                case DayOfWeek.Tuesday:
+                    dayOfTheWeek = "2";
+                    break;
+                case DayOfWeek.Wednesday:
+                    dayOfTheWeek = "3";
+                    break;
+                case DayOfWeek.Thursday:
+                    dayOfTheWeek = "4";
+                    break;
+                case DayOfWeek.Friday:
+                    dayOfTheWeek = "5";
+                    break;
+                case DayOfWeek.Saturday:
+                    dayOfTheWeek = "6";
+                    break;
+            }
+            //var dayOfTheWeek = DateTime.Today.DayOfWeek.GetHashCode();
             var sqlCommand = $"SELECT OrganizationContainers.Id " +
                              $"FROM OrganizationContainers " +
                              $"INNER JOIN Organizations " +
