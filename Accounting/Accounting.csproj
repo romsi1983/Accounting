@@ -94,6 +94,7 @@
       <DependentUpon>OrganizationContainers.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\ContainerQueue.cs" />
     <Compile Include="Models\ContainerType.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\Driver.cs" />

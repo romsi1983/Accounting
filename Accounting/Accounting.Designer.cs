@@ -51,24 +51,18 @@
             this.contQueue = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.containesQueueData = new System.Windows.Forms.DataGridView();
-            this.IdQueue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdCont = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Volume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Daypast = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Processed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.DeleteFromQueue = new System.Windows.Forms.Button();
             this.MakeProccesed = new System.Windows.Forms.Button();
             this.MakeUnProccesed = new System.Windows.Forms.Button();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Organization = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelectedContract = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Platform = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Driver = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Car = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdQueue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdCont = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QueueOrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QueuePlatform = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QueueContType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Volume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Daypast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Processed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -208,15 +202,6 @@
             // 
             this.dataRegistry.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataRegistry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataRegistry.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Organization,
-            this.SelectedContract,
-            this.ContType,
-            this.Platform,
-            this.Driver,
-            this.Car,
-            this.Date});
             this.dataRegistry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataRegistry.Location = new System.Drawing.Point(3, 3);
             this.dataRegistry.Name = "dataRegistry";
@@ -267,6 +252,7 @@
             this.orgFilter.Name = "orgFilter";
             this.orgFilter.Size = new System.Drawing.Size(156, 20);
             this.orgFilter.TabIndex = 1;
+            this.orgFilter.TextChanged += new System.EventHandler(this.orgFilter_TextChanged);
             // 
             // dataFromLabel
             // 
@@ -295,6 +281,7 @@
             this.dateFrom.Name = "dateFrom";
             this.dateFrom.Size = new System.Drawing.Size(156, 20);
             this.dateFrom.TabIndex = 4;
+            this.dateFrom.ValueChanged += new System.EventHandler(this.dateFrom_ValueChanged);
             // 
             // dateTo
             // 
@@ -303,6 +290,7 @@
             this.dateTo.Name = "dateTo";
             this.dateTo.Size = new System.Drawing.Size(156, 20);
             this.dateTo.TabIndex = 5;
+            this.dateTo.ValueChanged += new System.EventHandler(this.dateTo_ValueChanged);
             // 
             // newButton
             // 
@@ -324,6 +312,7 @@
             this.removeButton.TabIndex = 7;
             this.removeButton.Text = "Удалить";
             this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // contQueue
             // 
@@ -356,7 +345,9 @@
             this.containesQueueData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdQueue,
             this.IdCont,
-            this.ContName,
+            this.QueueOrg,
+            this.QueuePlatform,
+            this.QueueContType,
             this.Volume,
             this.Daypast,
             this.Processed});
@@ -367,44 +358,6 @@
             this.containesQueueData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.containesQueueData.Size = new System.Drawing.Size(805, 334);
             this.containesQueueData.TabIndex = 0;
-            // 
-            // IdQueue
-            // 
-            this.IdQueue.HeaderText = "Id";
-            this.IdQueue.Name = "IdQueue";
-            this.IdQueue.ReadOnly = true;
-            this.IdQueue.Visible = false;
-            // 
-            // IdCont
-            // 
-            this.IdCont.HeaderText = "IdCont";
-            this.IdCont.Name = "IdCont";
-            this.IdCont.ReadOnly = true;
-            this.IdCont.Visible = false;
-            // 
-            // ContName
-            // 
-            this.ContName.HeaderText = "Тип конейнера";
-            this.ContName.Name = "ContName";
-            this.ContName.ReadOnly = true;
-            // 
-            // Volume
-            // 
-            this.Volume.HeaderText = "Объем";
-            this.Volume.Name = "Volume";
-            this.Volume.ReadOnly = true;
-            // 
-            // Daypast
-            // 
-            this.Daypast.HeaderText = "Задержка";
-            this.Daypast.Name = "Daypast";
-            this.Daypast.ReadOnly = true;
-            // 
-            // Processed
-            // 
-            this.Processed.HeaderText = "Вывезен";
-            this.Processed.Name = "Processed";
-            this.Processed.ReadOnly = true;
             // 
             // tableLayoutPanel5
             // 
@@ -433,6 +386,7 @@
             this.DeleteFromQueue.TabIndex = 0;
             this.DeleteFromQueue.Text = "Удалить";
             this.DeleteFromQueue.UseVisualStyleBackColor = true;
+            this.DeleteFromQueue.Click += new System.EventHandler(this.DeleteFromQueue_Click);
             // 
             // MakeProccesed
             // 
@@ -443,6 +397,7 @@
             this.MakeProccesed.TabIndex = 1;
             this.MakeProccesed.Text = "Вывезен";
             this.MakeProccesed.UseVisualStyleBackColor = true;
+            this.MakeProccesed.Click += new System.EventHandler(this.MakeProccesed_Click);
             // 
             // MakeUnProccesed
             // 
@@ -453,54 +408,59 @@
             this.MakeUnProccesed.TabIndex = 2;
             this.MakeUnProccesed.Text = "Не вывезен";
             this.MakeUnProccesed.UseVisualStyleBackColor = true;
+            this.MakeUnProccesed.Click += new System.EventHandler(this.MakeUnProccesed_Click);
             // 
-            // Id
+            // IdQueue
             // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
+            this.IdQueue.HeaderText = "Id";
+            this.IdQueue.Name = "IdQueue";
+            this.IdQueue.ReadOnly = true;
+            this.IdQueue.Visible = false;
             // 
-            // Organization
+            // IdCont
             // 
-            this.Organization.HeaderText = "Организация";
-            this.Organization.Name = "Organization";
-            this.Organization.ReadOnly = true;
+            this.IdCont.HeaderText = "IdCont";
+            this.IdCont.Name = "IdCont";
+            this.IdCont.ReadOnly = true;
+            this.IdCont.Visible = false;
             // 
-            // SelectedContract
+            // QueueOrg
             // 
-            this.SelectedContract.HeaderText = "Номер договора";
-            this.SelectedContract.Name = "SelectedContract";
-            this.SelectedContract.ReadOnly = true;
+            this.QueueOrg.HeaderText = "Организация";
+            this.QueueOrg.Name = "QueueOrg";
+            this.QueueOrg.ReadOnly = true;
             // 
-            // ContType
+            // QueuePlatform
             // 
-            this.ContType.HeaderText = "Контейнер";
-            this.ContType.Name = "ContType";
-            this.ContType.ReadOnly = true;
+            this.QueuePlatform.HeaderText = "Платформа";
+            this.QueuePlatform.Name = "QueuePlatform";
+            this.QueuePlatform.ReadOnly = true;
             // 
-            // Platform
+            // QueueContType
             // 
-            this.Platform.HeaderText = "Площадка";
-            this.Platform.Name = "Platform";
-            this.Platform.ReadOnly = true;
+            this.QueueContType.HeaderText = "Тип конейнера";
+            this.QueueContType.Name = "QueueContType";
+            this.QueueContType.ReadOnly = true;
             // 
-            // Driver
+            // Volume
             // 
-            this.Driver.HeaderText = "Водитель";
-            this.Driver.Name = "Driver";
-            this.Driver.ReadOnly = true;
+            this.Volume.HeaderText = "Объем";
+            this.Volume.Name = "Volume";
+            this.Volume.ReadOnly = true;
             // 
-            // Car
+            // Daypast
             // 
-            this.Car.HeaderText = "Машина";
-            this.Car.Name = "Car";
-            this.Car.ReadOnly = true;
+            this.Daypast.HeaderText = "Задержка";
+            this.Daypast.Name = "Daypast";
+            this.Daypast.ReadOnly = true;
             // 
-            // Date
+            // Processed
             // 
-            this.Date.HeaderText = "Дата";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
+            this.Processed.HeaderText = "Вывезен";
+            this.Processed.Name = "Processed";
+            this.Processed.ReadOnly = true;
+            this.Processed.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Processed.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Accounting
             // 
@@ -561,23 +521,17 @@
         private System.Windows.Forms.Button newButton;
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.DataGridView containesQueueData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdQueue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdCont;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ContName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Volume;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Daypast;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Processed;
         private System.Windows.Forms.Button DeleteFromQueue;
         private System.Windows.Forms.Button MakeProccesed;
         private System.Windows.Forms.Button MakeUnProccesed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Organization;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SelectedContract;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ContType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Platform;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Driver;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Car;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdQueue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdCont;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QueueOrg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QueuePlatform;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QueueContType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Volume;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Daypast;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Processed;
     }
 }
 

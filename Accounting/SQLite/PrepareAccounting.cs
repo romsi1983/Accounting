@@ -202,6 +202,7 @@ namespace Accounting.SQLite
                      Platform INTEGER NOT NULL,
                      Driver INTEGER NOT NULL,
                      Car INTEGER NOT NULL,
+                     Volume FLOAT NOT NULL,
                      Entered DATETIME NOT NULL)");
                 ExecuteWriteCommand("PRAGMA user_version=5");
             }
@@ -272,6 +273,7 @@ namespace Accounting.SQLite
                     Platform INTEGER NOT NULL,
                     Driver INTEGER NOT NULL,
                     Car INTEGER NOT NULL,
+                    Volume FLOAT NOT NULL,
                     Entered DATETIME NOT NULL)",
                 @"CREATE TABLE IF NOT EXISTS Contracts(Id INTEGER NOT NULL PRIMARY KEY, 
                     ContractNumber VARCHAR(255) NOT NULL UNIQUE, 

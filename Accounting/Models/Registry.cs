@@ -11,6 +11,7 @@ namespace Accounting.Models
         public long Platform { get; set; }
         public long Driver { get; set; }
         public long Car { get; set; }
+        public float Volume { get; set; }
         public DateTime Entered { get; set; }
     }
 }

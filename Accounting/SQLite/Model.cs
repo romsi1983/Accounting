@@ -8,10 +8,6 @@ namespace Accounting.SQLite
 {
     public class Model : SqLiteHelper
     {
-        public Model()
-        {
-        }
-
         private List<List<string>> GetPropsAndValues<T>(T value, bool write)
         {
             var inProps = new List<string>();
@@ -64,7 +60,6 @@ namespace Accounting.SQLite
 
             return new List<List<string>> { inProps, inValues };
         }
-
         public bool CheckActive(long orgId)
         {
             var today = DateTime.Today;
@@ -77,7 +72,6 @@ namespace Accounting.SQLite
 
             return ExecuteTextCommand(sqlCommand).Any();
         }
-
         public int UpdateDb<T>(T value) where T : new()
         {
             var valueId = Convert.ToInt32(value.GetType().GetProperty("Id")?.GetValue(value, null));
@@ -118,7 +112,6 @@ namespace Accounting.SQLite
 
             return ExecuteWriteCommand(sqlCommand);
         }
-
         public string GetRecord<T>(long id, string columnName)
         {
             var dataBase = GetDataBaseName<T>();
@@ -127,6 +120,19 @@ namespace Accounting.SQLite
                              $"WHERE Id = {id}";
             
             return ExecuteTextCommand(sqlCommand).FirstOrDefault()?.ToString();
+        }
+        public long GetRecordId<T>(string columnName, string columnValue)
+        {
+            var dataBase = GetDataBaseName<T>();
+            var sqlCommand = $"SELECT Id " +
+                             $"FROM {dataBase} " +
+                             $"WHERE {columnName} = '{columnValue}'";
+
+            var returnValue = ExecuteTextCommand(sqlCommand);
+            if (!returnValue.Any()) return -1;
+
+            // ReSharper disable once PossibleNullReferenceException
+            return (long)returnValue.FirstOrDefault();
         }
         public int WriteToDb<T>(T value)
         {
@@ -245,6 +251,10 @@ namespace Accounting.SQLite
 
             return GetTableValues<T>(command);
         }
+        public List<T> FindinTable<T>(string sqlcommand) where T : new()
+        {
+            return GetTableValues<T>(sqlcommand);
+        }
         private string GetDataBaseName<T>()
         {
             var dataBase = string.Empty;
@@ -273,6 +283,9 @@ namespace Accounting.SQLite
                     break;
                 case "Contract":
                     dataBase = "Contracts";
+                    break;
+                case "ContainerQueue":
+                    dataBase = "ContainersQueue";
                     break;
             }
 

@@ -15,6 +15,7 @@ namespace Accounting.Forms
         protected Contract SelectedContract;
         protected List<ContainerType> AllContainerTypes;
         protected List<Platform> AllPlatforms = new List<Platform>();
+        
         protected List<OrganizationContainer> OrganizationContainers = new List<OrganizationContainer>();
         protected Model Sql;
         
@@ -159,9 +160,140 @@ namespace Accounting.Forms
 
         private void saveNewRegistry_Click(object sender, EventArgs e)
         {
+            if (!CheckSave()) return;
 
+            var tv = Single.Parse(targetVolume.Text, CultureInfo.InvariantCulture);
+            var pv = Single.Parse(processedVolume.Text, CultureInfo.InvariantCulture);
+            var av = Single.Parse(container.Text, CultureInfo.InvariantCulture);
+
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (av == 0)
+            {
+                MessageBox.Show(@"Нельзя вывести ничего");
+                return;
+            }
+
+            if (pv + av > tv)
+            {
+                MessageBox.Show(@"Превышен запланированный объем");
+                return;
+            }
+
+            long selectedCont = AllContainerTypes.Find(ac => ac.Name.Equals(selectContainer.Text)).Id;
+            long selectedPlatform = AllPlatforms.Find(ap => ap.Address.Equals(selectPlatform.Text)).Id;
+            long selectedDriver = Sql.FindinTable<Driver>().Find(dr => dr.Name.Equals(selectDriver.Text)).Id;
+            long selectedCar = Sql.FindinTable<Car>().Find(cr => cr.Name.Equals(selectCar.Text)).Id;
+
+            var newRecord = new Registry
+            {
+                Organization = SelectedOrg,
+                Contract = SelectedContract.Id,
+                Container = selectedCont,
+                Platform = selectedPlatform,
+                Driver = selectedDriver,
+                Car = selectedCar,
+                Volume = av,
+                Entered = processDate.Value
+            };
+
+            var result = Sql.WriteToDb(newRecord);
+            if (result != 1)
+            {
+                MessageBox.Show(@"Ошибка сохранения");
+                return;
+            }
+
+            var tempOrgCont = new OrganizationContainer
+            {
+                Organization = SelectedOrg,
+                Container = selectedCont,
+                Platform = selectedPlatform
+            };
+
+            var orgConts = Sql.FindinTable(tempOrgCont);
+
+            foreach (var orgCont in orgConts)
+            {
+                var sqlCommand = $"SELECT Id " +
+                                 $"FROM ContainersQueue " +
+                                 // ReSharper disable once PossibleNullReferenceException
+                                 $"WHERE Container = '{orgCont.Id}' " +
+                                 $"AND Dayspast = '0' " +
+                                 $"AND Processed = '0'";
+
+                var unprocessedCont = Sql.ExecuteTextCommand(sqlCommand);
+
+                if (unprocessedCont.Any())
+                {
+                    result = Sql.UpdateRecord<ContainerQueue>((long)unprocessedCont[0], "Processed", "1");
+                    if (result != 1) MessageBox.Show(@"Не получилось обновить очередь контейнеров");
+                    break;
+                }
+            }
+
+            result = Sql.UpdateRecord<Contract>(SelectedContract.Id, "ProcessedVolume",
+                (pv + av).ToString(CultureInfo.InvariantCulture));
+
+            if (result != 1) MessageBox.Show(@"Не получилось обновить договор");
+
+            DialogResult = DialogResult.Yes;
+            Close();
         }
 
+
+        private bool CheckSave()
+        {
+
+            if (String.IsNullOrEmpty(selectOrganization.Text))
+            {
+                MessageBox.Show(@"Выберете организацию");
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(contractSelect.Text))
+            {
+                MessageBox.Show(@"Выберете договор");
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(selectPlatform.Text))
+            {
+                MessageBox.Show(@"Выберете площадку");
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(selectContainer.Text))
+            {
+                MessageBox.Show(@"Выберете контейнер");
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(selectDriver.Text))
+            {
+                MessageBox.Show(@"Выберете водителя");
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(selectCar.Text))
+            {
+                MessageBox.Show(@"Выберете машину");
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(selectCar.Text))
+            {
+                MessageBox.Show(@"Выберете машину");
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(selectCar.Text))
+            {
+                MessageBox.Show(@"Выберете машину");
+                return false;
+            }
+
+            return true;
+        }
         private void selectPlatform_SelectedValueChanged(object sender, EventArgs e)
         {
             selectContainer.Items.Clear();

@@ -43,16 +43,16 @@
             this.processDate = new System.Windows.Forms.DateTimePicker();
             this.InputDate = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.driverLabel = new System.Windows.Forms.Label();
             this.carLabel = new System.Windows.Forms.Label();
-            this.selectDriver = new System.Windows.Forms.ComboBox();
             this.selectCar = new System.Windows.Forms.ComboBox();
             this.selectContainerLabel = new System.Windows.Forms.Label();
             this.selectContainer = new System.Windows.Forms.ComboBox();
+            this.driverLabel = new System.Windows.Forms.Label();
+            this.selectDriver = new System.Windows.Forms.ComboBox();
+            this.quantity = new System.Windows.Forms.TextBox();
+            this.quntityLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.saveNewRegistry = new System.Windows.Forms.Button();
-            this.quntityLabel = new System.Windows.Forms.Label();
-            this.quantity = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -238,16 +238,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(522, 227);
             this.tableLayoutPanel1.TabIndex = 16;
             // 
-            // driverLabel
-            // 
-            this.driverLabel.AutoSize = true;
-            this.driverLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.driverLabel.Location = new System.Drawing.Point(177, 185);
-            this.driverLabel.Name = "driverLabel";
-            this.driverLabel.Size = new System.Drawing.Size(168, 13);
-            this.driverLabel.TabIndex = 16;
-            this.driverLabel.Text = "Выберети водителя:";
-            // 
             // carLabel
             // 
             this.carLabel.AutoSize = true;
@@ -257,15 +247,6 @@
             this.carLabel.Size = new System.Drawing.Size(168, 13);
             this.carLabel.TabIndex = 17;
             this.carLabel.Text = "Выбирите машину:";
-            // 
-            // selectDriver
-            // 
-            this.selectDriver.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.selectDriver.FormattingEnabled = true;
-            this.selectDriver.Location = new System.Drawing.Point(177, 201);
-            this.selectDriver.Name = "selectDriver";
-            this.selectDriver.Size = new System.Drawing.Size(168, 21);
-            this.selectDriver.TabIndex = 18;
             // 
             // selectCar
             // 
@@ -296,6 +277,46 @@
             this.selectContainer.TabIndex = 21;
             this.selectContainer.SelectedValueChanged += new System.EventHandler(this.selectContainer_SelectedValueChanged);
             // 
+            // driverLabel
+            // 
+            this.driverLabel.AutoSize = true;
+            this.driverLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.driverLabel.Location = new System.Drawing.Point(177, 185);
+            this.driverLabel.Name = "driverLabel";
+            this.driverLabel.Size = new System.Drawing.Size(168, 13);
+            this.driverLabel.TabIndex = 16;
+            this.driverLabel.Text = "Выберети водителя:";
+            // 
+            // selectDriver
+            // 
+            this.selectDriver.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.selectDriver.FormattingEnabled = true;
+            this.selectDriver.Location = new System.Drawing.Point(177, 201);
+            this.selectDriver.Name = "selectDriver";
+            this.selectDriver.Size = new System.Drawing.Size(168, 21);
+            this.selectDriver.TabIndex = 18;
+            // 
+            // quantity
+            // 
+            this.quantity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quantity.Location = new System.Drawing.Point(351, 157);
+            this.quantity.Name = "quantity";
+            this.quantity.Size = new System.Drawing.Size(168, 20);
+            this.quantity.TabIndex = 23;
+            this.quantity.Visible = false;
+            this.quantity.TextChanged += new System.EventHandler(this.quantity_TextChanged);
+            // 
+            // quntityLabel
+            // 
+            this.quntityLabel.AutoSize = true;
+            this.quntityLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.quntityLabel.Location = new System.Drawing.Point(351, 141);
+            this.quntityLabel.Name = "quntityLabel";
+            this.quntityLabel.Size = new System.Drawing.Size(168, 13);
+            this.quntityLabel.TabIndex = 22;
+            this.quntityLabel.Text = "Количество:";
+            this.quntityLabel.Visible = false;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -319,27 +340,6 @@
             this.saveNewRegistry.Text = "Сохранить";
             this.saveNewRegistry.UseVisualStyleBackColor = true;
             this.saveNewRegistry.Click += new System.EventHandler(this.saveNewRegistry_Click);
-            // 
-            // quntityLabel
-            // 
-            this.quntityLabel.AutoSize = true;
-            this.quntityLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.quntityLabel.Location = new System.Drawing.Point(351, 141);
-            this.quntityLabel.Name = "quntityLabel";
-            this.quntityLabel.Size = new System.Drawing.Size(168, 13);
-            this.quntityLabel.TabIndex = 22;
-            this.quntityLabel.Text = "Количество:";
-            this.quntityLabel.Visible = false;
-            // 
-            // quantity
-            // 
-            this.quantity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.quantity.Location = new System.Drawing.Point(351, 157);
-            this.quantity.Name = "quantity";
-            this.quantity.Size = new System.Drawing.Size(168, 20);
-            this.quantity.TabIndex = 23;
-            this.quantity.Visible = false;
-            this.quantity.TextChanged += new System.EventHandler(this.quantity_TextChanged);
             // 
             // NewRegistry
             // 
