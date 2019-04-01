@@ -13,9 +13,8 @@ using Accounting.SQLite;
 namespace Accounting
 {
     public partial class Accounting : Form
-    {
-        //protected List<Registry>AllRegistryRecords =  new List<Registry>();
-        protected DataTable RegistryTable = new DataTable();
+    {   
+        protected System.Data.DataTable RegistryTable = new System.Data.DataTable();
         public Accounting()
         {
             InitializeComponent();
