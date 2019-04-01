@@ -144,13 +144,10 @@ namespace Accounting.SQLite
 
             foreach (var propIn in propsAndValues[0])
             {
-                propsIn = propsIn + propIn;
-                if (propIn != propsAndValues[0].Last())
-                {
-                    propsIn = propsIn + ", ";
-                }
+                propsIn = propsIn + propIn + ", ";
             }
 
+            propsIn = propsIn.Substring(0, propsIn.Length - 2);
 
             foreach (var valueIn in propsAndValues[1])
             {
