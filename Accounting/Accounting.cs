@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Timers;
@@ -160,17 +161,48 @@ namespace Accounting
 
             var sql = new Model();
             
+            
+
             //Contract
             var volume = (float)currentRow.Cells[8].Value;
             var currentContract = sql.FindinTable<Contract>("ContractNumber", (string) currentRow.Cells[2].Value).FirstOrDefault();
+            Debug.Assert(currentContract != null, nameof(currentContract) + " != null");
             if (currentContract.ProcessedVolume - volume < 0)
             {
                 MessageBox.Show(@"Если удалить, то будет отрицательный объем. Как так вышло?");
                 return;
             }
-            var result = sql.UpdateRecord<Contract>(currentContract.Id, "ProcessedVolume",
-                (currentContract.ProcessedVolume - volume).ToString(CultureInfo.InvariantCulture));
-            if (result != 1) MessageBox.Show(@"Не получилось обновить договор");
+
+            //Start Transaction
+            sql.StartTransaction();
+
+            //Update Contracts
+            var newSqlCommand = $"UPDATE Contracts " +
+                            $"SET ProcessedVolume = '{(currentContract.ProcessedVolume - volume).ToString(CultureInfo.InvariantCulture)}' " +
+                            $"WHERE id = {currentContract.Id}";
+
+            var result = sql.ExecuteWriteCommandWithTrans(newSqlCommand);
+            if (result == -1)
+            {
+                MessageBox.Show(@"Не получилось обновить договор");
+                sql.EndTransaction(false);
+                return;
+            }
+
+            //Update Registry
+            var registryId = (long)currentRow.Cells[0].Value;
+            newSqlCommand = $"DELETE FROM Registry " +
+                            $"WHERE Id = '{registryId}'";
+            result = sql.ExecuteWriteCommandWithTrans(newSqlCommand);
+            if (result == -1)
+            {
+                MessageBox.Show(@"Не получилось удалить запись из реестра");
+                sql.EndTransaction(false);
+                return;
+            }
+
+            //Commit Transaction
+            sql.EndTransaction(true);
 
             //ContainersQueue
             var enteredDate = (DateTime) currentRow.Cells[7].Value;
@@ -202,16 +234,11 @@ namespace Accounting
                         break;
                     }
                 }
-
-
             }
 
-            //Registry
-            var registryId = (long)currentRow.Cells[0].Value;
-            result = sql.DeleteFromTable<Registry>(registryId);
-            if (result != 1) MessageBox.Show(@"Не получилось удалить запись из реестра");
-
             ReloadDataRegistry();
+
+
         }
         #endregion
 
@@ -284,9 +311,34 @@ namespace Accounting
                 ReloadQueueData();
             }
         }
+
         #endregion
 
-
+        private void dataRegistry_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var columnIndex = e.ColumnIndex;
+            var correntRow = dataRegistry.CurrentRow;
+            if (correntRow != null)
+            {
+                var value = correntRow.Cells[columnIndex].Value.ToString();
+                var sql = new Model();
+                switch (columnIndex)
+                {
+                    case 1:
+                        //call organization
+                        var org = sql.FindinTable<Organization>("Name", value).FirstOrDefault();
+                        var form1 = new OrganizationSingle(org);
+                        form1.ShowDialog();
+                        break;
+                    case 2:
+                        //call contract
+                        var contract = sql.FindinTable<Contract>("ContractNumber", value).FirstOrDefault();
+                        var form2 = new ContractSingle(contract);
+                        form2.ShowDialog();
+                        break;
+                }
+            }
+        }
     }
 
 }

@@ -79,7 +79,7 @@
             // Organizations
             // 
             this.Organizations.Location = new System.Drawing.Point(4, 4);
-            this.Organizations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Organizations.Margin = new System.Windows.Forms.Padding(4);
             this.Organizations.Name = "Organizations";
             this.Organizations.Size = new System.Drawing.Size(181, 49);
             this.Organizations.TabIndex = 0;
@@ -112,7 +112,7 @@
             // Cars
             // 
             this.Cars.Location = new System.Drawing.Point(765, 4);
-            this.Cars.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cars.Margin = new System.Windows.Forms.Padding(4);
             this.Cars.Name = "Cars";
             this.Cars.Size = new System.Drawing.Size(181, 49);
             this.Cars.TabIndex = 0;
@@ -123,7 +123,7 @@
             // drivers
             // 
             this.drivers.Location = new System.Drawing.Point(574, 4);
-            this.drivers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.drivers.Margin = new System.Windows.Forms.Padding(4);
             this.drivers.Name = "drivers";
             this.drivers.Size = new System.Drawing.Size(181, 49);
             this.drivers.TabIndex = 3;
@@ -134,7 +134,7 @@
             // platforms
             // 
             this.platforms.Location = new System.Drawing.Point(385, 4);
-            this.platforms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.platforms.Margin = new System.Windows.Forms.Padding(4);
             this.platforms.Name = "platforms";
             this.platforms.Size = new System.Drawing.Size(181, 49);
             this.platforms.TabIndex = 2;
@@ -173,7 +173,7 @@
             this.tabControl.Controls.Add(this.contQueue);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(4, 4);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1092, 497);
@@ -184,7 +184,7 @@
             this.registry.Controls.Add(this.tableLayoutPanel4);
             this.registry.Controls.Add(this.tableLayoutPanel3);
             this.registry.Location = new System.Drawing.Point(4, 25);
-            this.registry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.registry.Margin = new System.Windows.Forms.Padding(4);
             this.registry.Name = "registry";
             this.registry.Size = new System.Drawing.Size(1084, 468);
             this.registry.TabIndex = 0;
@@ -198,7 +198,7 @@
             this.tableLayoutPanel4.Controls.Add(this.dataRegistry, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 66);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -211,12 +211,13 @@
             this.dataRegistry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataRegistry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataRegistry.Location = new System.Drawing.Point(4, 4);
-            this.dataRegistry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataRegistry.Margin = new System.Windows.Forms.Padding(4);
             this.dataRegistry.Name = "dataRegistry";
             this.dataRegistry.ReadOnly = true;
             this.dataRegistry.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataRegistry.Size = new System.Drawing.Size(1076, 394);
             this.dataRegistry.TabIndex = 0;
+            this.dataRegistry.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataRegistry_CellContentClick);
             // 
             // tableLayoutPanel3
             // 
@@ -236,7 +237,7 @@
             this.tableLayoutPanel3.Controls.Add(this.removeButton, 4, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -259,7 +260,7 @@
             // 
             this.orgFilter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.orgFilter.Location = new System.Drawing.Point(4, 37);
-            this.orgFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.orgFilter.Margin = new System.Windows.Forms.Padding(4);
             this.orgFilter.Name = "orgFilter";
             this.orgFilter.Size = new System.Drawing.Size(208, 22);
             this.orgFilter.TabIndex = 1;
@@ -291,7 +292,7 @@
             // 
             this.dateFrom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateFrom.Location = new System.Drawing.Point(220, 37);
-            this.dateFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateFrom.Margin = new System.Windows.Forms.Padding(4);
             this.dateFrom.Name = "dateFrom";
             this.dateFrom.Size = new System.Drawing.Size(208, 22);
             this.dateFrom.TabIndex = 4;
@@ -301,7 +302,7 @@
             // 
             this.dateTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateTo.Location = new System.Drawing.Point(436, 37);
-            this.dateTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTo.Margin = new System.Windows.Forms.Padding(4);
             this.dateTo.Name = "dateTo";
             this.dateTo.Size = new System.Drawing.Size(208, 22);
             this.dateTo.TabIndex = 5;
@@ -311,7 +312,7 @@
             // 
             this.newButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.newButton.Location = new System.Drawing.Point(652, 37);
-            this.newButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.newButton.Margin = new System.Windows.Forms.Padding(4);
             this.newButton.Name = "newButton";
             this.newButton.Size = new System.Drawing.Size(208, 25);
             this.newButton.TabIndex = 6;
@@ -323,7 +324,7 @@
             // 
             this.removeButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.removeButton.Location = new System.Drawing.Point(868, 37);
-            this.removeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.removeButton.Margin = new System.Windows.Forms.Padding(4);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(212, 25);
             this.removeButton.TabIndex = 7;
@@ -336,7 +337,7 @@
             this.contQueue.Controls.Add(this.tableLayoutPanel6);
             this.contQueue.Controls.Add(this.tableLayoutPanel5);
             this.contQueue.Location = new System.Drawing.Point(4, 25);
-            this.contQueue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.contQueue.Margin = new System.Windows.Forms.Padding(4);
             this.contQueue.Name = "contQueue";
             this.contQueue.Size = new System.Drawing.Size(1084, 468);
             this.contQueue.TabIndex = 1;
@@ -350,7 +351,7 @@
             this.tableLayoutPanel6.Controls.Add(this.containesQueueData, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 47);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -372,7 +373,7 @@
             this.Processed});
             this.containesQueueData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.containesQueueData.Location = new System.Drawing.Point(4, 4);
-            this.containesQueueData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.containesQueueData.Margin = new System.Windows.Forms.Padding(4);
             this.containesQueueData.Name = "containesQueueData";
             this.containesQueueData.ReadOnly = true;
             this.containesQueueData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -443,7 +444,7 @@
             this.tableLayoutPanel5.Controls.Add(this.MakeUnProccesed, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -454,7 +455,7 @@
             // 
             this.DeleteFromQueue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DeleteFromQueue.Location = new System.Drawing.Point(4, 4);
-            this.DeleteFromQueue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DeleteFromQueue.Margin = new System.Windows.Forms.Padding(4);
             this.DeleteFromQueue.Name = "DeleteFromQueue";
             this.DeleteFromQueue.Size = new System.Drawing.Size(263, 39);
             this.DeleteFromQueue.TabIndex = 0;
@@ -466,7 +467,7 @@
             // 
             this.MakeProccesed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MakeProccesed.Location = new System.Drawing.Point(275, 4);
-            this.MakeProccesed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MakeProccesed.Margin = new System.Windows.Forms.Padding(4);
             this.MakeProccesed.Name = "MakeProccesed";
             this.MakeProccesed.Size = new System.Drawing.Size(263, 39);
             this.MakeProccesed.TabIndex = 1;
@@ -478,7 +479,7 @@
             // 
             this.MakeUnProccesed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MakeUnProccesed.Location = new System.Drawing.Point(546, 4);
-            this.MakeUnProccesed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MakeUnProccesed.Margin = new System.Windows.Forms.Padding(4);
             this.MakeUnProccesed.Name = "MakeUnProccesed";
             this.MakeUnProccesed.Size = new System.Drawing.Size(263, 39);
             this.MakeUnProccesed.TabIndex = 2;
@@ -493,7 +494,7 @@
             this.ClientSize = new System.Drawing.Size(1100, 567);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Accounting";
             this.Text = "Учет контейнеров";
             this.Load += new System.EventHandler(this.Accounting_Load);

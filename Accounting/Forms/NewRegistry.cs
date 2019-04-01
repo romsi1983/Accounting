@@ -196,12 +196,37 @@ namespace Accounting.Forms
                 Entered = processDate.Value
             };
 
-            var result = Sql.WriteToDb(newRecord);
-            if (result != 1)
+            //Start transaction
+            Sql.StartTransaction();
+            //Update Registry
+            var newSqlCommand = $"INSERT Into Registry (Organization, Contract, Container, " +
+                             $"Platform, Driver, Car, Volume, Entered) " +
+                             $"Values ('{SelectedOrg}', '{SelectedContract.Id}', '{selectedCont}', " +
+                             $"'{selectedPlatform}', '{selectedDriver}', '{selectedCar}', '{av}', " +
+                             $"'{processDate.Value:yyyy-MM-dd}')";
+
+            var result = Sql.ExecuteWriteCommandWithTrans(newSqlCommand);
+
+            if (result == -1)
             {
+                Sql.EndTransaction(false);
                 MessageBox.Show(@"Ошибка сохранения");
                 return;
             }
+            //Update Contract
+            newSqlCommand = $"UPDATE Contracts " +
+                            $"SET ProcessedVolume = '{(pv + av).ToString(CultureInfo.InvariantCulture)}' " +
+                            $"WHERE id = {SelectedContract.Id}";
+
+            result = Sql.ExecuteWriteCommandWithTrans(newSqlCommand);
+            if (result == -1)
+            {
+                Sql.EndTransaction(false);
+                MessageBox.Show(@"Не получилось обновить договор");
+                return;
+            }
+            //Commit Transaction
+            Sql.EndTransaction(true);
 
             var tempOrgCont = new OrganizationContainer
             {
@@ -230,11 +255,6 @@ namespace Accounting.Forms
                     break;
                 }
             }
-
-            result = Sql.UpdateRecord<Contract>(SelectedContract.Id, "ProcessedVolume",
-                (pv + av).ToString(CultureInfo.InvariantCulture));
-
-            if (result != 1) MessageBox.Show(@"Не получилось обновить договор");
 
             DialogResult = DialogResult.Yes;
             Close();

@@ -322,7 +322,7 @@
             // saveButton
             // 
             this.saveButton.Location = new System.Drawing.Point(4, 105);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(404, 53);
             this.saveButton.TabIndex = 4;

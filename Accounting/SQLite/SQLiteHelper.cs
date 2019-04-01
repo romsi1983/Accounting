@@ -10,6 +10,7 @@ namespace Accounting.SQLite
     {
         // ReSharper disable once InconsistentNaming
         internal static SQLiteConnection SqlLite;
+        internal static SQLiteTransaction TsqLiteTransaction;
         public SqLiteHelper()
         {
             var dbPath = AppDomain.CurrentDomain.BaseDirectory + "Main.db";
@@ -20,6 +21,40 @@ namespace Accounting.SQLite
                 SqlLite.Open();
             }
         }
+
+        public void StartTransaction()
+        {
+            TsqLiteTransaction = SqlLite.BeginTransaction();
+        }
+
+        public void EndTransaction(bool commit)
+        {
+            if (commit)
+            {
+                TsqLiteTransaction.Commit();
+            }
+            else
+            {
+                TsqLiteTransaction.Rollback();
+            }
+
+        }
+
+        public int ExecuteWriteCommandWithTrans(string sqlCommand)
+        {
+            try
+            {
+                var cmd = SqlLite.CreateCommand();
+                cmd.CommandText = sqlCommand;
+                int result = cmd.ExecuteNonQuery();
+                return result;
+            }
+            catch (SQLiteException)
+            {
+                return -1;
+            }
+        }
+
         internal int ExecuteWriteCommand(string sqlCommand)
         {
             var tr = SqlLite.BeginTransaction();

@@ -61,9 +61,10 @@
             // 
             this.selectOrganization.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectOrganization.FormattingEnabled = true;
-            this.selectOrganization.Location = new System.Drawing.Point(3, 25);
+            this.selectOrganization.Location = new System.Drawing.Point(4, 31);
+            this.selectOrganization.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selectOrganization.Name = "selectOrganization";
-            this.selectOrganization.Size = new System.Drawing.Size(168, 21);
+            this.selectOrganization.Size = new System.Drawing.Size(224, 24);
             this.selectOrganization.TabIndex = 0;
             this.selectOrganization.SelectedValueChanged += new System.EventHandler(this.selectOrganization_SelectedValueChanged);
             // 
@@ -71,9 +72,10 @@
             // 
             this.selectOrglabel.AutoSize = true;
             this.selectOrglabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.selectOrglabel.Location = new System.Drawing.Point(3, 9);
+            this.selectOrglabel.Location = new System.Drawing.Point(4, 10);
+            this.selectOrglabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.selectOrglabel.Name = "selectOrglabel";
-            this.selectOrglabel.Size = new System.Drawing.Size(168, 13);
+            this.selectOrglabel.Size = new System.Drawing.Size(224, 17);
             this.selectOrglabel.TabIndex = 1;
             this.selectOrglabel.Text = "Выбирите организацию:";
             // 
@@ -81,9 +83,10 @@
             // 
             this.contractLable.AutoSize = true;
             this.contractLable.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.contractLable.Location = new System.Drawing.Point(3, 53);
+            this.contractLable.Location = new System.Drawing.Point(4, 64);
+            this.contractLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.contractLable.Name = "contractLable";
-            this.contractLable.Size = new System.Drawing.Size(168, 13);
+            this.contractLable.Size = new System.Drawing.Size(224, 17);
             this.contractLable.TabIndex = 2;
             this.contractLable.Text = "Выбирите договор:";
             // 
@@ -91,9 +94,10 @@
             // 
             this.contractSelect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contractSelect.FormattingEnabled = true;
-            this.contractSelect.Location = new System.Drawing.Point(3, 69);
+            this.contractSelect.Location = new System.Drawing.Point(4, 85);
+            this.contractSelect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.contractSelect.Name = "contractSelect";
-            this.contractSelect.Size = new System.Drawing.Size(168, 21);
+            this.contractSelect.Size = new System.Drawing.Size(224, 24);
             this.contractSelect.TabIndex = 3;
             this.contractSelect.SelectedValueChanged += new System.EventHandler(this.contractSelect_SelectedValueChanged);
             // 
@@ -101,9 +105,10 @@
             // 
             this.selectPlatformLabel.AutoSize = true;
             this.selectPlatformLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.selectPlatformLabel.Location = new System.Drawing.Point(3, 97);
+            this.selectPlatformLabel.Location = new System.Drawing.Point(4, 118);
+            this.selectPlatformLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.selectPlatformLabel.Name = "selectPlatformLabel";
-            this.selectPlatformLabel.Size = new System.Drawing.Size(168, 13);
+            this.selectPlatformLabel.Size = new System.Drawing.Size(224, 17);
             this.selectPlatformLabel.TabIndex = 4;
             this.selectPlatformLabel.Text = "Выбирите площадку";
             // 
@@ -111,9 +116,10 @@
             // 
             this.selectPlatform.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectPlatform.FormattingEnabled = true;
-            this.selectPlatform.Location = new System.Drawing.Point(3, 113);
+            this.selectPlatform.Location = new System.Drawing.Point(4, 139);
+            this.selectPlatform.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selectPlatform.Name = "selectPlatform";
-            this.selectPlatform.Size = new System.Drawing.Size(168, 21);
+            this.selectPlatform.Size = new System.Drawing.Size(224, 24);
             this.selectPlatform.TabIndex = 5;
             this.selectPlatform.SelectedValueChanged += new System.EventHandler(this.selectPlatform_SelectedValueChanged);
             // 
@@ -121,65 +127,72 @@
             // 
             this.selectedContainer.AutoSize = true;
             this.selectedContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.selectedContainer.Location = new System.Drawing.Point(351, 97);
+            this.selectedContainer.Location = new System.Drawing.Point(468, 118);
+            this.selectedContainer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.selectedContainer.Name = "selectedContainer";
-            this.selectedContainer.Size = new System.Drawing.Size(168, 13);
+            this.selectedContainer.Size = new System.Drawing.Size(224, 17);
             this.selectedContainer.TabIndex = 6;
             this.selectedContainer.Text = "Объем контейнера";
             // 
             // container
             // 
             this.container.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.container.Location = new System.Drawing.Point(351, 113);
+            this.container.Location = new System.Drawing.Point(468, 139);
+            this.container.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.container.Name = "container";
             this.container.ReadOnly = true;
-            this.container.Size = new System.Drawing.Size(168, 20);
+            this.container.Size = new System.Drawing.Size(224, 22);
             this.container.TabIndex = 8;
             // 
             // targetVolumeLabel
             // 
             this.targetVolumeLabel.AutoSize = true;
             this.targetVolumeLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.targetVolumeLabel.Location = new System.Drawing.Point(177, 53);
+            this.targetVolumeLabel.Location = new System.Drawing.Point(236, 64);
+            this.targetVolumeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.targetVolumeLabel.Name = "targetVolumeLabel";
-            this.targetVolumeLabel.Size = new System.Drawing.Size(168, 13);
+            this.targetVolumeLabel.Size = new System.Drawing.Size(224, 17);
             this.targetVolumeLabel.TabIndex = 10;
             this.targetVolumeLabel.Text = "Объем по договору:";
             // 
             // targetVolume
             // 
             this.targetVolume.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.targetVolume.Location = new System.Drawing.Point(177, 69);
+            this.targetVolume.Location = new System.Drawing.Point(236, 85);
+            this.targetVolume.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.targetVolume.Name = "targetVolume";
             this.targetVolume.ReadOnly = true;
-            this.targetVolume.Size = new System.Drawing.Size(168, 20);
+            this.targetVolume.Size = new System.Drawing.Size(224, 22);
             this.targetVolume.TabIndex = 11;
             // 
             // proccedVolumeLabel
             // 
             this.proccedVolumeLabel.AutoSize = true;
             this.proccedVolumeLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.proccedVolumeLabel.Location = new System.Drawing.Point(351, 53);
+            this.proccedVolumeLabel.Location = new System.Drawing.Point(468, 64);
+            this.proccedVolumeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.proccedVolumeLabel.Name = "proccedVolumeLabel";
-            this.proccedVolumeLabel.Size = new System.Drawing.Size(168, 13);
+            this.proccedVolumeLabel.Size = new System.Drawing.Size(224, 17);
             this.proccedVolumeLabel.TabIndex = 12;
             this.proccedVolumeLabel.Text = "Вывезенный объем:";
             // 
             // processedVolume
             // 
             this.processedVolume.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.processedVolume.Location = new System.Drawing.Point(351, 69);
+            this.processedVolume.Location = new System.Drawing.Point(468, 85);
+            this.processedVolume.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.processedVolume.Name = "processedVolume";
             this.processedVolume.ReadOnly = true;
-            this.processedVolume.Size = new System.Drawing.Size(168, 20);
+            this.processedVolume.Size = new System.Drawing.Size(224, 22);
             this.processedVolume.TabIndex = 13;
             // 
             // processDate
             // 
             this.processDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.processDate.Location = new System.Drawing.Point(177, 25);
+            this.processDate.Location = new System.Drawing.Point(236, 31);
+            this.processDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.processDate.Name = "processDate";
-            this.processDate.Size = new System.Drawing.Size(168, 20);
+            this.processDate.Size = new System.Drawing.Size(224, 22);
             this.processDate.TabIndex = 14;
             this.processDate.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -187,9 +200,10 @@
             // 
             this.InputDate.AutoSize = true;
             this.InputDate.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.InputDate.Location = new System.Drawing.Point(177, 9);
+            this.InputDate.Location = new System.Drawing.Point(236, 10);
+            this.InputDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.InputDate.Name = "InputDate";
-            this.InputDate.Size = new System.Drawing.Size(168, 13);
+            this.InputDate.Size = new System.Drawing.Size(224, 17);
             this.InputDate.TabIndex = 15;
             this.InputDate.Text = "Дата проведения:";
             // 
@@ -223,6 +237,7 @@
             this.tableLayoutPanel1.Controls.Add(this.quntityLabel, 2, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -235,16 +250,17 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(522, 227);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(696, 279);
             this.tableLayoutPanel1.TabIndex = 16;
             // 
             // carLabel
             // 
             this.carLabel.AutoSize = true;
             this.carLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.carLabel.Location = new System.Drawing.Point(3, 185);
+            this.carLabel.Location = new System.Drawing.Point(4, 226);
+            this.carLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.carLabel.Name = "carLabel";
-            this.carLabel.Size = new System.Drawing.Size(168, 13);
+            this.carLabel.Size = new System.Drawing.Size(224, 17);
             this.carLabel.TabIndex = 17;
             this.carLabel.Text = "Выбирите машину:";
             // 
@@ -252,18 +268,20 @@
             // 
             this.selectCar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectCar.FormattingEnabled = true;
-            this.selectCar.Location = new System.Drawing.Point(3, 201);
+            this.selectCar.Location = new System.Drawing.Point(4, 247);
+            this.selectCar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selectCar.Name = "selectCar";
-            this.selectCar.Size = new System.Drawing.Size(168, 21);
+            this.selectCar.Size = new System.Drawing.Size(224, 24);
             this.selectCar.TabIndex = 19;
             // 
             // selectContainerLabel
             // 
             this.selectContainerLabel.AutoSize = true;
             this.selectContainerLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.selectContainerLabel.Location = new System.Drawing.Point(177, 97);
+            this.selectContainerLabel.Location = new System.Drawing.Point(236, 118);
+            this.selectContainerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.selectContainerLabel.Name = "selectContainerLabel";
-            this.selectContainerLabel.Size = new System.Drawing.Size(168, 13);
+            this.selectContainerLabel.Size = new System.Drawing.Size(224, 17);
             this.selectContainerLabel.TabIndex = 20;
             this.selectContainerLabel.Text = "Выберете контейнер";
             // 
@@ -271,9 +289,10 @@
             // 
             this.selectContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectContainer.FormattingEnabled = true;
-            this.selectContainer.Location = new System.Drawing.Point(177, 113);
+            this.selectContainer.Location = new System.Drawing.Point(236, 139);
+            this.selectContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selectContainer.Name = "selectContainer";
-            this.selectContainer.Size = new System.Drawing.Size(168, 21);
+            this.selectContainer.Size = new System.Drawing.Size(224, 24);
             this.selectContainer.TabIndex = 21;
             this.selectContainer.SelectedValueChanged += new System.EventHandler(this.selectContainer_SelectedValueChanged);
             // 
@@ -281,9 +300,10 @@
             // 
             this.driverLabel.AutoSize = true;
             this.driverLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.driverLabel.Location = new System.Drawing.Point(177, 185);
+            this.driverLabel.Location = new System.Drawing.Point(236, 226);
+            this.driverLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.driverLabel.Name = "driverLabel";
-            this.driverLabel.Size = new System.Drawing.Size(168, 13);
+            this.driverLabel.Size = new System.Drawing.Size(224, 17);
             this.driverLabel.TabIndex = 16;
             this.driverLabel.Text = "Выберети водителя:";
             // 
@@ -291,17 +311,19 @@
             // 
             this.selectDriver.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectDriver.FormattingEnabled = true;
-            this.selectDriver.Location = new System.Drawing.Point(177, 201);
+            this.selectDriver.Location = new System.Drawing.Point(236, 247);
+            this.selectDriver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selectDriver.Name = "selectDriver";
-            this.selectDriver.Size = new System.Drawing.Size(168, 21);
+            this.selectDriver.Size = new System.Drawing.Size(224, 24);
             this.selectDriver.TabIndex = 18;
             // 
             // quantity
             // 
             this.quantity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.quantity.Location = new System.Drawing.Point(351, 157);
+            this.quantity.Location = new System.Drawing.Point(468, 193);
+            this.quantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.quantity.Name = "quantity";
-            this.quantity.Size = new System.Drawing.Size(168, 20);
+            this.quantity.Size = new System.Drawing.Size(224, 22);
             this.quantity.TabIndex = 23;
             this.quantity.Visible = false;
             this.quantity.TextChanged += new System.EventHandler(this.quantity_TextChanged);
@@ -310,9 +332,10 @@
             // 
             this.quntityLabel.AutoSize = true;
             this.quntityLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.quntityLabel.Location = new System.Drawing.Point(351, 141);
+            this.quntityLabel.Location = new System.Drawing.Point(468, 172);
+            this.quntityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.quntityLabel.Name = "quntityLabel";
-            this.quntityLabel.Size = new System.Drawing.Size(168, 13);
+            this.quntityLabel.Size = new System.Drawing.Size(224, 17);
             this.quntityLabel.TabIndex = 22;
             this.quntityLabel.Text = "Количество:";
             this.quntityLabel.Visible = false;
@@ -323,19 +346,21 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.saveNewRegistry, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 227);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 279);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(522, 35);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(696, 43);
             this.tableLayoutPanel2.TabIndex = 17;
             // 
             // saveNewRegistry
             // 
             this.saveNewRegistry.Dock = System.Windows.Forms.DockStyle.Right;
-            this.saveNewRegistry.Location = new System.Drawing.Point(351, 3);
+            this.saveNewRegistry.Location = new System.Drawing.Point(468, 4);
+            this.saveNewRegistry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.saveNewRegistry.Name = "saveNewRegistry";
-            this.saveNewRegistry.Size = new System.Drawing.Size(168, 29);
+            this.saveNewRegistry.Size = new System.Drawing.Size(224, 35);
             this.saveNewRegistry.TabIndex = 0;
             this.saveNewRegistry.Text = "Сохранить";
             this.saveNewRegistry.UseVisualStyleBackColor = true;
@@ -343,11 +368,12 @@
             // 
             // NewRegistry
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 262);
+            this.ClientSize = new System.Drawing.Size(696, 322);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "NewRegistry";
             this.Text = "Вывоз контейнера";
             this.Load += new System.EventHandler(this.NewRegistry_Load);
