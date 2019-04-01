@@ -57,7 +57,7 @@
     <Compile Include="Accounting.Designer.cs">
       <DependentUpon>Accounting.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataTable\NewDataTable.cs" />
+    <Compile Include="DataTable\DataTableModel.cs" />
     <Compile Include="Forms\AddNewContainer.cs">
       <SubType>Form</SubType>
     </Compile>

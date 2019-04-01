@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Accounting.DataTable;
 using Accounting.SQLite;
 using static System.Windows.Forms.MessageBoxButtons;
 using static System.Windows.Forms.MessageBoxIcon;
@@ -8,39 +9,28 @@ namespace Accounting.Forms
 {
     public partial class Generic<T> : Form where T : new()
     {
+        protected DataTableModel<T> GenericTableData;
         public Generic()
         {
             InitializeComponent();
             InitializeDisplayControl();
-            var columnHeader = "Неизвестный тип";
             var formName = "неизвестный тип данных";
             switch (typeof(T).Name)
             {
                 case "Car":
                     formName = "Автомобили";
-                    columnHeader = "Автомобиль";
-                    commonData.Columns.Add("CarNumber", "Номер машины");
                     break;
                 case "ContainerType":
                     formName = @"Типы контейнеров";
-                    columnHeader = "Тип контейнера";
-                    commonData.Columns.Add("Volume", "Объем");
-                    DataGridViewCheckBoxColumn multiple = new DataGridViewCheckBoxColumn();
-                    commonData.Columns.Add(multiple);
-                    multiple.HeaderText = @"Несколько";
                     break;
                 case "Driver":
                     formName = @"Водители";
-                    columnHeader = "Водитель";
                     break;
                 case "Platform":
                     formName = @"Платформы";
-                    columnHeader = "Адрес платформы";
                     break;
             }
-
             Text = formName;
-            commonData.Columns[1].HeaderText = columnHeader;
         }
 
         public sealed override string Text
@@ -58,36 +48,15 @@ namespace Accounting.Forms
 
         private void Generic_Load(object sender, EventArgs e)
         {
-            commonData.Rows.Clear();
-            var sql = new Model();
-            var allValues = sql.FindinTable<T>();
+            GenericTableData = new DataTableModel<T>(null);
+            commonData.DataSource = GenericTableData.GetDataTable();
 
-            foreach (var value in allValues)
+            foreach (DataGridViewColumn col in commonData.Columns)
             {
-                DataGridViewRow row = new DataGridViewRow();
-                row.CreateCells(commonData);
-                row.Cells[0].Value = value.GetType().GetProperty("Id")?.GetValue(value,null);
-                switch (typeof(T).Name)
-                {
-                    case "Platform":
-                        row.Cells[1].Value = value.GetType().GetProperty("Address")?.GetValue(value, null);
-                        break;
-                    case "Car":
-                        row.Cells[1].Value = value.GetType().GetProperty("Name")?.GetValue(value, null);
-                        row.Cells[2].Value = value.GetType().GetProperty("Number")?.GetValue(value, null);
-                        break;
-                    case "ContainerType":
-                        row.Cells[1].Value = value.GetType().GetProperty("Name")?.GetValue(value, null);
-                        row.Cells[2].Value = value.GetType().GetProperty("Volume")?.GetValue(value, null);
-                        row.Cells[3].Value = value.GetType().GetProperty("Multiple")?.GetValue(value, null);
-                        break;
-                    default:
-                        row.Cells[1].Value = value.GetType().GetProperty("Name")?.GetValue(value, null);
-                        break;
-                }
-                
-                commonData.Rows.Add(row);
+                col.HeaderText = GenericTableData.GetDataTable().Columns[col.HeaderText].Caption;
             }
+
+            commonData.Columns[0].Visible = false;
         }
 
         private void commonData_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -137,7 +106,7 @@ namespace Accounting.Forms
                         }
                         value.GetType().GetProperty("Volume")?.SetValue(value, testValue, null);
                         var multibool = false;
-                        if (row.Cells[3].Value != null) multibool = (bool)row.Cells[3].Value;
+                        if (!DBNull.Value.Equals(row.Cells[3].Value)) multibool = (bool)row.Cells[3].Value;
                         value.GetType().GetProperty("Multiple")?.SetValue(value, multibool, null);
                         break;
                     case "Car":
@@ -157,6 +126,19 @@ namespace Accounting.Forms
                 }
             }
             Close();
+        }
+
+        private void filter_TextChanged(object sender, EventArgs e)
+        {
+            switch (typeof(T).Name)
+            {
+                case "Platform":
+                    GenericTableData.GetDataTable().DefaultView.RowFilter = $"Address LIKE '%{filter.Text}%'";
+                    break;
+                default:
+                    GenericTableData.GetDataTable().DefaultView.RowFilter = $"Name LIKE '%{filter.Text}%'";
+                    break;
+            }
         }
     }
 }

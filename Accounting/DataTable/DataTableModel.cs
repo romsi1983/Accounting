@@ -3,20 +3,26 @@ using Accounting.SQLite;
 
 namespace Accounting.DataTable
 {
-    public class CreateDataSource<T> where T : new()
+    public class DataTableModel<T> where T : new()
     {
         protected System.Data.DataTable NewTable;
-        public CreateDataSource(System.Data.DataTable inputData) 
+        public DataTableModel(System.Data.DataTable inputData) 
         {
             if (inputData == null)
             {
                 NewTable = new System.Data.DataTable();
                 CreateColumns();
+                RenewDataTable();
             }
             else
             {
                 NewTable = inputData;
             }
+        }
+
+        public System.Data.DataTable GetDataTable()
+        {
+            return NewTable;
         }
 
         public void RenewDataTable()
@@ -31,7 +37,7 @@ namespace Accounting.DataTable
                 switch (typeof(T).Name)
                 {
                     case "Platform":
-                        row[0] = value.GetType().GetProperty("Address")?.GetValue(value, null);
+                        row[1] = value.GetType().GetProperty("Address")?.GetValue(value, null);
                         break;
                     case "Car":
                         row[1] = value.GetType().GetProperty("Name")?.GetValue(value, null);
@@ -49,8 +55,8 @@ namespace Accounting.DataTable
                         row[4] = value.GetType().GetProperty("Phone")?.GetValue(value, null);
                         row[5] = value.GetType().GetProperty("Active")?.GetValue(value, null);
                         break;
-                    default:
-                        row[4] = value.GetType().GetProperty("Name")?.GetValue(value, null);
+                    case "Driver":
+                        row[1] = value.GetType().GetProperty("Name")?.GetValue(value, null);
                         break;
                 }
                 NewTable.Rows.Add(row);
@@ -89,7 +95,6 @@ namespace Accounting.DataTable
             column.Caption = "Тип контейнера";
             column = NewTable.Columns.Add("Volume", typeof(float));
             column.Caption = "Объем";
-            column.Caption = "Тип контейнера";
             column = NewTable.Columns.Add("Multiple", typeof(bool));
             column.Caption = "Несколько";
         }
@@ -101,8 +106,9 @@ namespace Accounting.DataTable
             column.Caption = "Id";
             column = NewTable.Columns.Add("Name", typeof(string));
             //column.Unique = true;
-            column.Caption = "Марка машины";
+            column.Caption = "Марка";
             column = NewTable.Columns.Add("Number", typeof(string));
+            column.Caption = "Номер";
             column.Unique = true;
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using Accounting.DataTable;
 using Accounting.Models;
 using Accounting.SQLite;
 
@@ -8,6 +9,7 @@ namespace Accounting.Forms
 {
     public partial class OrganizationsAll : Form
     {
+        protected DataTableModel<Organization> OrganizationsData;
         public OrganizationsAll()
         {
             InitializeComponent();
@@ -21,19 +23,23 @@ namespace Accounting.Forms
             OrgGridView.AllowUserToDeleteRows = false;
             OrgGridView.ReadOnly = true;
 
-            DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
-            OrgGridView.Columns.Add(chk);
-            // ReSharper disable once LocalizableElement
-            chk.HeaderText = "Активный";
-            chk.Name = "chk";
-            RenewDataTable();
+            OrganizationsData = new DataTableModel<Organization>(null);
+            OrgGridView.DataSource = OrganizationsData.GetDataTable();
+
+            foreach (DataGridViewColumn col in OrgGridView.Columns)
+            {
+                col.HeaderText = OrganizationsData.GetDataTable().Columns[col.HeaderText].Caption;
+            }
+
+            OrgGridView.Columns[0].Visible = false;
+
         }
 
         private void OrgGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var form = new OrganizationSingle(SelectedOrganization());
             var result = form.ShowDialog();
-            if (result == DialogResult.Yes) RenewDataTable();
+            if (result == DialogResult.Yes) OrganizationsData.RenewDataTable();
         }
 
         private Organization SelectedOrganization()
@@ -56,30 +62,8 @@ namespace Accounting.Forms
             OrganizationSingle form = new OrganizationSingle();
             var result = form.ShowDialog();
             Show();
-            if (result == DialogResult.Yes) RenewDataTable();
+            if (result == DialogResult.Yes) OrganizationsData.RenewDataTable();
         }
-
-
-        private void RenewDataTable()
-        {
-            OrgGridView.Rows.Clear();
-            var sql = new Model();
-            var allOrg = sql.FindinTable<Organization>();
-            foreach (var org in allOrg)
-            {
-                DataGridViewRow row = new DataGridViewRow();
-                row.CreateCells(OrgGridView);
-                row.Cells[0].Value = org.Id;
-                row.Cells[1].Value = org.Name;
-                row.Cells[2].Value = org.City;
-                row.Cells[3].Value = org.Address;
-                row.Cells[4].Value = org.Phone;
-                row.Cells[5].Value = org.Active;
-                OrgGridView.Rows.Add(row);
-            }
-
-        }
-
 
         private void orgContainers_Click(object sender, EventArgs e)
         {
@@ -91,7 +75,12 @@ namespace Accounting.Forms
         {
             var form = new ContractsAll(SelectedOrganization());
             var result = form.ShowDialog();
-            if (result == DialogResult.OK) RenewDataTable();
+            if (result == DialogResult.OK) OrganizationsData.RenewDataTable();
+        }
+
+        private void orgFilter_TextChanged(object sender, EventArgs e)
+        {
+            OrganizationsData.GetDataTable().DefaultView.RowFilter = $"Name LIKE '%{orgFilter.Text}%'";
         }
     }
 }
