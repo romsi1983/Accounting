@@ -59,11 +59,11 @@
             // selectPlatform
             // 
             this.selectPlatform.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.selectPlatform.Location = new System.Drawing.Point(2, 27);
-            this.selectPlatform.Margin = new System.Windows.Forms.Padding(2);
+            this.selectPlatform.Location = new System.Drawing.Point(3, 33);
+            this.selectPlatform.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.selectPlatform.Name = "selectPlatform";
             this.selectPlatform.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.selectPlatform.Size = new System.Drawing.Size(306, 21);
+            this.selectPlatform.Size = new System.Drawing.Size(407, 24);
             this.selectPlatform.TabIndex = 0;
             this.selectPlatform.DropDown += new System.EventHandler(this.selectPlatform_DropDown);
             // 
@@ -71,10 +71,10 @@
             // 
             this.selectContainerType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectContainerType.FormattingEnabled = true;
-            this.selectContainerType.Location = new System.Drawing.Point(2, 77);
-            this.selectContainerType.Margin = new System.Windows.Forms.Padding(2);
+            this.selectContainerType.Location = new System.Drawing.Point(3, 95);
+            this.selectContainerType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.selectContainerType.Name = "selectContainerType";
-            this.selectContainerType.Size = new System.Drawing.Size(306, 21);
+            this.selectContainerType.Size = new System.Drawing.Size(407, 24);
             this.selectContainerType.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -103,82 +103,75 @@
             this.tableLayoutPanel1.Controls.Add(this.satuday, 6, 1);
             this.tableLayoutPanel1.Controls.Add(this.sunday, 7, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 31);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 38);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(306, 49);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(407, 61);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 13);
+            this.label1.Size = new System.Drawing.Size(28, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "ПН";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(43, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(58, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(21, 13);
+            this.label2.Size = new System.Drawing.Size(26, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "ВТ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(88, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(118, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(21, 13);
+            this.label3.Size = new System.Drawing.Size(26, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "СР";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(131, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(176, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(22, 13);
+            this.label4.Size = new System.Drawing.Size(27, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "ЧТ";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(174, 0);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(234, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(22, 13);
+            this.label5.Size = new System.Drawing.Size(27, 17);
             this.label5.TabIndex = 4;
             this.label5.Text = "ПТ";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(217, 0);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(292, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(21, 13);
+            this.label6.Size = new System.Drawing.Size(26, 17);
             this.label6.TabIndex = 5;
             this.label6.Text = "СБ";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(260, 0);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(350, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(21, 13);
+            this.label7.Size = new System.Drawing.Size(26, 17);
             this.label7.TabIndex = 6;
             this.label7.Text = "ВС";
             // 
@@ -186,10 +179,10 @@
             // 
             this.monday.AutoSize = true;
             this.monday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.monday.Location = new System.Drawing.Point(2, 26);
-            this.monday.Margin = new System.Windows.Forms.Padding(2);
+            this.monday.Location = new System.Drawing.Point(3, 32);
+            this.monday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.monday.Name = "monday";
-            this.monday.Size = new System.Drawing.Size(37, 21);
+            this.monday.Size = new System.Drawing.Size(49, 27);
             this.monday.TabIndex = 7;
             this.monday.UseVisualStyleBackColor = true;
             // 
@@ -197,10 +190,10 @@
             // 
             this.tuesday.AutoSize = true;
             this.tuesday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tuesday.Location = new System.Drawing.Point(43, 26);
-            this.tuesday.Margin = new System.Windows.Forms.Padding(2);
+            this.tuesday.Location = new System.Drawing.Point(58, 32);
+            this.tuesday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tuesday.Name = "tuesday";
-            this.tuesday.Size = new System.Drawing.Size(41, 21);
+            this.tuesday.Size = new System.Drawing.Size(54, 27);
             this.tuesday.TabIndex = 8;
             this.tuesday.UseVisualStyleBackColor = true;
             // 
@@ -208,10 +201,10 @@
             // 
             this.wednesday.AutoSize = true;
             this.wednesday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wednesday.Location = new System.Drawing.Point(88, 26);
-            this.wednesday.Margin = new System.Windows.Forms.Padding(2);
+            this.wednesday.Location = new System.Drawing.Point(118, 32);
+            this.wednesday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.wednesday.Name = "wednesday";
-            this.wednesday.Size = new System.Drawing.Size(39, 21);
+            this.wednesday.Size = new System.Drawing.Size(52, 27);
             this.wednesday.TabIndex = 9;
             this.wednesday.UseVisualStyleBackColor = true;
             // 
@@ -219,10 +212,10 @@
             // 
             this.thersday.AutoSize = true;
             this.thersday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.thersday.Location = new System.Drawing.Point(131, 26);
-            this.thersday.Margin = new System.Windows.Forms.Padding(2);
+            this.thersday.Location = new System.Drawing.Point(176, 32);
+            this.thersday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.thersday.Name = "thersday";
-            this.thersday.Size = new System.Drawing.Size(39, 21);
+            this.thersday.Size = new System.Drawing.Size(52, 27);
             this.thersday.TabIndex = 10;
             this.thersday.UseVisualStyleBackColor = true;
             // 
@@ -230,10 +223,10 @@
             // 
             this.friday.AutoSize = true;
             this.friday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.friday.Location = new System.Drawing.Point(174, 26);
-            this.friday.Margin = new System.Windows.Forms.Padding(2);
+            this.friday.Location = new System.Drawing.Point(234, 32);
+            this.friday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.friday.Name = "friday";
-            this.friday.Size = new System.Drawing.Size(39, 21);
+            this.friday.Size = new System.Drawing.Size(52, 27);
             this.friday.TabIndex = 11;
             this.friday.UseVisualStyleBackColor = true;
             // 
@@ -241,10 +234,10 @@
             // 
             this.satuday.AutoSize = true;
             this.satuday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.satuday.Location = new System.Drawing.Point(217, 26);
-            this.satuday.Margin = new System.Windows.Forms.Padding(2);
+            this.satuday.Location = new System.Drawing.Point(292, 32);
+            this.satuday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.satuday.Name = "satuday";
-            this.satuday.Size = new System.Drawing.Size(39, 21);
+            this.satuday.Size = new System.Drawing.Size(52, 27);
             this.satuday.TabIndex = 12;
             this.satuday.UseVisualStyleBackColor = true;
             // 
@@ -252,10 +245,10 @@
             // 
             this.sunday.AutoSize = true;
             this.sunday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sunday.Location = new System.Drawing.Point(260, 26);
-            this.sunday.Margin = new System.Windows.Forms.Padding(2);
+            this.sunday.Location = new System.Drawing.Point(350, 32);
+            this.sunday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sunday.Name = "sunday";
-            this.sunday.Size = new System.Drawing.Size(44, 21);
+            this.sunday.Size = new System.Drawing.Size(54, 27);
             this.sunday.TabIndex = 13;
             this.sunday.UseVisualStyleBackColor = true;
             // 
@@ -269,24 +262,23 @@
             this.tableLayoutPanel2.Controls.Add(this.containerTypeLabel, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(310, 103);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(413, 127);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // selectPlatformLabel
             // 
             this.selectPlatformLabel.AutoSize = true;
             this.selectPlatformLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.selectPlatformLabel.Location = new System.Drawing.Point(2, 0);
-            this.selectPlatformLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.selectPlatformLabel.Location = new System.Drawing.Point(3, 0);
             this.selectPlatformLabel.Name = "selectPlatformLabel";
-            this.selectPlatformLabel.Size = new System.Drawing.Size(306, 13);
+            this.selectPlatformLabel.Size = new System.Drawing.Size(407, 17);
             this.selectPlatformLabel.TabIndex = 2;
             this.selectPlatformLabel.Text = "Выберите платформу:";
             // 
@@ -294,46 +286,45 @@
             // 
             this.containerTypeLabel.AutoSize = true;
             this.containerTypeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.containerTypeLabel.Location = new System.Drawing.Point(2, 50);
-            this.containerTypeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.containerTypeLabel.Location = new System.Drawing.Point(3, 62);
             this.containerTypeLabel.Name = "containerTypeLabel";
-            this.containerTypeLabel.Size = new System.Drawing.Size(306, 25);
+            this.containerTypeLabel.Size = new System.Drawing.Size(407, 31);
             this.containerTypeLabel.TabIndex = 3;
             this.containerTypeLabel.Text = "Выберите тип контейнера:";
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 310F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 413F));
             this.tableLayoutPanel3.Controls.Add(this.scheduleLabel, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.saveButton, 0, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 103);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 127);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.9375F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.0625F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(310, 138);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(413, 170);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // scheduleLabel
             // 
             this.scheduleLabel.AutoSize = true;
-            this.scheduleLabel.Location = new System.Drawing.Point(2, 0);
-            this.scheduleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.scheduleLabel.Location = new System.Drawing.Point(3, 0);
             this.scheduleLabel.Name = "scheduleLabel";
-            this.scheduleLabel.Size = new System.Drawing.Size(68, 13);
+            this.scheduleLabel.Size = new System.Drawing.Size(87, 17);
             this.scheduleLabel.TabIndex = 3;
             this.scheduleLabel.Text = "Расписание";
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(3, 85);
+            this.saveButton.Location = new System.Drawing.Point(4, 105);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(303, 43);
+            this.saveButton.Size = new System.Drawing.Size(404, 53);
             this.saveButton.TabIndex = 4;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -341,13 +332,13 @@
             // 
             // AddNewContainer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(310, 241);
+            this.ClientSize = new System.Drawing.Size(413, 297);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddNewContainer";
             this.Text = "Добавить контейнер";
             this.Load += new System.EventHandler(this.AddNewContainer_Load);

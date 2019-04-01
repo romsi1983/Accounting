@@ -151,14 +151,13 @@ namespace Accounting.SQLite
                 }
             }
 
+
             foreach (var valueIn in propsAndValues[1])
             {
-                valuesIn = valuesIn + $"'{valueIn}'";
-                if (valueIn != propsAndValues[1].Last())
-                {
-                    valuesIn = valuesIn + ", ";
-                }
+                valuesIn = valuesIn + $"'{valueIn}', ";
             }
+
+            valuesIn = valuesIn.Substring(0, valuesIn.Length - 2);
 
             string sqlCommand = $"INSERT INTO {dataBase} ({propsIn}) " +
                          $"VALUES ({valuesIn})";

@@ -51,10 +51,6 @@
             this.contQueue = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.containesQueueData = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.DeleteFromQueue = new System.Windows.Forms.Button();
-            this.MakeProccesed = new System.Windows.Forms.Button();
-            this.MakeUnProccesed = new System.Windows.Forms.Button();
             this.IdQueue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdCont = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QueueOrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +59,10 @@
             this.Volume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Daypast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Processed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.DeleteFromQueue = new System.Windows.Forms.Button();
+            this.MakeProccesed = new System.Windows.Forms.Button();
+            this.MakeUnProccesed = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -78,9 +78,10 @@
             // 
             // Organizations
             // 
-            this.Organizations.Location = new System.Drawing.Point(3, 3);
+            this.Organizations.Location = new System.Drawing.Point(4, 4);
+            this.Organizations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Organizations.Name = "Organizations";
-            this.Organizations.Size = new System.Drawing.Size(136, 40);
+            this.Organizations.Size = new System.Drawing.Size(181, 49);
             this.Organizations.TabIndex = 0;
             this.Organizations.Text = "Организации";
             this.Organizations.UseVisualStyleBackColor = true;
@@ -90,10 +91,10 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 254F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 192F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 189F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 191F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 339F));
             this.tableLayoutPanel1.Controls.Add(this.Cars, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.drivers, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.platforms, 2, 0);
@@ -101,18 +102,19 @@
             this.tableLayoutPanel1.Controls.Add(this.Organizations, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.94296F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(825, 46);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1100, 57);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // Cars
             // 
-            this.Cars.Location = new System.Drawing.Point(574, 3);
+            this.Cars.Location = new System.Drawing.Point(765, 4);
+            this.Cars.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Cars.Name = "Cars";
-            this.Cars.Size = new System.Drawing.Size(136, 40);
+            this.Cars.Size = new System.Drawing.Size(181, 49);
             this.Cars.TabIndex = 0;
             this.Cars.Text = "Автомобили";
             this.Cars.UseVisualStyleBackColor = true;
@@ -120,9 +122,10 @@
             // 
             // drivers
             // 
-            this.drivers.Location = new System.Drawing.Point(431, 3);
+            this.drivers.Location = new System.Drawing.Point(574, 4);
+            this.drivers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.drivers.Name = "drivers";
-            this.drivers.Size = new System.Drawing.Size(136, 40);
+            this.drivers.Size = new System.Drawing.Size(181, 49);
             this.drivers.TabIndex = 3;
             this.drivers.Text = "Водители";
             this.drivers.UseVisualStyleBackColor = true;
@@ -130,9 +133,10 @@
             // 
             // platforms
             // 
-            this.platforms.Location = new System.Drawing.Point(289, 3);
+            this.platforms.Location = new System.Drawing.Point(385, 4);
+            this.platforms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.platforms.Name = "platforms";
-            this.platforms.Size = new System.Drawing.Size(136, 40);
+            this.platforms.Size = new System.Drawing.Size(181, 49);
             this.platforms.TabIndex = 2;
             this.platforms.Text = "Площадки";
             this.platforms.UseVisualStyleBackColor = true;
@@ -140,10 +144,10 @@
             // 
             // Containers
             // 
-            this.Containers.Location = new System.Drawing.Point(144, 2);
-            this.Containers.Margin = new System.Windows.Forms.Padding(2);
+            this.Containers.Location = new System.Drawing.Point(192, 2);
+            this.Containers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Containers.Name = "Containers";
-            this.Containers.Size = new System.Drawing.Size(137, 41);
+            this.Containers.Size = new System.Drawing.Size(183, 50);
             this.Containers.TabIndex = 1;
             this.Containers.Text = "Контейнеры";
             this.Containers.UseVisualStyleBackColor = true;
@@ -155,12 +159,12 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.tabControl, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 46);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 57);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(825, 410);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1100, 505);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // tabControl
@@ -168,19 +172,21 @@
             this.tabControl.Controls.Add(this.registry);
             this.tabControl.Controls.Add(this.contQueue);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(3, 3);
+            this.tabControl.Location = new System.Drawing.Point(4, 4);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(819, 404);
+            this.tabControl.Size = new System.Drawing.Size(1092, 497);
             this.tabControl.TabIndex = 0;
             // 
             // registry
             // 
             this.registry.Controls.Add(this.tableLayoutPanel4);
             this.registry.Controls.Add(this.tableLayoutPanel3);
-            this.registry.Location = new System.Drawing.Point(4, 22);
+            this.registry.Location = new System.Drawing.Point(4, 25);
+            this.registry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.registry.Name = "registry";
-            this.registry.Size = new System.Drawing.Size(811, 378);
+            this.registry.Size = new System.Drawing.Size(1084, 468);
             this.registry.TabIndex = 0;
             this.registry.Text = "Реестр";
             this.registry.UseVisualStyleBackColor = true;
@@ -191,11 +197,12 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.dataRegistry, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 54);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 66);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(811, 324);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1084, 402);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // dataRegistry
@@ -203,11 +210,12 @@
             this.dataRegistry.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataRegistry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataRegistry.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataRegistry.Location = new System.Drawing.Point(3, 3);
+            this.dataRegistry.Location = new System.Drawing.Point(4, 4);
+            this.dataRegistry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataRegistry.Name = "dataRegistry";
             this.dataRegistry.ReadOnly = true;
             this.dataRegistry.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataRegistry.Size = new System.Drawing.Size(805, 318);
+            this.dataRegistry.Size = new System.Drawing.Size(1076, 394);
             this.dataRegistry.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -228,29 +236,32 @@
             this.tableLayoutPanel3.Controls.Add(this.removeButton, 4, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(811, 54);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1084, 66);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // orgFilterLabel
             // 
             this.orgFilterLabel.AutoSize = true;
             this.orgFilterLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.orgFilterLabel.Location = new System.Drawing.Point(3, 14);
+            this.orgFilterLabel.Location = new System.Drawing.Point(4, 16);
+            this.orgFilterLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.orgFilterLabel.Name = "orgFilterLabel";
-            this.orgFilterLabel.Size = new System.Drawing.Size(156, 13);
+            this.orgFilterLabel.Size = new System.Drawing.Size(208, 17);
             this.orgFilterLabel.TabIndex = 0;
             this.orgFilterLabel.Text = "Фильтр по организациям";
             // 
             // orgFilter
             // 
             this.orgFilter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.orgFilter.Location = new System.Drawing.Point(3, 30);
+            this.orgFilter.Location = new System.Drawing.Point(4, 37);
+            this.orgFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.orgFilter.Name = "orgFilter";
-            this.orgFilter.Size = new System.Drawing.Size(156, 20);
+            this.orgFilter.Size = new System.Drawing.Size(208, 22);
             this.orgFilter.TabIndex = 1;
             this.orgFilter.TextChanged += new System.EventHandler(this.orgFilter_TextChanged);
             // 
@@ -258,9 +269,10 @@
             // 
             this.dataFromLabel.AutoSize = true;
             this.dataFromLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataFromLabel.Location = new System.Drawing.Point(165, 14);
+            this.dataFromLabel.Location = new System.Drawing.Point(220, 16);
+            this.dataFromLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dataFromLabel.Name = "dataFromLabel";
-            this.dataFromLabel.Size = new System.Drawing.Size(156, 13);
+            this.dataFromLabel.Size = new System.Drawing.Size(208, 17);
             this.dataFromLabel.TabIndex = 2;
             this.dataFromLabel.Text = "Период с:";
             // 
@@ -268,36 +280,40 @@
             // 
             this.dataToLable.AutoSize = true;
             this.dataToLable.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataToLable.Location = new System.Drawing.Point(327, 14);
+            this.dataToLable.Location = new System.Drawing.Point(436, 16);
+            this.dataToLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dataToLable.Name = "dataToLable";
-            this.dataToLable.Size = new System.Drawing.Size(156, 13);
+            this.dataToLable.Size = new System.Drawing.Size(208, 17);
             this.dataToLable.TabIndex = 3;
             this.dataToLable.Text = "Период По:";
             // 
             // dateFrom
             // 
             this.dateFrom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateFrom.Location = new System.Drawing.Point(165, 30);
+            this.dateFrom.Location = new System.Drawing.Point(220, 37);
+            this.dateFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateFrom.Name = "dateFrom";
-            this.dateFrom.Size = new System.Drawing.Size(156, 20);
+            this.dateFrom.Size = new System.Drawing.Size(208, 22);
             this.dateFrom.TabIndex = 4;
             this.dateFrom.ValueChanged += new System.EventHandler(this.dateFrom_ValueChanged);
             // 
             // dateTo
             // 
             this.dateTo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTo.Location = new System.Drawing.Point(327, 30);
+            this.dateTo.Location = new System.Drawing.Point(436, 37);
+            this.dateTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTo.Name = "dateTo";
-            this.dateTo.Size = new System.Drawing.Size(156, 20);
+            this.dateTo.Size = new System.Drawing.Size(208, 22);
             this.dateTo.TabIndex = 5;
             this.dateTo.ValueChanged += new System.EventHandler(this.dateTo_ValueChanged);
             // 
             // newButton
             // 
             this.newButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newButton.Location = new System.Drawing.Point(489, 30);
+            this.newButton.Location = new System.Drawing.Point(652, 37);
+            this.newButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.newButton.Name = "newButton";
-            this.newButton.Size = new System.Drawing.Size(156, 21);
+            this.newButton.Size = new System.Drawing.Size(208, 25);
             this.newButton.TabIndex = 6;
             this.newButton.Text = "Создать";
             this.newButton.UseVisualStyleBackColor = true;
@@ -306,9 +322,10 @@
             // removeButton
             // 
             this.removeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.removeButton.Location = new System.Drawing.Point(651, 30);
+            this.removeButton.Location = new System.Drawing.Point(868, 37);
+            this.removeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(157, 21);
+            this.removeButton.Size = new System.Drawing.Size(212, 25);
             this.removeButton.TabIndex = 7;
             this.removeButton.Text = "Удалить";
             this.removeButton.UseVisualStyleBackColor = true;
@@ -318,9 +335,10 @@
             // 
             this.contQueue.Controls.Add(this.tableLayoutPanel6);
             this.contQueue.Controls.Add(this.tableLayoutPanel5);
-            this.contQueue.Location = new System.Drawing.Point(4, 22);
+            this.contQueue.Location = new System.Drawing.Point(4, 25);
+            this.contQueue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.contQueue.Name = "contQueue";
-            this.contQueue.Size = new System.Drawing.Size(811, 378);
+            this.contQueue.Size = new System.Drawing.Size(1084, 468);
             this.contQueue.TabIndex = 1;
             this.contQueue.Text = "Очередь контейнеров";
             this.contQueue.UseVisualStyleBackColor = true;
@@ -331,11 +349,12 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.Controls.Add(this.containesQueueData, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 38);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 47);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(811, 340);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1084, 421);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // containesQueueData
@@ -352,63 +371,13 @@
             this.Daypast,
             this.Processed});
             this.containesQueueData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.containesQueueData.Location = new System.Drawing.Point(3, 3);
+            this.containesQueueData.Location = new System.Drawing.Point(4, 4);
+            this.containesQueueData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.containesQueueData.Name = "containesQueueData";
             this.containesQueueData.ReadOnly = true;
             this.containesQueueData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.containesQueueData.Size = new System.Drawing.Size(805, 334);
+            this.containesQueueData.Size = new System.Drawing.Size(1076, 413);
             this.containesQueueData.TabIndex = 0;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 4;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.DeleteFromQueue, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.MakeProccesed, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.MakeUnProccesed, 2, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(811, 38);
-            this.tableLayoutPanel5.TabIndex = 0;
-            // 
-            // DeleteFromQueue
-            // 
-            this.DeleteFromQueue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DeleteFromQueue.Location = new System.Drawing.Point(3, 3);
-            this.DeleteFromQueue.Name = "DeleteFromQueue";
-            this.DeleteFromQueue.Size = new System.Drawing.Size(196, 32);
-            this.DeleteFromQueue.TabIndex = 0;
-            this.DeleteFromQueue.Text = "Удалить";
-            this.DeleteFromQueue.UseVisualStyleBackColor = true;
-            this.DeleteFromQueue.Click += new System.EventHandler(this.DeleteFromQueue_Click);
-            // 
-            // MakeProccesed
-            // 
-            this.MakeProccesed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MakeProccesed.Location = new System.Drawing.Point(205, 3);
-            this.MakeProccesed.Name = "MakeProccesed";
-            this.MakeProccesed.Size = new System.Drawing.Size(196, 32);
-            this.MakeProccesed.TabIndex = 1;
-            this.MakeProccesed.Text = "Вывезен";
-            this.MakeProccesed.UseVisualStyleBackColor = true;
-            this.MakeProccesed.Click += new System.EventHandler(this.MakeProccesed_Click);
-            // 
-            // MakeUnProccesed
-            // 
-            this.MakeUnProccesed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MakeUnProccesed.Location = new System.Drawing.Point(407, 3);
-            this.MakeUnProccesed.Name = "MakeUnProccesed";
-            this.MakeUnProccesed.Size = new System.Drawing.Size(196, 32);
-            this.MakeUnProccesed.TabIndex = 2;
-            this.MakeUnProccesed.Text = "Не вывезен";
-            this.MakeUnProccesed.UseVisualStyleBackColor = true;
-            this.MakeUnProccesed.Click += new System.EventHandler(this.MakeUnProccesed_Click);
             // 
             // IdQueue
             // 
@@ -462,13 +431,69 @@
             this.Processed.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Processed.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 4;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.DeleteFromQueue, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.MakeProccesed, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.MakeUnProccesed, 2, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1084, 47);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // DeleteFromQueue
+            // 
+            this.DeleteFromQueue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DeleteFromQueue.Location = new System.Drawing.Point(4, 4);
+            this.DeleteFromQueue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DeleteFromQueue.Name = "DeleteFromQueue";
+            this.DeleteFromQueue.Size = new System.Drawing.Size(263, 39);
+            this.DeleteFromQueue.TabIndex = 0;
+            this.DeleteFromQueue.Text = "Удалить";
+            this.DeleteFromQueue.UseVisualStyleBackColor = true;
+            this.DeleteFromQueue.Click += new System.EventHandler(this.DeleteFromQueue_Click);
+            // 
+            // MakeProccesed
+            // 
+            this.MakeProccesed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MakeProccesed.Location = new System.Drawing.Point(275, 4);
+            this.MakeProccesed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MakeProccesed.Name = "MakeProccesed";
+            this.MakeProccesed.Size = new System.Drawing.Size(263, 39);
+            this.MakeProccesed.TabIndex = 1;
+            this.MakeProccesed.Text = "Вывезен";
+            this.MakeProccesed.UseVisualStyleBackColor = true;
+            this.MakeProccesed.Click += new System.EventHandler(this.MakeProccesed_Click);
+            // 
+            // MakeUnProccesed
+            // 
+            this.MakeUnProccesed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MakeUnProccesed.Location = new System.Drawing.Point(546, 4);
+            this.MakeUnProccesed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MakeUnProccesed.Name = "MakeUnProccesed";
+            this.MakeUnProccesed.Size = new System.Drawing.Size(263, 39);
+            this.MakeUnProccesed.TabIndex = 2;
+            this.MakeUnProccesed.Text = "Не вывезен";
+            this.MakeUnProccesed.UseVisualStyleBackColor = true;
+            this.MakeUnProccesed.Click += new System.EventHandler(this.MakeUnProccesed_Click);
+            // 
             // Accounting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 461);
+            this.ClientSize = new System.Drawing.Size(1100, 567);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Accounting";
             this.Text = "Учет контейнеров";
             this.Load += new System.EventHandler(this.Accounting_Load);
