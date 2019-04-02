@@ -53,7 +53,7 @@ namespace Accounting.SQLite
                     else
                     {
                         inProps.Add(propName);
-                        inValues.Add((string)propValue);
+                        inValues.Add(((string)propValue).Trim());
                     }
                 }
             }
@@ -126,7 +126,7 @@ namespace Accounting.SQLite
             var dataBase = GetDataBaseName<T>();
             var sqlCommand = $"SELECT Id " +
                              $"FROM {dataBase} " +
-                             $"WHERE {columnName} = '{columnValue}'";
+                             $"WHERE {columnName} = '{columnValue.Trim()}'";
 
             var returnValue = ExecuteTextCommand(sqlCommand);
             if (!returnValue.Any()) return -1;
@@ -144,7 +144,7 @@ namespace Accounting.SQLite
 
             foreach (var propIn in propsAndValues[0])
             {
-                propsIn = propsIn + propIn + ", ";
+                propsIn = propsIn + propIn.Trim() + ", ";
             }
 
             propsIn = propsIn.Substring(0, propsIn.Length - 2);
