@@ -82,5 +82,10 @@ namespace Accounting.Forms
         {
             OrganizationsData.GetDataTable().DefaultView.RowFilter = $"Name LIKE '%{orgFilter.Text}%'";
         }
+
+        private void addressFilter_TextChanged(object sender, EventArgs e)
+        {
+            OrganizationsData.GetDataTable().DefaultView.RowFilter = $"Address LIKE '%{addressFilter.Text}%'";
+        }
     }
 }

@@ -101,7 +101,7 @@
             this.tableLayoutPanel1.Controls.Add(this.Organizations, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.94296F));
@@ -141,7 +141,7 @@
             // Containers
             // 
             this.Containers.Location = new System.Drawing.Point(144, 2);
-            this.Containers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Containers.Margin = new System.Windows.Forms.Padding(2);
             this.Containers.Name = "Containers";
             this.Containers.Size = new System.Drawing.Size(137, 41);
             this.Containers.TabIndex = 1;
@@ -156,7 +156,7 @@
             this.tableLayoutPanel2.Controls.Add(this.tabControl, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 46);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));

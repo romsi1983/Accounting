@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 
 namespace Accounting.SQLite
@@ -14,6 +16,13 @@ namespace Accounting.SQLite
         public SqLiteHelper()
         {
             var dbPath = AppDomain.CurrentDomain.BaseDirectory + "Main.db";
+            //var regResult = Regex.Match(dbPath, @"^(?:([\\]{2})|(\w:\\))\w.*\\$");
+
+            //MessageBox.Show(dbPath+$@" regresult: {regResult.Success}");
+            //if (regResult.Groups[1].Length > 0) dbPath = "\\\\" + dbPath + "Main.db";
+            //else dbPath = dbPath + "Main.db";
+
+
 
             if (File.Exists(dbPath))
             {

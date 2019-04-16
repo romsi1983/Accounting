@@ -22,30 +22,31 @@ namespace Accounting.Forms
         private void AddNewContainer_Load(object sender, EventArgs e)
         {
             var sql = new Model();
-            AllPlatforms = sql.FindinTable<Platform>();
-            string[] temp = AllPlatforms.Select(ap => ap.Address).ToArray();
+            //AllPlatforms = sql.FindinTable<Platform>();
+            //string[] temp = AllPlatforms.Select(ap => ap.Address).ToArray();
             // ReSharper disable once CoVariantArrayConversion
-            selectPlatform.Items.AddRange(temp);
+            //selectPlatform.Items.AddRange(temp);
+            //selectPlatform.Items.Add(">> Открыть платформы");
             AllContainers = sql.FindinTable<ContainerType>();
             // ReSharper disable once CoVariantArrayConversion
             selectContainerType.Items.AddRange(AllContainers.Select(ac => ac.Name).ToArray());
 
         }
 
-        private void selectPlatform_DropDown(object sender, EventArgs e)
-        {
-            selectPlatform.Items.Clear();
-            var tempAllPlatforms = AllPlatforms.Where(ap => ap.Address.ToLowerInvariant().Contains(selectPlatform.Text.ToLowerInvariant())).ToList();
-            // ReSharper disable once CoVariantArrayConversion
-            selectPlatform.Items.AddRange(tempAllPlatforms.Select(ap => ap.Address).ToArray());
-        }
+        //private void selectPlatform_DropDown(object sender, EventArgs e)
+        //{
+        //    selectPlatform.Items.Clear();
+        //    var tempAllPlatforms = AllPlatforms.Where(ap => ap.Address.ToLowerInvariant().Contains(selectPlatform.Text.ToLowerInvariant())).ToList();
+        //    // ReSharper disable once CoVariantArrayConversion
+        //    selectPlatform.Items.AddRange(tempAllPlatforms.Select(ap => ap.Address).ToArray());
+        //}
 
         private void saveButton_Click(object sender, EventArgs e)
         {
             var sql = new Model();
-            var selectedPlatform = selectPlatform.Text;
+            var platform = selectedPlatform.Text;
             var selectedContainer = selectContainerType.Text;
-            var pf = sql.FindinTable<Platform>("Address", selectedPlatform).FirstOrDefault();
+            var pf = sql.FindinTable<Platform>("Address", platform).FirstOrDefault();
 
             if (pf == null)
             {
@@ -89,6 +90,13 @@ namespace Accounting.Forms
 
             DialogResult = DialogResult.Yes;
             Close();
+        }
+
+        private void selectPlatform_Click(object sender, EventArgs e)
+        {
+            var form = new Generic<Platform>(1);
+            form.ShowDialog();
+            selectedPlatform.Text = form.commonData.SelectedCells[0].Value as string;
         }
     }
 }

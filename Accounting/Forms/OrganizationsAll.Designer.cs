@@ -44,6 +44,8 @@
             this.orgFilterLabel = new System.Windows.Forms.Label();
             this.orgFilter = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.addressFilterLabel = new System.Windows.Forms.Label();
+            this.addressFilter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.OrgGridView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -55,12 +57,11 @@
             this.OrgGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.OrgGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OrgGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OrgGridView.Location = new System.Drawing.Point(4, 4);
-            this.OrgGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OrgGridView.Location = new System.Drawing.Point(3, 3);
             this.OrgGridView.MultiSelect = false;
             this.OrgGridView.Name = "OrgGridView";
             this.OrgGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.OrgGridView.Size = new System.Drawing.Size(1161, 479);
+            this.OrgGridView.Size = new System.Drawing.Size(871, 389);
             this.OrgGridView.TabIndex = 0;
             this.OrgGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrgGridView_CellContentClick);
             // 
@@ -71,21 +72,20 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.OrgGridView, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 89);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 73);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1169, 487);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(877, 395);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // orgContainers
             // 
             this.orgContainers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.orgContainers.Location = new System.Drawing.Point(974, 4);
-            this.orgContainers.Margin = new System.Windows.Forms.Padding(4);
+            this.orgContainers.Location = new System.Drawing.Point(733, 3);
             this.orgContainers.Name = "orgContainers";
-            this.orgContainers.Size = new System.Drawing.Size(191, 45);
+            this.orgContainers.Size = new System.Drawing.Size(141, 37);
             this.orgContainers.TabIndex = 3;
             this.orgContainers.Text = "Контейнера";
             this.orgContainers.UseVisualStyleBackColor = true;
@@ -94,10 +94,9 @@
             // OrgConracts
             // 
             this.OrgConracts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OrgConracts.Location = new System.Drawing.Point(780, 4);
-            this.OrgConracts.Margin = new System.Windows.Forms.Padding(4);
+            this.OrgConracts.Location = new System.Drawing.Point(587, 3);
             this.OrgConracts.Name = "OrgConracts";
-            this.OrgConracts.Size = new System.Drawing.Size(186, 45);
+            this.OrgConracts.Size = new System.Drawing.Size(140, 37);
             this.OrgConracts.TabIndex = 2;
             this.OrgConracts.Text = "Договора";
             this.OrgConracts.UseVisualStyleBackColor = true;
@@ -106,10 +105,9 @@
             // NewCompany
             // 
             this.NewCompany.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NewCompany.Location = new System.Drawing.Point(586, 4);
-            this.NewCompany.Margin = new System.Windows.Forms.Padding(4);
+            this.NewCompany.Location = new System.Drawing.Point(441, 3);
             this.NewCompany.Name = "NewCompany";
-            this.NewCompany.Size = new System.Drawing.Size(186, 45);
+            this.NewCompany.Size = new System.Drawing.Size(140, 37);
             this.NewCompany.TabIndex = 1;
             this.NewCompany.Text = "Новая организация";
             this.NewCompany.UseVisualStyleBackColor = true;
@@ -129,31 +127,35 @@
             this.tableLayoutPanel3.Controls.Add(this.orgContainers, 5, 0);
             this.tableLayoutPanel3.Controls.Add(this.orgFilterLabel, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.orgFilter, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.addressFilterLabel, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.addressFilter, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1169, 81);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(877, 67);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // orgFilterLabel
             // 
             this.orgFilterLabel.AutoSize = true;
             this.orgFilterLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.orgFilterLabel.Location = new System.Drawing.Point(3, 36);
+            this.orgFilterLabel.Location = new System.Drawing.Point(2, 17);
+            this.orgFilterLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.orgFilterLabel.Name = "orgFilterLabel";
-            this.orgFilterLabel.Size = new System.Drawing.Size(188, 17);
+            this.orgFilterLabel.Size = new System.Drawing.Size(142, 26);
             this.orgFilterLabel.TabIndex = 4;
             this.orgFilterLabel.Text = "Фильтр по наименованию:";
             // 
             // orgFilter
             // 
-            this.orgFilter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.orgFilter.Location = new System.Drawing.Point(3, 56);
+            this.orgFilter.Location = new System.Drawing.Point(2, 45);
+            this.orgFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.orgFilter.Name = "orgFilter";
-            this.orgFilter.Size = new System.Drawing.Size(188, 22);
+            this.orgFilter.Size = new System.Drawing.Size(142, 20);
             this.orgFilter.TabIndex = 5;
             this.orgFilter.TextChanged += new System.EventHandler(this.orgFilter_TextChanged);
             // 
@@ -165,20 +167,39 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.15152F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.84849F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1175, 578);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(881, 470);
             this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // addressFilterLabel
+            // 
+            this.addressFilterLabel.AutoSize = true;
+            this.addressFilterLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.addressFilterLabel.Location = new System.Drawing.Point(149, 30);
+            this.addressFilterLabel.Name = "addressFilterLabel";
+            this.addressFilterLabel.Size = new System.Drawing.Size(140, 13);
+            this.addressFilterLabel.TabIndex = 6;
+            this.addressFilterLabel.Text = "Фильтр по адресу:";
+            // 
+            // addressFilter
+            // 
+            this.addressFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addressFilter.Location = new System.Drawing.Point(149, 46);
+            this.addressFilter.Name = "addressFilter";
+            this.addressFilter.Size = new System.Drawing.Size(140, 20);
+            this.addressFilter.TabIndex = 7;
+            this.addressFilter.TextChanged += new System.EventHandler(this.addressFilter_TextChanged);
             // 
             // OrganizationsAll
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1175, 578);
+            this.ClientSize = new System.Drawing.Size(881, 470);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "OrganizationsAll";
             this.Text = "Организации";
             this.Load += new System.EventHandler(this.OrgForm_Load);
@@ -203,5 +224,7 @@
         private System.Windows.Forms.Label orgFilterLabel;
         private System.Windows.Forms.TextBox orgFilter;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label addressFilterLabel;
+        private System.Windows.Forms.TextBox addressFilter;
     }
 }

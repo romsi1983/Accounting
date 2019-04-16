@@ -56,11 +56,11 @@
             // saveData
             // 
             this.saveData.Location = new System.Drawing.Point(2, 2);
-            this.saveData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.saveData.Margin = new System.Windows.Forms.Padding(2);
             this.saveData.Name = "saveData";
             this.saveData.Size = new System.Drawing.Size(147, 26);
             this.saveData.TabIndex = 1;
-            this.saveData.Text = "Сохранить и закрыть";
+            this.saveData.Text = "Закрыть";
             this.saveData.UseVisualStyleBackColor = true;
             this.saveData.Click += new System.EventHandler(this.saveData_Click);
             // 
@@ -75,12 +75,14 @@
             this.commonData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.commonData.Size = new System.Drawing.Size(399, 254);
             this.commonData.TabIndex = 0;
+            this.commonData.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.commonData_CellContentDoubleClick);
+            this.commonData.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.commonData_CellEndEdit);
             this.commonData.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.commonData_RowsAdded);
             // 
             // filter
             // 
             this.filter.Location = new System.Drawing.Point(2, 32);
-            this.filter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.filter.Margin = new System.Windows.Forms.Padding(2);
             this.filter.Name = "filter";
             this.filter.Size = new System.Drawing.Size(148, 20);
             this.filter.TabIndex = 2;
@@ -107,7 +109,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView commonData;
+        public System.Windows.Forms.DataGridView commonData;
         private System.Windows.Forms.Button saveData;
         private System.Windows.Forms.TextBox filter;
     }

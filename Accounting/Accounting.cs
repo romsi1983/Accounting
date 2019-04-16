@@ -335,6 +335,12 @@ namespace Accounting
                         var form2 = new ContractSingle(contract);
                         form2.ShowDialog();
                         break;
+                    case 4:
+                        //call current platform
+                        var pf = sql.FindinTable<Platform>("Address", value).FirstOrDefault();
+                        var form3 = new ViewCurrentPlatform(pf);
+                        form3.ShowDialog();
+                        break;
                 }
             }
         }
