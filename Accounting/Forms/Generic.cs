@@ -61,8 +61,8 @@ namespace Accounting.Forms
 
         private void commonData_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            var row = commonData.CurrentRow;
-            if (row != null) row.Cells[0].Value = row.Index + 1;
+            //var row = commonData.CurrentRow;
+            //if (row != null) row.Cells[0].Value = row.Index + 1;
         }
 
         private void Generic_FormClosing(object sender, FormClosingEventArgs e)
@@ -79,7 +79,8 @@ namespace Accounting.Forms
                 var row = commonData.Rows[i];
 
                 var valueName = (string)row.Cells[1].Value;
-                var valueId = Convert.ToInt32(row.Cells[0].Value);
+                int valueId = 0;
+                if (!DBNull.Value.Equals(row.Cells[0].Value)) valueId = Convert.ToInt32(row.Cells[0].Value);
 
                 if (String.IsNullOrEmpty(valueName)) continue;
                 var value = new T();
