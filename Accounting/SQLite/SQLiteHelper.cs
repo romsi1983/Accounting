@@ -21,9 +21,6 @@ namespace Accounting.SQLite
             //MessageBox.Show(dbPath+$@" regresult: {regResult.Success}");
             //if (regResult.Groups[1].Length > 0) dbPath = "\\\\" + dbPath + "Main.db";
             //else dbPath = dbPath + "Main.db";
-
-
-
             if (File.Exists(dbPath))
             {
                 SqlLite = new SQLiteConnection($"Data Source={dbPath}");
