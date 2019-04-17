@@ -94,6 +94,12 @@
     <Compile Include="Forms\OrganizationContainers.Designer.cs">
       <DependentUpon>OrganizationContainers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ViewCurrentPlatform.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OrganizationsAll.resx">
       <DependentUpon>OrganizationsAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewCurrentPlatform.resx">
       <DependentUpon>ViewCurrentPlatform.cs</DependentUpon>

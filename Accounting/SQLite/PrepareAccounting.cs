@@ -10,7 +10,7 @@ namespace Accounting.SQLite
     {
         public void PrepareDb(bool onStart)
         {
-            var dbPath = AppDomain.CurrentDomain.BaseDirectory + "Main.db";
+            var dbPath = GetDbPath();
             if (onStart)
             {
                 CreateDb(dbPath);

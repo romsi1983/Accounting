@@ -28,12 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Organizations = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.Cars = new System.Windows.Forms.Button();
-            this.drivers = new System.Windows.Forms.Button();
-            this.platforms = new System.Windows.Forms.Button();
-            this.Containers = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.registry = new System.Windows.Forms.TabPage();
@@ -63,6 +58,14 @@
             this.DeleteFromQueue = new System.Windows.Forms.Button();
             this.MakeProccesed = new System.Windows.Forms.Button();
             this.MakeUnProccesed = new System.Windows.Forms.Button();
+            this.main = new System.Windows.Forms.MenuStrip();
+            this.catalogs = new System.Windows.Forms.ToolStripMenuItem();
+            this.orgs = new System.Windows.Forms.ToolStripMenuItem();
+            this.conts = new System.Windows.Forms.ToolStripMenuItem();
+            this.pfs = new System.Windows.Forms.ToolStripMenuItem();
+            this.drvs = new System.Windows.Forms.ToolStripMenuItem();
+            this.autos = new System.Windows.Forms.ToolStripMenuItem();
+            this.settings = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -74,80 +77,22 @@
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.containesQueueData)).BeginInit();
             this.tableLayoutPanel5.SuspendLayout();
+            this.main.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Organizations
-            // 
-            this.Organizations.Location = new System.Drawing.Point(3, 3);
-            this.Organizations.Name = "Organizations";
-            this.Organizations.Size = new System.Drawing.Size(136, 40);
-            this.Organizations.TabIndex = 0;
-            this.Organizations.Text = "Организации";
-            this.Organizations.UseVisualStyleBackColor = true;
-            this.Organizations.Click += new System.EventHandler(this.Organizations_Click);
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 254F));
-            this.tableLayoutPanel1.Controls.Add(this.Cars, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.drivers, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.platforms, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.Containers, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.Organizations, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.main, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.94296F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(825, 46);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(825, 27);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // Cars
-            // 
-            this.Cars.Location = new System.Drawing.Point(574, 3);
-            this.Cars.Name = "Cars";
-            this.Cars.Size = new System.Drawing.Size(136, 40);
-            this.Cars.TabIndex = 0;
-            this.Cars.Text = "Автомобили";
-            this.Cars.UseVisualStyleBackColor = true;
-            this.Cars.Click += new System.EventHandler(this.Cars_Click);
-            // 
-            // drivers
-            // 
-            this.drivers.Location = new System.Drawing.Point(431, 3);
-            this.drivers.Name = "drivers";
-            this.drivers.Size = new System.Drawing.Size(136, 40);
-            this.drivers.TabIndex = 3;
-            this.drivers.Text = "Водители";
-            this.drivers.UseVisualStyleBackColor = true;
-            this.drivers.Click += new System.EventHandler(this.drivers_Click);
-            // 
-            // platforms
-            // 
-            this.platforms.Location = new System.Drawing.Point(289, 3);
-            this.platforms.Name = "platforms";
-            this.platforms.Size = new System.Drawing.Size(136, 40);
-            this.platforms.TabIndex = 2;
-            this.platforms.Text = "Площадки";
-            this.platforms.UseVisualStyleBackColor = true;
-            this.platforms.Click += new System.EventHandler(this.platforms_Click);
-            // 
-            // Containers
-            // 
-            this.Containers.Location = new System.Drawing.Point(144, 2);
-            this.Containers.Margin = new System.Windows.Forms.Padding(2);
-            this.Containers.Name = "Containers";
-            this.Containers.Size = new System.Drawing.Size(137, 41);
-            this.Containers.TabIndex = 1;
-            this.Containers.Text = "Контейнеры";
-            this.Containers.UseVisualStyleBackColor = true;
-            this.Containers.Click += new System.EventHandler(this.Containers_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -155,7 +100,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.tabControl, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 46);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 27);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -463,6 +408,71 @@
             this.MakeUnProccesed.UseVisualStyleBackColor = true;
             this.MakeUnProccesed.Click += new System.EventHandler(this.MakeUnProccesed_Click);
             // 
+            // main
+            // 
+            this.main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.orgs,
+            this.catalogs,
+            this.settings});
+            this.main.Location = new System.Drawing.Point(0, 0);
+            this.main.Name = "main";
+            this.main.Size = new System.Drawing.Size(825, 24);
+            this.main.TabIndex = 4;
+            this.main.Text = "menuStrip1";
+            // 
+            // catalogs
+            // 
+            this.catalogs.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.conts,
+            this.pfs,
+            this.drvs,
+            this.autos});
+            this.catalogs.Name = "catalogs";
+            this.catalogs.Size = new System.Drawing.Size(94, 20);
+            this.catalogs.Text = "Справочники";
+            // 
+            // orgs
+            // 
+            this.orgs.Name = "orgs";
+            this.orgs.Size = new System.Drawing.Size(92, 20);
+            this.orgs.Text = "Организации";
+            this.orgs.Click += new System.EventHandler(this.orgs_Click);
+            // 
+            // conts
+            // 
+            this.conts.Name = "conts";
+            this.conts.Size = new System.Drawing.Size(180, 22);
+            this.conts.Text = "Контейнеры";
+            this.conts.Click += new System.EventHandler(this.conts_Click);
+            // 
+            // pfs
+            // 
+            this.pfs.Name = "pfs";
+            this.pfs.Size = new System.Drawing.Size(180, 22);
+            this.pfs.Text = "Площадки";
+            this.pfs.Click += new System.EventHandler(this.pfs_Click);
+            // 
+            // drvs
+            // 
+            this.drvs.Name = "drvs";
+            this.drvs.Size = new System.Drawing.Size(180, 22);
+            this.drvs.Text = "Водители";
+            this.drvs.Click += new System.EventHandler(this.drvs_Click);
+            // 
+            // autos
+            // 
+            this.autos.Name = "autos";
+            this.autos.Size = new System.Drawing.Size(180, 22);
+            this.autos.Text = "Автомобили";
+            this.autos.Click += new System.EventHandler(this.autos_Click);
+            // 
+            // settings
+            // 
+            this.settings.Name = "settings";
+            this.settings.Size = new System.Drawing.Size(79, 20);
+            this.settings.Text = "Настройки";
+            this.settings.Click += new System.EventHandler(this.settings_Click);
+            // 
             // Accounting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -470,10 +480,12 @@
             this.ClientSize = new System.Drawing.Size(825, 461);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MainMenuStrip = this.main;
             this.Name = "Accounting";
             this.Text = "Учет контейнеров";
             this.Load += new System.EventHandler(this.Accounting_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
             this.registry.ResumeLayout(false);
@@ -485,6 +497,8 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.containesQueueData)).EndInit();
             this.tableLayoutPanel5.ResumeLayout(false);
+            this.main.ResumeLayout(false);
+            this.main.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -497,14 +511,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button Organizations;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button Containers;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button Cars;
-        private System.Windows.Forms.Button drivers;
-        private System.Windows.Forms.Button platforms;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage registry;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -533,6 +541,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Volume;
         private System.Windows.Forms.DataGridViewTextBoxColumn Daypast;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Processed;
+        private System.Windows.Forms.MenuStrip main;
+        private System.Windows.Forms.ToolStripMenuItem orgs;
+        private System.Windows.Forms.ToolStripMenuItem catalogs;
+        private System.Windows.Forms.ToolStripMenuItem conts;
+        private System.Windows.Forms.ToolStripMenuItem pfs;
+        private System.Windows.Forms.ToolStripMenuItem drvs;
+        private System.Windows.Forms.ToolStripMenuItem autos;
+        private System.Windows.Forms.ToolStripMenuItem settings;
     }
 }
 

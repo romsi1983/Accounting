@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
@@ -15,17 +16,33 @@ namespace Accounting.SQLite
         internal static SQLiteTransaction TsqLiteTransaction;
         public SqLiteHelper()
         {
-            var dbPath = AppDomain.CurrentDomain.BaseDirectory + "Main.db";
-            //var regResult = Regex.Match(dbPath, @"^(?:([\\]{2})|(\w:\\))\w.*\\$");
+            var dbPath = GetDbPath();
 
-            //MessageBox.Show(dbPath+$@" regresult: {regResult.Success}");
-            //if (regResult.Groups[1].Length > 0) dbPath = "\\\\" + dbPath + "Main.db";
-            //else dbPath = dbPath + "Main.db";
             if (File.Exists(dbPath))
             {
                 SqlLite = new SQLiteConnection($"Data Source={dbPath}");
                 SqlLite.Open();
             }
+        }
+
+        protected string GetDbPath()
+        {
+            var dbPath = AppDomain.CurrentDomain.BaseDirectory + "Main.db";
+            var rkey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64);
+            var myKey = rkey.OpenSubKey("Software")?.OpenSubKey("ContainerAccounting");
+
+            if (myKey != null)
+            {
+                var rDbPath = myKey.GetValue("dbPath");
+                if (rDbPath != null)
+                {
+                    dbPath = rDbPath.ToString();
+                }
+            }
+
+            var regResult = Regex.Match(dbPath, @"^(?:([\\]{2})|(\w:\\))\w.*\\Main.db$");            
+            if (regResult.Groups[1].Length > 0) dbPath = "\\\\" + dbPath;
+            return dbPath;
         }
 
         public void StartTransaction()

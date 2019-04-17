@@ -345,6 +345,43 @@ namespace Accounting
             }
         }
 
+        private void orgs_Click(object sender, EventArgs e)
+        {
+            OrganizationsAll form = new OrganizationsAll();
+            Hide();
+            form.ShowDialog(this);
+            Show();
+        }
+
+        private void conts_Click(object sender, EventArgs e)
+        {
+            var form = new Generic<ContainerType>();
+            form.ShowDialog();
+        }
+
+        private void pfs_Click(object sender, EventArgs e)
+        {
+            var form = new Generic<Platform>();
+            form.ShowDialog();
+        }
+
+        private void drvs_Click(object sender, EventArgs e)
+        {
+            var form = new Generic<Driver>();
+            form.ShowDialog();
+        }
+
+        private void autos_Click(object sender, EventArgs e)
+        {
+            var form = new Generic<Car>();
+            form.ShowDialog();
+        }
+
+        private void settings_Click(object sender, EventArgs e)
+        {
+            var form = new Settings();
+            form.ShowDialog();
+        }
     }
 
 }
