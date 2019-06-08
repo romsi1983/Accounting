@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.main = new System.Windows.Forms.MenuStrip();
+            this.orgs = new System.Windows.Forms.ToolStripMenuItem();
+            this.catalogs = new System.Windows.Forms.ToolStripMenuItem();
+            this.conts = new System.Windows.Forms.ToolStripMenuItem();
+            this.pfs = new System.Windows.Forms.ToolStripMenuItem();
+            this.drvs = new System.Windows.Forms.ToolStripMenuItem();
+            this.autos = new System.Windows.Forms.ToolStripMenuItem();
+            this.settings = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.registry = new System.Windows.Forms.TabPage();
@@ -58,15 +66,8 @@
             this.DeleteFromQueue = new System.Windows.Forms.Button();
             this.MakeProccesed = new System.Windows.Forms.Button();
             this.MakeUnProccesed = new System.Windows.Forms.Button();
-            this.main = new System.Windows.Forms.MenuStrip();
-            this.catalogs = new System.Windows.Forms.ToolStripMenuItem();
-            this.orgs = new System.Windows.Forms.ToolStripMenuItem();
-            this.conts = new System.Windows.Forms.ToolStripMenuItem();
-            this.pfs = new System.Windows.Forms.ToolStripMenuItem();
-            this.drvs = new System.Windows.Forms.ToolStripMenuItem();
-            this.autos = new System.Windows.Forms.ToolStripMenuItem();
-            this.settings = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
+            this.main.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.registry.SuspendLayout();
@@ -77,7 +78,6 @@
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.containesQueueData)).BeginInit();
             this.tableLayoutPanel5.SuspendLayout();
-            this.main.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -93,6 +93,71 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.94296F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(825, 27);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // main
+            // 
+            this.main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.orgs,
+            this.catalogs,
+            this.settings});
+            this.main.Location = new System.Drawing.Point(0, 0);
+            this.main.Name = "main";
+            this.main.Size = new System.Drawing.Size(825, 24);
+            this.main.TabIndex = 4;
+            this.main.Text = "menuStrip1";
+            // 
+            // orgs
+            // 
+            this.orgs.Name = "orgs";
+            this.orgs.Size = new System.Drawing.Size(92, 20);
+            this.orgs.Text = "Организации";
+            this.orgs.Click += new System.EventHandler(this.orgs_Click);
+            // 
+            // catalogs
+            // 
+            this.catalogs.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.conts,
+            this.pfs,
+            this.drvs,
+            this.autos});
+            this.catalogs.Name = "catalogs";
+            this.catalogs.Size = new System.Drawing.Size(94, 20);
+            this.catalogs.Text = "Справочники";
+            // 
+            // conts
+            // 
+            this.conts.Name = "conts";
+            this.conts.Size = new System.Drawing.Size(144, 22);
+            this.conts.Text = "Контейнеры";
+            this.conts.Click += new System.EventHandler(this.conts_Click);
+            // 
+            // pfs
+            // 
+            this.pfs.Name = "pfs";
+            this.pfs.Size = new System.Drawing.Size(144, 22);
+            this.pfs.Text = "Площадки";
+            this.pfs.Click += new System.EventHandler(this.pfs_Click);
+            // 
+            // drvs
+            // 
+            this.drvs.Name = "drvs";
+            this.drvs.Size = new System.Drawing.Size(144, 22);
+            this.drvs.Text = "Водители";
+            this.drvs.Click += new System.EventHandler(this.drvs_Click);
+            // 
+            // autos
+            // 
+            this.autos.Name = "autos";
+            this.autos.Size = new System.Drawing.Size(144, 22);
+            this.autos.Text = "Автомобили";
+            this.autos.Click += new System.EventHandler(this.autos_Click);
+            // 
+            // settings
+            // 
+            this.settings.Name = "settings";
+            this.settings.Size = new System.Drawing.Size(79, 20);
+            this.settings.Text = "Настройки";
+            this.settings.Click += new System.EventHandler(this.settings_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -408,71 +473,6 @@
             this.MakeUnProccesed.UseVisualStyleBackColor = true;
             this.MakeUnProccesed.Click += new System.EventHandler(this.MakeUnProccesed_Click);
             // 
-            // main
-            // 
-            this.main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.orgs,
-            this.catalogs,
-            this.settings});
-            this.main.Location = new System.Drawing.Point(0, 0);
-            this.main.Name = "main";
-            this.main.Size = new System.Drawing.Size(825, 24);
-            this.main.TabIndex = 4;
-            this.main.Text = "menuStrip1";
-            // 
-            // catalogs
-            // 
-            this.catalogs.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.conts,
-            this.pfs,
-            this.drvs,
-            this.autos});
-            this.catalogs.Name = "catalogs";
-            this.catalogs.Size = new System.Drawing.Size(94, 20);
-            this.catalogs.Text = "Справочники";
-            // 
-            // orgs
-            // 
-            this.orgs.Name = "orgs";
-            this.orgs.Size = new System.Drawing.Size(92, 20);
-            this.orgs.Text = "Организации";
-            this.orgs.Click += new System.EventHandler(this.orgs_Click);
-            // 
-            // conts
-            // 
-            this.conts.Name = "conts";
-            this.conts.Size = new System.Drawing.Size(180, 22);
-            this.conts.Text = "Контейнеры";
-            this.conts.Click += new System.EventHandler(this.conts_Click);
-            // 
-            // pfs
-            // 
-            this.pfs.Name = "pfs";
-            this.pfs.Size = new System.Drawing.Size(180, 22);
-            this.pfs.Text = "Площадки";
-            this.pfs.Click += new System.EventHandler(this.pfs_Click);
-            // 
-            // drvs
-            // 
-            this.drvs.Name = "drvs";
-            this.drvs.Size = new System.Drawing.Size(180, 22);
-            this.drvs.Text = "Водители";
-            this.drvs.Click += new System.EventHandler(this.drvs_Click);
-            // 
-            // autos
-            // 
-            this.autos.Name = "autos";
-            this.autos.Size = new System.Drawing.Size(180, 22);
-            this.autos.Text = "Автомобили";
-            this.autos.Click += new System.EventHandler(this.autos_Click);
-            // 
-            // settings
-            // 
-            this.settings.Name = "settings";
-            this.settings.Size = new System.Drawing.Size(79, 20);
-            this.settings.Text = "Настройки";
-            this.settings.Click += new System.EventHandler(this.settings_Click);
-            // 
             // Accounting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -486,6 +486,8 @@
             this.Load += new System.EventHandler(this.Accounting_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.main.ResumeLayout(false);
+            this.main.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
             this.registry.ResumeLayout(false);
@@ -497,8 +499,6 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.containesQueueData)).EndInit();
             this.tableLayoutPanel5.ResumeLayout(false);
-            this.main.ResumeLayout(false);
-            this.main.PerformLayout();
             this.ResumeLayout(false);
 
         }
